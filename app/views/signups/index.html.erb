@@ -1,6 +1,8 @@
-<div><%= @signups.count %> have signed up!</div>
-<ul>
-  <% @signups.each do |s| %>
-    <li><%= s.email %></li>
-  <% end %>
-</ul>
+<div class="row">
+  <h3><%= @signups.count %> have signed up!</h3>
+  <ul class="square">
+    <% @signups.each do |s| %>
+      <li><%= s.email %></li>
+    <% end %>
+  </ul>
+</div>
