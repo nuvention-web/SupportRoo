@@ -1,11 +1,15 @@
 <% if flash[:signup_success] %>
   <div class="row panel">Thanks for signing up!</div>
 <% elsif flash[:signup_failure] %>
-  <div class="row panel">Try signing up again with a valid email!</div>
+  <div class="row panel">Try signing up again with valid information!</div>
 <% end %>
 
 <div class="row">
   <%= form_for @signup do |f| %>
+    <%= f.label :first_name %>
+    <%= f.text_field :first_name %>
+    <%= f.label :last_name %>
+    <%= f.text_field :last_name %>
     <%= f.label :email %>
     <%= f.text_field :email %>
     <%= f.submit 'Sign Up', class: "button" %>
