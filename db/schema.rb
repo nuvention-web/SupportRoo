@@ -13,11 +13,8 @@
 
 ActiveRecord::Schema.define(version: 20150115030945) do
 
-  create_table "email_records", force: :cascade do |t|
-    t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "signups", force: :cascade do |t|
     t.string   "email"
