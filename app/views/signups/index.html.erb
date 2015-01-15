@@ -1,0 +1,6 @@
+<div><%= @signups.count %> have signed up!</div>
+<ul>
+  <% @signups.each do |s| %>
+    <li><%= s.email %></li>
+  <% end %>
+</ul>

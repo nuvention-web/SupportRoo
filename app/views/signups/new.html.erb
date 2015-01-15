@@ -1,0 +1,9 @@
+<% if flash[:signup_success] %>
+  <div>Thanks for signing up!</div>
+<% end %>
+
+<%= form_for @signup do |f| %>
+  <%= f.label :email %>
+  <%= f.text_field :email %>
+  <%= f.submit %>
+<% end %>

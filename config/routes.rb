@@ -53,4 +53,9 @@ Rails.application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+
+  resource :signups
+
+  get '/' => "signups#new"
+  get '/admin' => "signups#index"
 end
