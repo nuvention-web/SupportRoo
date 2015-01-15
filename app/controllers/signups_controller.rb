@@ -1,6 +1,8 @@
 class SignupsController < ApplicationController
   def index
-    @signups = Signup.all
+    if params[:pass] == 'f7si8o7z6q'
+      @signups = Signup.all
+    end
   end
 
   def new
@@ -9,8 +11,11 @@ class SignupsController < ApplicationController
 
   def create
     @signup = Signup.new(signup_params)
-    @signup.save
-    flash[:signup_success] = "Signup successful!"
+    if @signup.save
+      flash[:signup_success] = "Stuff"
+    else 
+      flash[:signup_failure] = "Stuff"
+    end
     redirect_to '/'
   end
 

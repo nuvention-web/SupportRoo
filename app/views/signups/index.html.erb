@@ -1,8 +1,12 @@
 <div class="row">
-  <h3><%= @signups.count %> have signed up!</h3>
-  <ul class="square">
-    <% @signups.each do |s| %>
-      <li><%= s.email %></li>
-    <% end %>
-  </ul>
+	<% if @signups %>
+		<h3><%= @signups.count %> users have signed up!</h3>
+		<ul class="square">
+			<% @signups.each do |s| %>
+			<li><%= s.email %></li>
+			<% end %>
+		</ul>	
+	<% else %>
+		<div>You don't have access to this information.</div>
+	<% end %>
 </div>
