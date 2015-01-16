@@ -1,3 +1,56 @@
 // Place all the styles related to the signups controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+body {
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 400;
+  background-color: rgba(0, 0, 0, 0.02);
+  p {
+  	font-size: 14px;
+  }
+}
+
+.button {
+  font-family: Helvetica, Arial, sans-serif; 
+  background-color: green;
+}
+
+.hero{
+  background: url(/assets/zenrocks-bg.jpg);
+  background-size: cover;
+  box-shadow: inset 0px 0px 0 2000px rgba(0,0,0,0.15);
+  color: white;
+  h1 {
+  	margin-bottom: 0px;
+  	margin-left: 5px;
+  	color: white;
+  }
+  p {
+  	font-size: 14px;
+  	margin-left: 5px;
+  }
+}
+
+.intro-text {
+  padding-top: 7%;
+  color: white;
+  text-align: center;
+  h6 {
+    font-family: "Arial";
+  	font-size: 14px;
+  	padding-bottom: 3%;
+  	color: white;
+  }
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-image: -webkit-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+  background-image:    -moz-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+  background-image:     -ms-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+  background-image:      -o-linear-gradient(left, rgba(0,0,0,0), rgba(0,0,0,0.75), rgba(0,0,0,0)); 
+  opacity: 0.8;
+}
