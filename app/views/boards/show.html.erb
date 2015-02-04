@@ -1,0 +1,31 @@
+<div class="row">
+<h3>Add a new task</h1>
+  <ul class="small-block-grid-4 task-type-buttons">
+    <% @task_types.each do |t| %>
+
+        <li class="panel">
+          <%= form_tag("/tasks", method: "post") do %>
+            <span class="label regular"><%= t.name %></span>
+            <%= text_area_tag(:description) %>
+            <%= hidden_field_tag( :task_type_id, t.id) %>
+            <%= hidden_field_tag( :board_id, @board.id) %>
+            <%= submit_tag("Add task", class: "button center") %>
+          <% end %>
+        </li>
+
+    <% end %>
+  </ul>
+</div>
+
+<div class="row">
+  <h3>Your tasks</h3>
+
+  <% @tasks.each do |t| %>
+    <div class="columns twelve panel">
+      <h4><%= t.task_type.name %></h4>
+      <p><%= t.description %></p>
+      <%= link_to "Delete", task_path(t.id), method: "delete", class: "button right" %>
+    </div>
+  <% end %>
+
+</div>

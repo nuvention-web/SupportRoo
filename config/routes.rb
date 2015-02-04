@@ -58,4 +58,7 @@ Rails.application.routes.draw do
 
   get '/' => "signups#new"
   get '/admin' => "signups#index"
+
+  resources :boards, only: [:show]
+  resources :tasks, only: [:create, :destroy]
 end
