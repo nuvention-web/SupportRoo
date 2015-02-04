@@ -1,0 +1,23 @@
+<div class="row">
+  <h3>Sign up for a task</h3>
+
+  <% @tasks.each do |t| %>
+    <div class="columns twelve panel">
+      <h4><%= t.task_type.name %></h4>
+      <p><%= t.description %></p>
+      <% if t.accepted? %>
+        <span class="label success right">Taken</span>
+        <% else %>
+          <%= form_for(t, { url: accept_task_path(t.id), method: :post }) do |f| %>
+            <%= f.label :email %>
+            <%= f.email_field :supporter_email %>
+            <%= f.label :supporter_message %>
+            <%= f.text_area :supporter_message %>
+            <%= f.submit class: "button" %>
+          <% end %> 
+          <span class="label right">Available!</span>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
