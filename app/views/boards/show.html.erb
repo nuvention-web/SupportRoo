@@ -4,12 +4,12 @@
     <% @task_types.each do |t| %>
 
         <li class="panel">
-          <%= form_tag("/tasks", method: "post") do %>
+          <%= form_for(:task, { url: tasks_path, method: :post }) do |f| %>
             <span class="label regular"><%= t.name %></span>
-            <%= text_area_tag(:description) %>
-            <%= hidden_field_tag( :task_type_id, t.id) %>
-            <%= hidden_field_tag( :board_id, @board.id) %>
-            <%= submit_tag("Add task", class: "button center") %>
+            <%= f.text_area(:description) %>
+            <%= f.hidden_field( :task_type_id, { value: t.id }) %>
+            <%= f.hidden_field( :board_id, { value: @board.id }) %>
+            <%= f.submit("Add task", class: "button center") %>
           <% end %>
         </li>
 
@@ -24,7 +24,7 @@
     <div class="columns twelve panel">
       <h4><%= t.task_type.name %></h4>
       <p><%= t.description %></p>
-      <%= link_to "Delete", task_path(t.id), method: "delete", class: "button right" %>
+      <%= link_to "Delete", task_path(t.id), method: "delete", class: "button right alert" %>
     </div>
   <% end %>
 
