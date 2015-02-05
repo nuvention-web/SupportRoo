@@ -13,6 +13,10 @@ gem 'sdoc',                 '0.4.0', group: :doc
 
 gem 'foundation-rails',     '5.4.5'
 
+group :development do 
+	gem "letter_opener"
+end
+
 group :development, :test do
   gem 'byebug',      '3.4.0'
   gem 'web-console', '2.0.0.beta3'
