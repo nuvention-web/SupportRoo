@@ -1,5 +1,5 @@
 <div class="row">
-<h3>Add a new task</h1>
+  <h3>Add a new task</h1>
   <ul class="small-block-grid-4 task-type-buttons">
     <% @task_types.each do |t| %>
 
@@ -17,15 +17,25 @@
   </ul>
 </div>
 
+
 <div class="row">
   <h3>Your tasks</h3>
 
   <% @tasks.each do |t| %>
-    <div class="columns twelve panel">
+    <div class="columns large-12 panel">
       <h4><%= t.task_type.name %></h4>
       <p><%= t.description %></p>
       <%= link_to "Delete", task_path(t.id), method: "delete", class: "button right alert" %>
     </div>
   <% end %>
-
 </div>
+
+<div class="row">
+  <div class="columns large-12">
+    <h4>Share the link below with your network so they can start signing up for tasks!</h4> 
+    <div class="panel text-center">
+      <%= "http://supportroo.herokuapp.com" + share_board_path(@board) %>
+    </div>
+  </div>
+</div>
+
