@@ -9,6 +9,8 @@
         <span class="label success right">Taken</span>
         <% else %>
           <%= form_for(t, { url: accept_task_path(t.id), method: :post }) do |f| %>
+            <%= f.label :name %>
+            <%= f.text_field :supporter_name %>
             <%= f.label :email %>
             <%= f.email_field :supporter_email %>
             <%= f.label :supporter_message %>

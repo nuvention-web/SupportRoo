@@ -24,3 +24,14 @@ module Support
     config.active_record.raise_in_transactional_callbacks = true
   end
 end
+
+Rails.application.configure do
+    config.action_mailer.smtp_settings = {
+        :address              => "smtp.gmail.com",
+        :port                 => 587,
+        :user_name            => 'suprooteam',
+        :password             => 'NUvention123',
+        :authentication       => 'plain',
+        :enable_starttls_auto => true  
+    }
+end

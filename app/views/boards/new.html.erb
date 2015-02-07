@@ -1,0 +1,97 @@
+<div class="hero">
+  <div class="row">
+    <h1> SupportRoo </h1>
+    <p><i> Get the help you need, when you need it. </i></p>
+  </div>
+  <div class="row intro-text small-8 small-centered columns">
+    <h6>SupportRoo is the easy way to get your daily tasks done with the help of your family and close friends, so that you can focus on what matters most.</h6> 
+    <div class="row">
+      <div class="small-4 columns">
+        <%= form_for @board do |f| %>
+        	<%= f.text_field :patient_name, :placeholder => "Patient's Name" %>
+        	<%= f.text_field :email, :placeholder => "Email" %>
+        	<%= f.submit 'Sign Up', class: "button" %>
+        <% end %>
+      </div>
+      <div class="small-4 columns">
+        <% if flash[:signup_failure] %>
+        <div class="row panel">Try signing up again with valid information!</div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div id='infobox'>
+  </div>
+</div>
+
+<br>
+
+<div class="row small-10 small-centered columns">
+  <p>
+    When caring for yourself or a loved one, it’s easy to feel like your life is on pause. With SupportRoo, you can easily organize your daily needs and engage your inner circle near and afar to ensure you can always keep your life in play. SupportRoo helps you get control back over your life, and get the help you need.
+  </p>
+</div>
+
+<hr>
+<br>
+
+<div class="row small-10 small-centered columns">
+
+  <h4><b>How It Works:</b></h4><br><br>
+
+  <div class="row">
+    <div class="small-4 columns">
+      <%= image_tag "identify.png", size: '150', class: 'center' %>
+      <h5>Identify:</h5>
+      <p>Choose from common needs or customize your own.</p>
+    </div>
+    <div class="small-4 columns">
+      <%= image_tag "organize.png", size: '150', class: 'center' %>
+      <h5>Organize:</h5>  
+      <p>Create a calendar to organize and visualize your tasks.</p>
+    </div>
+    <div class="small-4 columns">
+      <%= image_tag "engage.png", size: '150', class: 'center' %>
+      <h5>Engage:</h5>
+      <p>Connect with your network to distribute the load.</p>
+    </div>
+    <div class="row">
+    </div>
+
+    <div class="row small-10 small-centered columns">
+      <p>
+        SupportRoo walks you through a series of options to identify your most needed daily or routine tasks and then engages your inner circle to gift these to you just when you need it. SupportRoo allows you to receive reliable help without the discomfort of asking for it. Your inner circle can see a weekly calendar of needs, and sign up to bring dinner, walk your dog, or pay for your laundry on a given day.
+      </p>
+    </div>
+  </div>
+</div>
+
+<hr>
+<br>
+<div class="row about">
+  <h4><b>About Us:</b></h4><br><br>
+
+  <div class="row">
+    <div class="medium-4 columns text-center"><%= image_tag "sami.jpg" %></br>
+      <p class="text-center"> Sami</p>
+    </div>
+    <div class="medium-4 columns text-center"><%= image_tag "le.jpg" %></br>
+      <p class="text-center"> Le</p>
+    </div>
+    <div class="medium-4 columns text-center end"><%= image_tag "patrick.jpg" %></br>
+      <p class="text-center"> Patrick</p>
+    </div>
+  </div>
+</br>
+  <div class="row">
+    <div class="medium-4 columns text-center"><%= image_tag "alex.jpg" %></br>
+      <p class="text-center"> Alex</p>
+    </div>
+    <div class="medium-4 columns text-center"><%= image_tag "avy.png" %></br>
+      <p class="text-center"> Avy</p>
+    </div>
+    <div class="medium-4 columns text-center end"><%= image_tag "claire.jpg" %></br>
+      <p class="text-center"> Claire</p>
+    </div>
+  </div>
+</div>

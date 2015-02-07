@@ -10,8 +10,13 @@ gem 'turbolinks',           '2.3.0'
 gem 'jbuilder',             '2.2.3'
 gem 'pg',                   '0.17.1'
 gem 'sdoc',                 '0.4.0', group: :doc
+gem 'annotate',             '2.6.5'
 
 gem 'foundation-rails',     '5.4.5'
+
+group :development do 
+  gem "letter_opener"
+end
 
 group :development, :test do
   gem 'byebug',      '3.4.0'
