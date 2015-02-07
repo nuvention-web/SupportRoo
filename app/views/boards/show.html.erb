@@ -1,4 +1,9 @@
 <%= render 'layouts/header' %>
+
+<% if flash[:signup_success] %>
+  <div class="row panel">Thanks for signing up, this is your board!</div>
+<% end %>
+
 <div class="row">
   <h3>Add a new task</h1>
   <ul class="small-block-grid-4 task-type-buttons">

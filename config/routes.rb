@@ -56,10 +56,10 @@ Rails.application.routes.draw do
 
   resource :signups
 
-  get '/' => "signups#new"
+  get '/' => "boards#new"
   get '/admin' => "signups#index"
 
-  resources :boards, only: [:show] do
+  resources :boards, only: [:new, :create, :show] do
     get 'share', on: :member
   end
 
