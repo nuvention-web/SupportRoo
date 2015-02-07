@@ -7,7 +7,6 @@ deployment:
       - heroku run rake db:migrate --app supportroo:
       - heroku scale worker=x --app supportroo
       - heroku maintenance:off --app supportroo
-
   staging:
     commands:
       - heroku maintenance:on --app supportroo-staging
