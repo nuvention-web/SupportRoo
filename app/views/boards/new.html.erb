@@ -8,9 +8,9 @@
     <div class="row">
       <div class="small-4 columns">
         <%= form_for @board do |f| %>
-        <%= f.text_field :patient_name, :placeholder => "First Name" %>
-        <%= f.text_field :email, :placeholder => "Email" %>
-        <%= f.submit 'Sign Up', class: "button" %>
+        	<%= f.text_field :patient_name, :placeholder => "Patient's Name" %>
+        	<%= f.text_field :email, :placeholder => "Email" %>
+        	<%= f.submit 'Sign Up', class: "button" %>
         <% end %>
       </div>
       <div class="small-4 columns">
