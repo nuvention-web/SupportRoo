@@ -5,7 +5,7 @@ deployment:
       - heroku maintenance:on --app supportroo
       - heroku scale worker=0 --app supportroo
       - git push git@heroku.com:supportroo.git $CIRCLE_SHA1:refs/heads/master
-      - heroku run rake db:migrate --app supportroo:
+      - heroku run rake db:migrate --app supportroo
       - heroku scale worker=x --app supportroo
       - heroku restart --app supportroo
       - heroku maintenance:off --app supportroo
