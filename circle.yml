@@ -10,7 +10,7 @@ deployment:
       - heroku restart --app supportroo
       - heroku maintenance:off --app supportroo
   deploy_staging:
-    branch: staging
+    branch: master
     commands:
       - heroku maintenance:on --app supportroo-staging
       - heroku scale worker=0 --app supportroo-staging
