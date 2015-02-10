@@ -15,6 +15,7 @@ class TasksController < ApplicationController
     task = Task.find(params[:id])
     task.update_attributes(task_params)
     UserMailer.notify_supporter(task).deliver!
+    UserMailer.notify_caretaker(task).deliver!
     redirect_to share_board_path(task.board_id)
   end
 
