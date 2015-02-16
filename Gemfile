@@ -11,6 +11,8 @@ gem 'jbuilder',             '2.2.3'
 gem 'pg',                   '0.17.1'
 gem 'sdoc',                 '0.4.0', group: :doc
 gem 'annotate',             '2.6.5'
+gem "simple_calendar",      '1.1.1'
+
 
 gem 'foundation-rails',     '5.4.5'
 
