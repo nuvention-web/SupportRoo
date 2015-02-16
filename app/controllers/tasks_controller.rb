@@ -28,7 +28,8 @@ class TasksController < ApplicationController
       :task_type_id,
       :supporter_email,
       :supporter_message,
-      :supporter_name
+      :supporter_name,
+      :start_time
     )
   end
 end

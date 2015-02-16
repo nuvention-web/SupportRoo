@@ -14,3 +14,22 @@
 }
 
 
+select.select-date {
+  width: 30%;
+  margin-right: 10px;
+  float: left;
+}
+.select-date-wrapper{
+  select:first-of-type{
+    width: 30%;
+  }
+  select:nth-of-type(2){
+    width: 15%;
+  }
+  select:nth-of-type(3){
+    width: 25%;
+  }
+  select:last-of-type{
+    width: 15%;
+  }
+}

@@ -10,6 +10,20 @@
     <div class="panel text-center">
       <%= share_board_url(@board) %>
     </div>
+
+    <%= month_calendar table: {class: "table table-bordered columns large-12"}, 
+                       tr: {class: "calendar-row"}, 
+                       td: {class: "day"}, 
+                       events: @tasks do |date, tasks|  %>
+      <%= date.day %>
+
+      <% tasks.each do |task| %>
+        <div>
+          <%= task.description %>
+        </div>
+      <% end %>
+    <% end %>
+
   </div>
 </div>
 
@@ -24,6 +38,13 @@
               <span class="label regular center"><%= t.name %></span>
               <%= f.label(:details) %>
               <%= f.text_area(:description) %>
+              
+              <div class="row">
+                <div class="select-date-wrapper">
+                  <%= f.label(:start_time) %>
+                  <%= f.datetime_select(:start_time, options = {order: [:month, :day, :year], discard_year: true, ampm: true, minute_step:15}) %>
+                </div>
+              </div>
               <%= f.hidden_field( :task_type_id, { value: t.id }) %>
               <%= f.hidden_field( :board_id, { value: @board.id }) %>
               <%= f.submit("Add task", class: "button center tiny radius add-task") %>
