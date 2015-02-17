@@ -11,15 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204232125) do
+ActiveRecord::Schema.define(version: 20150205011633) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "boards", force: :cascade do |t|
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.string   "patient_name"
   end
 
   create_table "signups", force: :cascade do |t|
@@ -49,6 +50,7 @@ ActiveRecord::Schema.define(version: 20150204232125) do
     t.datetime "updated_at",        null: false
     t.string   "supporter_email"
     t.string   "supporter_message"
+    t.string   "supporter_name"
   end
 
 end

@@ -1,0 +1,17 @@
+deployment:
+  deploy_production:
+    branch: production
+    commands:
+      - heroku maintenance:on --app supportroo
+      - git push git@heroku.com:supportroo.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app supportroo
+      - heroku restart --app supportroo
+      - heroku maintenance:off --app supportroo
+  deploy_staging:
+    branch: master
+    commands:
+      - heroku maintenance:on --app supportroo-staging
+      - git push git@heroku.com:supportroo-staging.git $CIRCLE_SHA1:refs/heads/master
+      - heroku run rake db:migrate --app supportroo-staging
+      - heroku restart --app supportroo-staging
+      - heroku maintenance:off --app supportroo-staging

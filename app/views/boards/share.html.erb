@@ -1,23 +1,49 @@
-<div class="row">
-  <h3>Sign up for a task</h3>
+<%= render 'layouts/header' %>
 
-  <% @tasks.each do |t| %>
-    <div class="columns twelve panel">
+<div class="row">
+  <h3 class="text-center">
+    <%= @board.patient_name %>'s Support Board
+  </h3>
+  <hr>
+  <h3>Tasks:</h3>
+
+  <% if @tasks.empty? %>
+    <div class="row">
+      There don't seem to be any tasks here!
+    </div>
+  <% else %>
+
+    <% @tasks.each do |t| %>
+      <div class="columns twelve panel">
+      <% unless t.accepted? %>
+        <span class="label success right">This task is available!</span>
+      <% else %>
+        <span class="label success right">Someone has signed up for this task</span>
+      <% end %>
+
       <h4><%= t.task_type.name %></h4>
       <p><%= t.description %></p>
-      <% if t.accepted? %>
-        <span class="label success right">Taken</span>
-        <% else %>
-          <%= form_for(t, { url: accept_task_path(t.id), method: :post }) do |f| %>
-            <%= f.label :email %>
-            <%= f.email_field :supporter_email %>
-            <%= f.label :supporter_message %>
-            <%= f.text_area :supporter_message %>
-            <%= f.submit class: "button" %>
-          <% end %> 
-          <span class="label right">Available!</span>
+      <% unless t.accepted? %>
+        <%= form_for(t, { url: accept_task_path(t.id), method: :post }) do |f| %>
+          <div class="row">
+            <div class="columns small-6">
+              <%= f.label :name %>
+              <%= f.text_field :supporter_name %>
+            </div>
+            <div class="columns small-6">
+              <%= f.label :email %>
+              <%= f.email_field :supporter_email %>
+            </div>
+          </div>
+          <%= f.label :your_message %>
+          <%= f.text_area :supporter_message %>
+          <%= f.submit "Sign up for this task!", class: "button radius center" %>
+        <% end %>
       <% end %>
-    </div>
+
+      </div>
+    <% end %>
+
   <% end %>
 
 </div>
