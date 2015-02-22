@@ -7,6 +7,7 @@
 #  description :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
+#  category    :string
 #
 
 class TaskType < ActiveRecord::Base

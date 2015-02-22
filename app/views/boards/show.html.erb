@@ -31,8 +31,11 @@
   <div class="columns small-4">
     <h3>Add a new task</h1>
       <div class="task-type-buttons">
-        <% @task_types.each do |t| %>
-          <%= render "tasks/form", t: t, b: @board %>
+        <% @task_categories.each do |c| %>
+          <span class="label regular center"><%= c %></span>
+          <% @task_types.where(category: c.to_sym).each do |t| %>
+            <%= render "tasks/form", t: t, b: @board %>
+         <% end %>
        <% end %>
      </div>
    </div>
