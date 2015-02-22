@@ -32,32 +32,42 @@
     <h3>Add a new task</h1>
       <div class="task-type-buttons">
         <% @task_categories.each do |c| %>
-          <span class="label regular center"><%= c %></span>
+        <span class="label regular center"><%= c %></span>
+        <ul class="category_list">
           <% @task_types.where(category: c.to_sym).each do |t| %>
-            <%= render "tasks/form", t: t, b: @board %>
-         <% end %>
-       <% end %>
-     </div>
-   </div>
-   <div class="columns small-8">
-    <h3>Your tasks</h3>
-    <% if @tasks.empty? %>
-    <div>You don't seem to have any support tasks yet! Your tasks will appear here after you add them</div>
-    <% else  %>
-    <% @tasks.each do |t| %>
-    <div class="columns large-12 panel">
-      <h4><%= t.task_type.name %></h4>
-      <p><%= t.description %></p>
-      <% if t.accepted? %>
-      <span class="label success left radius">
-        <%= t.supporter_name %> has signed up for this task!
-      </span>
-      <% else %>
-      <span class="label regular radius">Available</span>
-      <% end %>
-      <%= link_to "Delete", task_path(t.id), method: "delete", class: "button right alert radius small" %>
+          <li class="task_type">
+            <a href="#" data-reveal-id="<%= t.name %>Modal"><%= t.name %></a></br>
+            <div id="<%= t.name %>Modal" class="reveal-modal" data-reveal>
+              <%= render "tasks/form", t: t, b: @board %>
+              <a class="close-reveal-modal">&#215;</a>
+            </div>
+          </li>
+          <% end %>
+        </ul>
+        <% end %>
+      </div>
     </div>
-    <% end %>
-    <% end  %>
+
+
+    <div class="columns small-8">
+      <h3>Your tasks</h3>
+      <% if @tasks.empty? %>
+      <div>You don't seem to have any support tasks yet! Your tasks will appear here after you add them</div>
+      <% else  %>
+      <% @tasks.each do |t| %>
+      <div class="columns large-12 panel">
+        <h4><%= t.task_type.name %></h4>
+        <p><%= t.description %></p>
+        <% if t.accepted? %>
+        <span class="label success left radius">
+          <%= t.supporter_name %> has signed up for this task!
+        </span>
+        <% else %>
+        <span class="label regular radius">Available</span>
+        <% end %>
+        <%= link_to "Delete", task_path(t.id), method: "delete", class: "button right alert radius small" %>
+      </div>
+      <% end %>
+      <% end  %>
+    </div>
   </div>
-</div>
