@@ -10,22 +10,10 @@
         <%= share_board_url(@board) %>
       </div>
 
-      <%= month_calendar table: {class: "table table-bordered columns large-12"}, 
-      tr: {class: "calendar-row"}, 
-      td: {class: "day"}, 
-      events: @tasks do |date, tasks|  %>
-      <%= date.day %>
-
-      <% tasks.each do |task| %>
-      <div>
-        <%= task.description %>
-      </div>
-      <% end %>
-      <% end %>
-
+    <div class="calendar">
+      <%= render partial: "shared/calendar", locals: { tasks: @tasks } %>
     </div>
   </div>
-
   <div class="row">
     <%= render "tasks/sidebar_list", categories: @task_categories, types: @task_types %>
 
