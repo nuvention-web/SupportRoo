@@ -1,0 +1,12 @@
+<div class="columns large-12 panel">
+  <h4><%= task.task_type.name %></h4>
+  <p><%= task.description %></p>
+  <% if task.accepted? %>
+    <span class="label success left radius">
+      <%= task.supporter_name %> has signed up!
+    </span>
+  <% else %>
+    <span class="label regular radius">Available</span>
+  <% end %>
+  <%= link_to "Delete", task_path(task.id), method: "delete", class: "button right alert radius small" %>
+</div>
