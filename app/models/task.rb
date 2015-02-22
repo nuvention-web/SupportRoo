@@ -25,6 +25,10 @@ class Task < ActiveRecord::Base
   extend SimpleCalendar
   has_calendar attribute: :start_time
 
+  default_scope { order('start_time ASC') }
+  scope :upcoming, -> { where("start_time > ?", Time.now).order('start_time ASC') }
+  scope :not_taken, -> { where("accepted is null").order('start_time ASC') }
+
   def accepted?
     !self.supporter_email.nil?
   end
