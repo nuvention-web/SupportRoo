@@ -19,17 +19,19 @@ class TasksController < ApplicationController
     redirect_to share_board_path(task.board_id)
   end
 
-  private 
+  private
 
   def task_params
     params.require(:task).permit(
       :description,
       :board_id,
       :task_type_id,
+      :title,
       :supporter_email,
       :supporter_message,
       :supporter_name,
-      :start_time
+      :start_time,
+      :end_time
     )
   end
 end
