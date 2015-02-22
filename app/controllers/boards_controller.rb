@@ -23,7 +23,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
-    @task_categories = %w(food household petcare child home personal love)
+    @task_categories = TaskType.all.pluck(:category).uniq
     @task_types = TaskType.all
     @tasks = @board.tasks
   end

@@ -2,7 +2,7 @@ categories = {food: %w(Groceries Delivery Prepared\ Food),
               household: %w(Cleaning Laundry Supplies Yardwork Handyman Carwash),
               petcare: %w(Dogwalking Grooming Clean\ Up),
               child: %w(Care Babysit Pick-up/Drop-Off Homework\ Help),
-              home: %w(Medical\ Care Nursing Physio),
+              medical: %w(Care Nursing Physio Appointment),
               personal: %w(Grooming Hair/Nails Massage),
               love: %w(Spend\ Time Cheer\ Up Call)
 }
