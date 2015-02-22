@@ -16,8 +16,9 @@ gem 'simple_form'
 
 
 gem 'foundation-rails',     '5.4.5'
+gem 'font-awesome-rails',   '4.3.0'
 
-group :development do 
+group :development do
   gem 'letter_opener'
 end
 
