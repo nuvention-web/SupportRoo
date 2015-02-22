@@ -1,1 +1,30 @@
-_form.html.erb
+<div class="panel">
+  <%= simple_form_for :task, { url: tasks_path, method: :post } do |f| %>
+  <span class="label regular center"><%= t.name %></span>
+  <%= f.input :description, as: :text %>
+
+  <!-- THIS IS TOO UGLY, FIX IT, something like below? -->
+  <!-- f.input :start_time, as: :datetime -->
+  <!-- f.input :end_time, as: :datetime -->
+
+  <!-- START TIME? -->
+  <div class="row">
+   <div class="select-date-wrapper">
+     <%= f.label(:start_time) %>
+     <%= f.datetime_select :start_time, options = {order: [:month, :day, :year], discard_year: true, ampm: true, minute_step:15} %>
+   </div>
+ </div>
+
+ <!-- END TIME? -->
+ <div class="row">
+   <div class="select-date-wrapper">
+     <%= f.label(:end_time) %>
+     <%= f.datetime_select :end_time, options = {order: [:month, :day, :year], discard_year: true, ampm: true, minute_step:15} %>
+   </div>
+ </div>
+
+ <%= f.hidden_field :task_type_id, { value: t.id } %>
+ <%= f.hidden_field :board_id, { value: b.id } %>
+ <%= f.submit("Add task", class: "button center tiny radius add-task") %>
+ <% end %>
+</div>
