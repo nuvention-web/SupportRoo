@@ -1,5 +1,3 @@
-<%= render 'layouts/header' %>
-
 <% if flash[:signup_success] %>
 <div class="row panel">Thanks for signing up, this is your board!</div>
 <% end %>
@@ -29,25 +27,7 @@
   </div>
 
   <div class="row">
-    <div class="columns small-4">
-      <h3>Add a new task</h1>
-        <div class="task-type-buttons">
-          <% @task_categories.each do |c| %>
-          <h4><%= c.titleize %>:</h4>
-          <ul class="category_list">
-            <% @task_types.where(category: c.to_sym).each do |t| %>
-            <li class="task_type">
-              <a href="#" data-reveal-id="<%= t.name.parameterize %>Modal"><%= t.name %></a>
-              <div id="<%= t.name.parameterize %>Modal" class="reveal-modal" data-reveal>
-                <%= render "tasks/form", t: t, b: @board %>
-                <a class="close-reveal-modal">&#215;</a>
-              </div>
-            </li>
-            <% end %>
-          </ul>
-          <% end %>
-        </div>
-      </div>
+    <%= render "tasks/sidebar_list", categories: @task_categories, types: @task_types %>
 
       <div class="columns small-8">
         <h3>Your tasks</h3>

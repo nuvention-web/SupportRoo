@@ -1,0 +1,19 @@
+<div class="columns small-4">
+  <h3>Add a new task</h1>
+    <div class="task-type-buttons">
+      <% categories.each do |c| %>
+      <h4><%= c.titleize %>:</h4>
+      <ul class="category_list">
+        <% types.where(category: c.to_sym).each do |t| %>
+        <li class="task_type">
+          <a href="#" data-reveal-id="<%= t.name.parameterize %>Modal"><%= t.name %></a>
+          <div id="<%= t.name.parameterize %>Modal" class="reveal-modal" data-reveal>
+            <%= render "tasks/form", t: t, b: @board %>
+            <a class="close-reveal-modal">&#215;</a>
+          </div>
+        </li>
+        <% end %>
+      </ul>
+      <% end %>
+    </div>
+  </div>
