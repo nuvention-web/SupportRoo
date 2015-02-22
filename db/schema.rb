@@ -18,9 +18,9 @@ ActiveRecord::Schema.define(version: 20150205011633) do
 
   create_table "boards", force: :cascade do |t|
     t.string   "email"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.string   "patient_name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "name"
   end
 
   create_table "signups", force: :cascade do |t|
