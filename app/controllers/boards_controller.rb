@@ -35,7 +35,7 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:email, :patient_name)
+    params.require(:board).permit(:email, :name)
   end
 
 end
