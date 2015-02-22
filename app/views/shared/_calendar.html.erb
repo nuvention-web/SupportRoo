@@ -1,0 +1,18 @@
+<%= month_calendar table: {class: "columns large-12"},
+                   thead: true,
+                   tr: {class: "calendar-row"},
+                   day_names: "date.day_names",
+                   events: tasks do |date, tasks|  %>
+
+  <span class="date"><%= date.day %></span>
+
+  <ul>
+    <% tasks.each do |task| %>
+      <div class="event">
+        <li class="<%= 'accepted' if task.accepted? %>">
+          <%= task.task_type.name %>
+        </li>
+      </div>
+    <% end %>
+</ul>
+<% end %>

@@ -11,19 +11,9 @@
       <%= share_board_url(@board) %>
     </div>
 
-    <%= month_calendar table: {class: "table table-bordered columns large-12"}, 
-    tr: {class: "calendar-row"}, 
-    td: {class: "day"}, 
-    events: @tasks do |date, tasks|  %>
-    <%= date.day %>
-
-    <% tasks.each do |task| %>
-    <div>
-      <%= task.description %>
+    <div class="calendar">
+      <%= render partial: "shared/calendar", locals: { tasks: @tasks } %>
     </div>
-    <% end %>
-    <% end %>
-
   </div>
 </div>
 
@@ -36,6 +26,7 @@
        <% end %>
      </div>
    </div>
+
    <div class="columns small-8">
     <h3>Your tasks</h3>
     <% if @tasks.empty? %>
