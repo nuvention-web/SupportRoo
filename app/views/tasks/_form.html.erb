@@ -1,6 +1,7 @@
 <div class="panel">
   <%= simple_form_for :task, { url: tasks_path, method: :post } do |f| %>
   <span class="label regular center"><%= t.name %></span>
+  <%= f.input :title %>
   <%= f.input :description, as: :text %>
 
   <!-- THIS IS TOO UGLY, FIX IT, something like below? -->

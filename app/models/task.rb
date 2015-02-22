@@ -15,6 +15,7 @@
 #  supporter_email   :string
 #  supporter_message :string
 #  supporter_name    :string
+#  title             :string
 #
 
 class Task < ActiveRecord::Base
