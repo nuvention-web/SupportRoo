@@ -6,6 +6,13 @@
   <% end %>
 
   <%= f.input :title %>
+  
+  <% if t %>
+    <%= f.hidden_field :task_type_id, { value: t.id } %>
+  <% else %>
+    <%= f.association :task_type, as: :select %> 
+  <% end %>
+
   <%= f.input :description, as: :text %>
 
   <!-- THIS IS TOO UGLY, FIX IT, something like below? -->
@@ -27,12 +34,6 @@
       <%= f.datetime_select :end_time, options = {order: [:month, :day, :year], discard_year: true, ampm: true, minute_step:15} %>
     </div>
   </div>
-
-  <% if t %>
-    <%= f.hidden_field :task_type_id, { value: t.id } %>
-  <% else %>
-    <%= f.association :task_type, as: :select %> 
-  <% end %>
 
   <%= f.hidden_field :board_id, { value: b.id } %>
   <%= f.submit("Add task", class: "button center tiny radius add-task") %>
