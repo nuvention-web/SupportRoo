@@ -1,12 +1,26 @@
-<div class="columns large-12 panel">
-  <h4><%= task.task_type.name %></h4>
-  <p><%= task.description %></p>
-  <% if task.accepted? %>
-    <span class="label success left radius">
-      <%= task.supporter_name %> has signed up!
-    </span>
+<div class="columns large-12 panel task-info">
+  <div class="row">
+    <div class="columns large-11"><h4><%= task.title %></h4></div>
+    <div class="columns large-1">
+      <%= link_to fa_icon("times"), task_path(task.id), method: "delete", class: "button tiny right alert radius small" %>
+    </div>
+  </div>
+  <% if task.accepted %>
+    <h5>Accepted by: <%= task.supporter_name %></h5>
+    <h5>Note: <%= task.supporter_note %> </h5>
   <% else %>
-    <span class="label regular radius">Available</span>
+    <h5><strong>Status:</strong> Unaccepted</h5>
   <% end %>
-  <%= link_to "Delete", task_path(task.id), method: "delete", class: "button right alert radius small" %>
+
+  <p><strong>Description:</strong> <%= task.description %></p>
+
+  <% if task.start_time %>
+    <strong>Start time: </strong><%= task.start_time.to_formatted_s(:long) %>
+  <% end %>
+
+  <% if task.end_time %>
+    <strong>End time: </strong><%= task.end_time.to_formatted_s(:long) %>
+  <% end %>
+
+
 </div>
