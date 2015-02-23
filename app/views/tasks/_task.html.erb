@@ -1,8 +1,14 @@
-<div class="columns large-12 panel task-info">
+<div class="columns large-12 panel task-info" id='<%= "task-#{task.id}"%>'>
   <div class="row">
-    <div class="columns large-11"><h4><%= task.title %></h4></div>
+    <div class="columns large-10"><h4><%= task.title %></h4></div>
     <div class="columns large-1">
       <%= link_to fa_icon("times"), task_path(task.id), method: "delete", class: "button tiny right alert radius small" %>
+    </div>
+    <div class="columns large-1">
+      <%= link_to fa_icon("pencil"), edit_task_path(task.id),
+        method: "get",
+        class: "button tiny right success radius small",
+        remote: true %>
     </div>
   </div>
   <% if task.accepted %>
@@ -21,6 +27,4 @@
   <% if task.end_time %>
     <strong>End time: </strong><%= task.end_time.to_formatted_s(:long) %>
   <% end %>
-
-
 </div>

@@ -1,0 +1,3 @@
+$('#task-<%= @task.id %>').html(
+  "<%= j(render('tasks/edit_task', task: @task)) %>"
+);
