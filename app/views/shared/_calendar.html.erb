@@ -1,18 +1,23 @@
 <%= month_calendar table: {class: "columns large-12"},
-                   thead: true,
-                   tr: {class: "calendar-row"},
-                   day_names: "date.day_names",
-                   events: tasks do |date, tasks|  %>
+thead: true,
+tr: {class: "calendar-row"},
+day_names: "date.day_names",
+events: tasks do |date, tasks|  %>
 
-  <span class="date"><%= date.day %></span>
+<span class="date"><%= date.day %></span>
 
-  <ul>
-    <% tasks.each do |task| %>
-      <div class="event">
-        <li class="<%= 'accepted' if task.accepted? %>">
-          <%= link_to task.title, task %>
-        </li>
-      </div>
-    <% end %>
+<ul>
+  <% tasks.each do |task| %>
+  <div class="event">
+    <li class="<%= 'accepted' if task.accepted? %>">
+      <span data-tooltip aria-haspopup="true" class="has-tip" 
+      title="<%= "Description: #{task.description} 
+      </br> Start Time: #{task.start_time.strftime('%F %H:%M')}
+    </br> End Time: #{task.start_time.strftime('%F %H:%M')}" %>"
+    >
+    <%= link_to task.title, task %></span>
+  </li>
+</div>
+<% end %>
 </ul>
 <% end %>
