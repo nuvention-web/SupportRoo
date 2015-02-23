@@ -31,6 +31,11 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.update_attributes(task_params)
     redirect_to board_path(@task.board)
+
+    if @task.accepted?
+      UserMailer.notify_supporter_of_edit(@task).deliver!
+    end
+
   end
 
   private

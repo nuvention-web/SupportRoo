@@ -1,0 +1,10 @@
+<h1>Hi, <%= @task.supporter_name %></h1>
+<h2>A task you signed up for on <%= @task.board.name %>'s board was edited.</h2>
+<p>This is what the task looks like now:</p> 
+<ul>
+  <li>Task Title: <%= @task.title %> </li>
+  <li>Task Description: <%= @task.description %> </li>
+  <li>Your comment: <%= @task.supporter_message %> </li>
+</ul>
+
+<p>Please contact <%= @task.board.name %> directly if you can no longer help them with the task.</p>

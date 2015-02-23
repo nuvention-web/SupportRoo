@@ -1,11 +1,11 @@
-<h1>Hi, <%= @task.supporter_name %>
+<h1>Hi, <%= @task.supporter_name %></h1>
 <h2>Thanks for signing up for a task on SupportRoo!</h2>
-<p><%= @task.board.name %> will surely appreciate it.
+<p><%= @task.board.name %> will surely appreciate it.</p>
 <p>As a reminder, here is a summary of what you signed up for:</p> 
 <ul>
-	<li>Task Description: <%= @task.description %> </li>
-	<li>Your comment: <%= @task.supporter_message %> </li>
+  <li>Task Title: <%= @task.title %> </li>
+  <li>Task Description: <%= @task.description %> </li>
+  <li>Your comment: <%= @task.supporter_message %> </li>
 </ul>
 
 <p>Yeah!</p>
-	
