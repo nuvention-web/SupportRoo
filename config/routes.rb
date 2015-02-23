@@ -63,7 +63,7 @@ Rails.application.routes.draw do
     get 'share', on: :member
   end
 
-  resources :tasks, only: [:create, :destroy] do
+  resources :tasks, only: [:create, :destroy, :edit, :update, :show] do
     post 'accept', on: :member
   end
 end

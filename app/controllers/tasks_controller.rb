@@ -19,6 +19,25 @@ class TasksController < ApplicationController
     redirect_to share_board_path(task.board_id)
   end
 
+  def show
+    @task = Task.find(params[:id])
+  end
+
+  def edit
+    @task = Task.find(params[:id])
+  end
+
+  def update
+    @task = Task.find(params[:id])
+    @task.update_attributes(task_params)
+    redirect_to board_path(@task.board)
+
+    if @task.accepted?
+      UserMailer.notify_supporter_of_edit(@task).deliver!
+    end
+
+  end
+
   private
 
   def task_params

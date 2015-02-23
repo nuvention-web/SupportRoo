@@ -10,7 +10,7 @@
     <% tasks.each do |task| %>
       <div class="event">
         <li class="<%= 'accepted' if task.accepted? %>">
-          <%= task.title %>
+          <%= link_to task.title, task %>
         </li>
       </div>
     <% end %>
