@@ -21,7 +21,7 @@
         <span class="label success right">Someone has signed up for this task</span>
       <% end %>
 
-      <h4><%= t.task_type.name %></h4>
+      <h4><%= t.title %></h4>
       <p><%= t.description %></p>
       <% unless t.accepted? %>
         <%= form_for(t, { url: accept_task_path(t.id), method: :post }) do |f| %>

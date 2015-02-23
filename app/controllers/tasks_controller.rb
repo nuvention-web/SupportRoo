@@ -19,6 +19,10 @@ class TasksController < ApplicationController
     redirect_to share_board_path(task.board_id)
   end
 
+  def show
+    @task = Task.find(params[:id])
+  end
+
   def edit
     @task = Task.find(params[:id])
   end
