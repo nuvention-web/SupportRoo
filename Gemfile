@@ -11,11 +11,15 @@ gem 'jbuilder',             '2.2.3'
 gem 'pg',                   '0.17.1'
 gem 'sdoc',                 '0.4.0', group: :doc
 gem 'annotate',             '2.6.5'
+gem 'simple_calendar',      '1.1.1'
+gem 'simple_form'
+
 
 gem 'foundation-rails',     '5.4.5'
+gem 'font-awesome-rails',   '4.3.0'
 
-group :development do 
-  gem "letter_opener"
+group :development do
+  gem 'letter_opener'
 end
 
 group :development, :test do

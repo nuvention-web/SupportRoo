@@ -13,5 +13,11 @@
  *= require_tree .
  *= require_self
  *= require foundation_and_overrides
+ *= require font-awesome
 
  */
+
+.row.full-width {
+  width: 90%;
+  max-width: 90%; 
+}

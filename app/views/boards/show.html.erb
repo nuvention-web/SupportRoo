@@ -1,57 +1,29 @@
-<%= render 'layouts/header' %>
-
 <% if flash[:signup_success] %>
   <div class="row panel">Thanks for signing up, this is your board!</div>
 <% end %>
 
-<div class="row">
-  <div class="columns large-12 text-center">
-    <h4>Share the link below with your network so they can start signing up for tasks!</h4>
-    <div class="panel text-center">
-      <%= share_board_url(@board) %>
+<div class="row full-width">
+  <div class="row">
+    <div class="columns large-12 text-center">
+      <h4>Share the link below with your network so they can start signing up for tasks!</h4>
+      <div class="panel text-center">
+        <%= share_board_url(@board) %>
+      </div>
     </div>
-  </div>
-</div>
 
-<div class="row">
-  <div class="columns small-4">
-    <h3>Add a new task</h1>
-    <div class="task-type-buttons">
-      <% @task_types.each do |t| %>
+    <div class="row">
+      <%= render "tasks/sidebar_list", categories: @task_categories, types: @task_types %>
 
-          <div class="panel">
-            <%= form_for(:task, { url: tasks_path, method: :post }) do |f| %>
-              <span class="label regular center"><%= t.name %></span>
-              <%= f.label(:details) %>
-              <%= f.text_area(:description) %>
-              <%= f.hidden_field( :task_type_id, { value: t.id }) %>
-              <%= f.hidden_field( :board_id, { value: @board.id }) %>
-              <%= f.submit("Add task", class: "button center tiny radius add-task") %>
-            <% end %>
-          </div>
-
-      <% end %>
-    </div>
-  </div>
-  <div class="columns small-8">
-    <h3>Your tasks</h3>
-    <% if @tasks.empty? %>
-      <div>You don't seem to have any support tasks yet! Your tasks will appear here after you add them</div>
-    <% else  %>
-      <% @tasks.each do |t| %>
-        <div class="columns large-12 panel">
-          <h4><%= t.task_type.name %></h4>
-          <p><%= t.description %></p>
-          <% if t.accepted? %>
-            <span class="label success left radius">
-              <%= t.supporter_name %> has signed up for this task!
-            </span>
-          <% else %>
-            <span class="label regular radius">Available</span>
-          <% end %>
-          <%= link_to "Delete", task_path(t.id), method: "delete", class: "button right alert radius small" %>
+      <div class="columns small-8">
+        <div class="calendar">
+          <%= render partial: "shared/calendar", locals: { tasks: @tasks } %>
         </div>
-      <% end %>
-    <% end  %>
+        <h3>Your tasks</h3>
+        <% if @tasks.empty? %>
+          <div>You don't seem to have any support tasks yet! Your tasks will appear here after you add them</div>
+        <% end  %>
+        <%= render @tasks %>
+      </div>
+    </div>
   </div>
 </div>

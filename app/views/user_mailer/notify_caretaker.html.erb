@@ -1,10 +1,10 @@
-<h1>Hi, <%= @task.board.patient_name %></h1>
-<p><%= @task.supporter_name %> just signed up for a task on your board!
+<h1>Hi, <%= @task.board.name %></h1>
+<p><%= @task.supporter_name %> just signed up for a task on your board!</p>
 <p>Here is a summary of what they signed up for:</p> 
 <ul>
-	<li>Task Description: <%= @task.description %> </li>
-	<li>Supporter comment: <%= @task.supporter_message %> </li>
+  <li>Task Title: <%= @task.title %> </li>
+  <li>Task Description: <%= @task.description %> </li>
+  <li>Supporter comment: <%= @task.supporter_message %> </li>
 </ul>
 
 <p>Yeah!</p>
-	

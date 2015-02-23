@@ -23,6 +23,7 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+    @task_categories = TaskType.all.pluck(:category).uniq
     @task_types = TaskType.all
     @tasks = @board.tasks
   end
@@ -35,7 +36,7 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:email, :patient_name)
+    params.require(:board).permit(:email, :name)
   end
 
 end

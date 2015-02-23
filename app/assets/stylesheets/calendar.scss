@@ -1,0 +1,41 @@
+.calendar {
+  .calendar-header {
+    font-size: 1.7rem;
+    padding: 0 10px 0 10px;
+    margin: auto;
+  }
+
+  .day {
+    width: 14.2%;
+    height: 100px;
+    padding: 1% 0 0 1%;
+    vertical-align: top;
+    border: 1px solid #c7c7c7;
+    .date {
+
+    }
+  }
+  .day.today {
+    background: rgba(139,237,146,0.25);
+  }
+
+  .day.prev-month {
+    background: rgba(100,100,100,0.30);
+  }
+  .day.next-month {
+    background: rgba(100,100,100,0.30);
+  }
+
+
+  .calendar-row {
+  }
+
+  .event {
+    font-size: 0.8rem;
+    .accepted {
+      text-decoration: line-through;
+
+    }
+
+  }
+}
