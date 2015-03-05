@@ -1,27 +1,39 @@
-<div class="columns large-12 panel task-info" id='<%= "task-#{task.id}"%>'>
-  <div class="row">
-    <div class="columns large-10"><h4><%= task.title %></h4></div>
-    <div class="columns large-1">
-      <%= link_to fa_icon("times"), task_path(task.id), method: "delete", class: "button tiny right alert radius small" %>
-    </div>
-    <div class="columns large-1">
+<div class="columns large-12 task-info" id='<%= "task-#{task.id}"%>'>
+  <div class="top-row">
+    <span class="task-type-name">
+      <%= task.accepted? ? fa_icon("check-square-o") : fa_icon("square-o") %>
+      <%= task.task_type.name %>
+    </span>
+
+    <span class="edit-buttons">
       <%= link_to fa_icon("pencil"), edit_task_path(task.id),
         method: "get",
-        class: "button tiny right success radius small",
+        class: "button tiny success radius small",
         remote: true %>
-    </div>
+      <%= link_to fa_icon("times"), task_path(task.id), method: "delete", class: "button tiny right alert radius small" %>
+    </span>
   </div>
-  <% if task.accepted? %>
-    <p><strong>Accepted by:</strong> <%= task.supporter_name %></p>
-    <p><strong>Supporter Note:</strong> <%= task.supporter_message %></p>
-  <% else %>
-    <p><strong>Status:</strong> Unaccepted</p>
-  <% end %>
 
-  <p><strong>Description:</strong> <%= task.description %></p>
-  <p><strong>Start time:</strong> <%= task.start_time.to_formatted_s(:long) %>
+  <div class="primary-info">
+    <span class="start-time">
+      <strong>Start time: </strong><%= task.start_time.strftime("%B %d, %I:%M%p") %>
+    </span>
 
-  <% if task.end_time %>
-    </br><strong>End time:</strong> <%= task.end_time.to_formatted_s(:long) %></p>
-  <% end %>
+    <span class="acceptance-info">
+      <% if task.accepted? %>
+       <strong>Accepted by:</strong> <%= task.supporter_name %>
+      <% else %>
+        <strong>Status: </strong><span>Unaccepted</span>
+      <% end %>
+    </span>
+  </div>
+
+  <div class="other-info">
+    <p><strong>Description:</strong> <%= task.description %></p>
+    <% if task.accepted? %>
+      <div class="supporter-note">
+        <strong>Note: </strong> <em>"<%= task.supporter_message %>"</em>
+      </div>
+    <% end %>
+  </div>
 </div>
