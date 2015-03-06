@@ -22,16 +22,6 @@ $light-grey: #F1F1F1;
   background-color: $light-grey;
 }
 
-.task-type-buttons {
-  .add-task {
-    margin-bottom: 0;
-  }
-
-  .label {
-    font-size: 1.2em;
-    margin: 0 0 4% 0;
-  }
-}
 
 
 select.select-date {
@@ -52,23 +42,4 @@ select.select-date {
   select:last-of-type{
     width: 15%;
   }
-}
-
-li.task_type {
-  display:inline-block;
-  width:140px;
-  height:140px;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 140px;
-  overflow-x:hidden;
-  overflow-y:hidden;
-  background-color: #DDD;
-}
-
-ul.category_list {
-  white-space:nowrap;
-  width: 100%;
-  overflow-x:scroll;
-  overflow-y: hidden;
 }

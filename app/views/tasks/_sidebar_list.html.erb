@@ -9,20 +9,28 @@
     <a class="close-reveal-modal">&#215;</a>
   </div>
 
-  <div class="task-type-buttons">
+  <dl class="task-type-buttons accordion" id="task-add-sidebar" data-accordion>
     <% categories.each do |c| %>
-    <h4><%= c.titleize %>:</h4>
-    <ul class="category_list">
-      <% types.where(category: c.to_sym).each do |t| %>
-      <li class="task_type">
-        <a href="#" data-reveal-id="<%= t.name.parameterize %>Modal"><%= t.name %></a>
-        <div id="<%= t.name.parameterize %>Modal" class="reveal-modal" data-reveal>
-          <%= render "tasks/form", t: t, b: @board %>
-          <a class="close-reveal-modal">&#215;</a>
+      <dd class="accordion-navigation category-names">
+        <a href="#<%= c %>">
+          <h4> <%= fa_icon("chevron-right") %><%= c.upcase %></h4>
+        </a>
+        <div id="<%= c %>" class="content category-content">
+          <ul class="category-items">
+            <% types.where(category: c.to_sym).each do |t| %>
+              <li>
+                <a href="#" data-reveal-id="<%= t.name.parameterize %>Modal">
+                  <div><%= fa_icon("plus") %><%= t.name %></div>
+                </a>
+                <div id="<%= t.name.parameterize %>Modal" class="reveal-modal" data-reveal>
+                  <%= render "tasks/form", t: t, b: @board %>
+                  <a class="close-reveal-modal">&#215;</a>
+                </div>
+              </li>
+            <% end %>
+          </ul>
         </div>
-      </li>
-      <% end %>
-    </ul>
+      </dd>
     <% end %>
-  </div>
+  </dl>
 </div>
