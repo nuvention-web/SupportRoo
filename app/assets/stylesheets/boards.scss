@@ -12,6 +12,30 @@ $light-grey: #F1F1F1;
   box-shadow: -4px 4px 4px -2px rgba(219,219,219,1);
 }
 
+#top-stuff {
+  background-color: $white;
+}
+
+#top-name {
+  color: $orange-primary;
+  height: 70px;
+  line-height: 70px;
+}
+
+.orange {
+  background-color: $orange-primary;
+  color: $white;
+}
+
+.orange p {
+  line-height: 40px;
+  height: 20px;
+}
+
+.top-bar {
+  background-color: $orange-primary;
+}
+
 .row.full-width {
   width: 90%;
   max-width: 90%;
