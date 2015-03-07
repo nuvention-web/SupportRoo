@@ -1,0 +1,35 @@
+<div class="top-bar">
+  <div class="row" id="top-stuff">
+    <span class="left">
+      <%=image_tag 'logo.png', size: '240' %>
+    </span>
+    <ul class="right">
+      <li class="name">
+        <h1><a id="top-name" href="/"><%= @board.name %>'s Support Board</a></h1>
+      </li>
+    </ul>
+  </div>
+  <div class="row contain-to-grid orange">
+    <div class="columns large-12 text-center">
+      <p class="text-center">Share this link with your network so they can start signing up for tasks: <%= share_board_url(@board) %></p>
+    </div>
+  </div>
+</div>
+  <!-- <ul class="title-area">
+    <li class="name">
+      <h1><a href="/">SupportRoo</a></h1>
+    </li>
+  </ul> -->
+<!--     <ul class="right">
+      <li class="name">
+        <h1><a href="/"><%= @board.name %>'s Support Board</a></h1>
+      </li> -->
+      <!-- <li class="has-dropdown">
+        <a href="#">Menu</a>
+        <ul class="dropdown">
+          <li><a href="#">First link in dropdown</a></li>
+          <li><a href="#">Active link in dropdown</a></li>
+          <li><a href="#">Foo link in dropdown</a></li>
+        </ul>
+      </li> -->
+    <!-- </ul> -->
