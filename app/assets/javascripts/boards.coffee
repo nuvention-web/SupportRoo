@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 $("#task-add-sidebar").on("toggled", (event, accordion) ->
   $("#task-add-sidebar").find('dd').each ->
-    if $(this).find(".content").hasClass("active")
-      $(this).find("h4 > i").removeClass("fa-chevron-right")
-      $(this).find("h4 > i").addClass("fa-chevron-down")
+    icon = $(this).find("h4 > i")
+    icon.toggleClass("fa-chevron-down",
+      $(this).find(".content").hasClass("active"))
 )
