@@ -5,13 +5,17 @@
       <%= task.task_type.name %>
     </span>
 
-    <span class="edit-buttons">
-      <%= link_to fa_icon("pencil"), edit_task_path(task.id),
-        method: "get",
-        class: "button tiny success radius small",
-        remote: true %>
-      <%= link_to fa_icon("times"), task_path(task.id), method: "delete", class: "button tiny right alert radius small" %>
-    </span>
+    <ul class="button-group round edit-buttons">
+      <li>
+        <%= link_to fa_icon("pencil"), edit_task_path(task.id),
+          method: "get",
+          class: "button tiny success radius small",
+          remote: true %>
+      </li>
+      <li>
+        <%= link_to fa_icon("times"), task_path(task.id), method: "delete", class: "button tiny right alert radius small" %>
+      </li>
+    </ul>
   </div>
 
   <div class="primary-info">

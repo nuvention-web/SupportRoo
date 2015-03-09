@@ -1,4 +1,15 @@
+@import "boards.scss";
+
 .calendar {
+  table {
+    padding: 0;
+    border-style: none;
+  }
+  thead tr td {
+    background-color: $white;
+    border: 1px solid #c7c7c7;
+    border-bottom: 0px;
+  }
   .calendar-header {
     font-size: 1.7rem;
     padding: 0 10px 0 10px;
@@ -20,10 +31,10 @@
   }
 
   .day.prev-month {
-    background: rgba(100,100,100,0.30);
+    background: rgba(200,200,200,0.40);
   }
   .day.next-month {
-    background: rgba(100,100,100,0.30);
+    background: rgba(200,200,200,0.40);
   }
 
 

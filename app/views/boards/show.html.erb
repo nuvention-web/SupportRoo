@@ -10,7 +10,9 @@
       </div>
 
       <div class="row">
-        <%= render "tasks/sidebar_list", categories: @task_categories, types: @task_types %>
+        <div class="columns small-4">
+          <%= render "tasks/sidebar_list", categories: @task_categories, types: @task_types %>
+        </div>
 
         <div class="columns small-8">
           <div class="calendar">
