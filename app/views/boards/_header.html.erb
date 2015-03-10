@@ -17,7 +17,7 @@
     value="<%= share_board_url(@board) %>">
   </input>
   <%= link_to fa_icon("envelope-o"), "mailto:?subject=Visit my board on SupportRoo!&body=#{share_board_url(@board)}" %>
-  <div class="fb-send" data-href="<%= share_board_url(@board) %>" data-colorscheme="light"></div>
+  <div class="fb-send" data-href="https://supportroo-staging.herokuapp.com/<%= share_board_path(@board) %>" data-colorscheme="light"></div>
 </div>
   <!-- <ul class="title-area">
     <li class="name">

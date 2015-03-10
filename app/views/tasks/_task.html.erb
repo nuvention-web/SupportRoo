@@ -5,7 +5,7 @@
       <%= task.task_type.name %>
     </span>
 
-    <ul class="button-group round edit-buttons">
+    <ul class="button-group edit-buttons">
       <li>
         <%= link_to fa_icon("pencil"), edit_task_path(task.id),
           method: "get",
