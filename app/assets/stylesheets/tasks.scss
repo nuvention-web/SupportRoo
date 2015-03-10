@@ -1,7 +1,43 @@
 // Place all the styles related to the tasks controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import "boards.scss";
 
 .task-info {
+  margin-bottom: 10px;
+  @include box-shadow();
+  background-color: $white;
+  padding: 2%;
 
+
+  .top-row {
+    display: inline-block;
+    width: 100%;
+
+    .task-type-name {
+      color: $orange-primary;
+      text-transform: uppercase;
+      font-size: 1.7rem;
+      float: left;
+    }
+
+    .edit-buttons {
+      float: right;
+      margin-bottom: 0;
+    }
+  }
+
+  .primary-info {
+    width: 100%;
+    display: inline-block;
+
+    .start-time {
+      float: left;
+    }
+
+    .acceptance-info {
+      float: right;
+    }
+  }
 }
+

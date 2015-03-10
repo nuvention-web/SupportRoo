@@ -1,0 +1,58 @@
+@import "boards.scss";
+
+
+.task-type-buttons {
+  .add-task {
+    margin-bottom: 0;
+  }
+
+  .label {
+    font-size: 1.2em;
+    margin: 0 0 4% 0;
+  }
+
+  dd.category-names {
+
+    > a {
+      margin-top: 3%;
+      border-radius: 3px;
+      background-color: $white;
+      @include box-shadow;
+    }
+
+    h4 {
+      color: #6c6c6c;
+      font-size: 1.2rem;
+    }
+
+    i { padding-right: 10px; }
+
+    .category-content {
+      background-color: $light-grey !important;
+      margin-top: 1%;
+      ul.category-items {
+        list-style: none;
+        li {
+          @include box-shadow;
+          a { color: #FFFFFF; }
+          div {
+            background-color: $blue-dark;
+            padding: 2%;
+            margin: 2% 0 2% 0;
+          }
+        }
+      }
+    }
+
+  }
+
+  dd.category-names.active {
+    @extend dd.category-names;
+    h4 { color: $orange-primary; }
+  }
+
+  dd.category-names:hover {
+    @extend dd.category-names.active;
+  }
+}
+

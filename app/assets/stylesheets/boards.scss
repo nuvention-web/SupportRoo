@@ -1,54 +1,87 @@
 // Place all the styles related to the boards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$orange-primary: #F17429;
+$blue-dark: #296C7A;
+$white: #FFFFFF;
+$light-grey: #F7F3EB;
 
-.task-type-buttons {
-  .add-task {
-    margin-bottom: 0;
-  }
-
-  .label {
-    font-size: 1.2em;
-    margin: 0 0 4% 0;
-  }
+@mixin box-shadow() {
+  -webkit-box-shadow: -4px 4px 4px -2px rgba(219,219,219,1);
+  -moz-box-shadow: -4px 4px 4px -2px rgba(219,219,219,1);
+  box-shadow: -4px 4px 4px -2px rgba(219,219,219,1);
 }
 
-
-select.select-date {
-  width: 30%;
-  margin-right: 10px;
-  float: left;
-}
-.select-date-wrapper{
-  select:first-of-type{
-    width: 30%;
-  }
-  select:nth-of-type(2){
-    width: 15%;
-  }
-  select:nth-of-type(3){
-    width: 25%;
-  }
-  select:last-of-type{
-    width: 15%;
-  }
-}
-
-li.task_type {
-  display:inline-block;
-  width:140px;
-  height:140px;
-  text-align: center;
-  vertical-align: middle;
-  line-height: 140px; 
-  overflow-x:hidden;
-  overflow-y:hidden;
-  background-color: #DDD; 
-}
-
-ul.category_list {
-  white-space:nowrap;
+.top-bar {
+  display: inline-block;
   width: 100%;
-  overflow-x:scroll;
-  overflow-y: hidden;
+  #top-stuff {
+    background-color: $white;
+
+    #top-name {
+      color: $orange-primary;
+      margin-top: 10%;
+      font-size: 1.4rem;
+    }
+    display: inline-block;
+  }
+}
+
+.share-link-bar {
+  height: 50px;
+  display: inline-block;
+  width: 100%;
+  a > i {
+    color: black;
+    font-size: 1.8rem;
+    vertical-align: middle;
+  }
+
+  input {
+    margin-top: 6px;
+    width: 20% !important;
+    display: inline !important;
+    border-radius: 4px;
+  }
+}
+
+.orange {
+  background-color: $orange-primary;
+  color: $white;
+}
+
+.row.full-width {
+  width: 90%;
+  max-width: 90%;
+}
+
+
+.board {
+  background-color: $light-grey;
+  padding-top: 15px;
+}
+
+
+
+.new-task-form {
+  .new-task-title { color: $orange-primary; }
+  select.select-date {
+    width: 30%;
+    margin-right: 10px;
+    float: left;
+  }
+  .select-date-wrapper{
+    select:first-of-type{
+      width: 30%;
+    }
+    select:nth-of-type(2){
+      width: 15%;
+    }
+    select:nth-of-type(3){
+      width: 25%;
+    }
+    select:last-of-type{
+      width: 15%;
+    }
+  }
 }

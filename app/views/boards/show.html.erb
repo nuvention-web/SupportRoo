@@ -1,28 +1,29 @@
+<%= render partial: "header" %>
 <% if flash[:signup_success] %>
   <div class="row panel">Thanks for signing up, this is your board!</div>
 <% end %>
 
-<div class="row full-width">
-  <div class="row">
-    <div class="columns large-12 text-center">
-      <h4>Share the link below with your network so they can start signing up for tasks!</h4>
-      <div class="panel text-center">
-        <%= share_board_url(@board) %>
-      </div>
-    </div>
-
+<div class="board">
+  <div class="row full-width">
     <div class="row">
-      <%= render "tasks/sidebar_list", categories: @task_categories, types: @task_types %>
+      <div class="columns large-12 text-center">
+      </div>
 
-      <div class="columns small-8">
-        <div class="calendar">
-          <%= render partial: "shared/calendar", locals: { tasks: @tasks } %>
+      <div class="row">
+        <div class="columns small-4">
+          <%= render "tasks/sidebar_list", categories: @task_categories, types: @task_types %>
         </div>
-        <h3>Your tasks</h3>
-        <% if @tasks.empty? %>
-          <div>You don't seem to have any support tasks yet! Your tasks will appear here after you add them</div>
-        <% end  %>
-        <%= render @tasks %>
+
+        <div class="columns small-8">
+          <div class="calendar">
+            <%= render partial: "shared/calendar", locals: { tasks: @tasks } %>
+          </div>
+          <h3>Your tasks</h3>
+          <% if @tasks.empty? %>
+            <div>You don't seem to have any support tasks yet! Your tasks will appear here after you add them</div>
+          <% end  %>
+          <%= render @tasks %>
+        </div>
       </div>
     </div>
   </div>
