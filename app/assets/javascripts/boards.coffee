@@ -8,6 +8,8 @@ $("#task-add-sidebar").on("toggled", (event, accordion) ->
       $(this).find(".content").hasClass("active"))
 )
 
+$(".share-link-bar input:text").focus(-> $(this).select() )
+
 # HACK TO MAKE THE CALENDAR HEADER APPEAR
 $(".calendar table").prepend(
   """

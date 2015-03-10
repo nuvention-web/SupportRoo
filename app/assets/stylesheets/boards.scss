@@ -12,28 +12,42 @@ $light-grey: #F7F3EB;
   box-shadow: -4px 4px 4px -2px rgba(219,219,219,1);
 }
 
-#top-stuff {
-  background-color: $white;
+.top-bar {
+  display: inline-block;
+  width: 100%;
+  #top-stuff {
+    background-color: $white;
+
+    #top-name {
+      color: $orange-primary;
+      margin-top: 10%;
+      font-size: 1.4rem;
+    }
+    display: inline-block;
+  }
 }
 
-#top-name {
-  color: $orange-primary;
-  height: 70px;
-  line-height: 70px;
+.share-link-bar {
+  height: 50px;
+  display: inline-block;
+  width: 100%;
+  a > i {
+    color: black;
+    font-size: 1.8rem;
+    vertical-align: middle;
+  }
+
+  input {
+    margin-top: 6px;
+    width: 20% !important;
+    display: inline !important;
+    border-radius: 4px;
+  }
 }
 
 .orange {
   background-color: $orange-primary;
   color: $white;
-}
-
-.orange p {
-  line-height: 40px;
-  height: 20px;
-}
-
-.top-bar {
-  background-color: $orange-primary;
 }
 
 .row.full-width {
@@ -44,6 +58,7 @@ $light-grey: #F7F3EB;
 
 .board {
   background-color: $light-grey;
+  padding-top: 15px;
 }
 
 

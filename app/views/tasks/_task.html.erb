@@ -1,7 +1,7 @@
 <div class="columns large-12 task-info" id='<%= "task-#{task.id}"%>'>
   <div class="top-row">
     <span class="task-type-name">
-      <%= task.accepted? ? fa_icon("check-square-o") : fa_icon("square-o") %>
+      <%= fa_icon("check-square-o") if task.accepted? %>
       <%= task.task_type.name %>
     </span>
 
