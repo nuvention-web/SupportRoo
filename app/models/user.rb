@@ -15,6 +15,7 @@
 #  last_sign_in_ip        :inet
 #  created_at             :datetime
 #  updated_at             :datetime
+#  username               :string
 #
 # Indexes
 #
@@ -27,4 +28,10 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
+
+  validates :username,
+    :presence => true,
+    :uniqueness => {
+      :case_sensitive => false
+  }
 end
