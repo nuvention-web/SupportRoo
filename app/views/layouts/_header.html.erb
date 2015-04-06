@@ -1,4 +1,4 @@
-<!-- <nav class="top-bar" data-topbar role="navigation">
+<nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <li class="name">
       <h1><a href="#">SupportRoo</a></h1>
@@ -9,7 +9,23 @@
 
   <section class="top-bar-section">
     <ul class="left">
-      <li class="active"><a href="#">Board</a></li>
+      <% if user_signed_in? %>
+        <li class="active"><a href="#">Boards</a></li>
+      <% end %>
     </ul>
   </section>
-</nav> -->
+
+  <section class="top-bar-section">
+    <ul class="right">
+      <li>
+        <% if user_signed_in? %>
+        <li><a><%= current_user.email %></a></li>
+        <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+        <% else %>
+        <li><%= link_to "Sign up", new_user_registration_path %></li>
+        <li><%= link_to "sign in", new_user_session_path %></li>
+        <% end %>
+      </li>
+    </ul>
+  </section>
+</nav>
