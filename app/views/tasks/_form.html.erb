@@ -1,41 +1,42 @@
-<div class="panel">
+<div class="new-task-form">
+
   <%= simple_form_for Task.new do |f| %>
 
-  <% if t %>
-    <span class="label regular center"><%= t.name %></span>
-  <% end %>
+  <fieldset>
+    <% if t %>
+      <legend><h4 class="new-task-title"><%= t.name %></h4></legend>
+    <% end %>
 
-  <%= f.input :title %>
-  
-  <% if t %>
-    <%= f.hidden_field :task_type_id, { value: t.id } %>
-  <% else %>
-    <%= f.association :task_type, as: :select %> 
-  <% end %>
+    <%= f.input :title %>
 
-  <%= f.input :description, as: :text %>
+    <% if t %>
+      <%= f.hidden_field :task_type_id, { value: t.id } %>
+    <% else %>
+      <%= f.association :task_type, as: :select %>
+    <% end %>
 
-  <!-- THIS IS TOO UGLY, FIX IT, something like below? -->
-  <!-- f.input :start_time, as: :datetime -->
-  <!-- f.input :end_time, as: :datetime -->
+    <%= f.input :description, as: :text %>
 
-  <!-- START TIME? -->
-  <div class="row">
-    <div class="select-date-wrapper">
-      <%= f.label(:start_time) %>
-      <%= f.datetime_select :start_time, options = {order: [:month, :day, :year], discard_year: true, ampm: true, minute_step:15} %>
+    <!-- THIS IS TOO UGLY, FIX IT, something like below? -->
+    <!-- f.input :start_time, as: :datetime -->
+    <!-- f.input :end_time, as: :datetime -->
+
+    <!-- START TIME? -->
+    <div class="row">
+      <div class="select-date-wrapper">
+        <%= f.label(:start_time) %>
+        <%= f.datetime_select :start_time, options = {
+          order: [:month, :day, :year],
+          discard_year: true,
+          ampm: true,
+          minute_step:15
+        } %>
+      </div>
     </div>
-  </div>
 
-  <!-- END TIME? -->
-  <div class="row">
-    <div class="select-date-wrapper">
-      <%= f.label(:end_time) %>
-      <%= f.datetime_select :end_time, options = {order: [:month, :day, :year], discard_year: true, ampm: true, minute_step:15} %>
-    </div>
-  </div>
-
-  <%= f.hidden_field :board_id, { value: b.id } %>
-  <%= f.submit("Add task", class: "button center tiny radius add-task") %>
+    <!-- END TIME? -->
+    <%= f.hidden_field :board_id, { value: b.id } %>
+    <%= f.submit("Add task", class: "button center radius add-task") %>
+  </fieldset>
   <% end %>
 </div>

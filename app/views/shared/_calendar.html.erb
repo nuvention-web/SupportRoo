@@ -1,8 +1,18 @@
+<h4 class="right">
+  <a class="label success radius" href="#" data-reveal-id="GenModal">
+    <i class="fa fa-plus fa-2x"> Add a new task</i>
+  </a>
+</h4>
+<div id="GenModal" class="reveal-modal" data-reveal>
+  <%= render "tasks/form", b: @board, t: nil %>
+  <a class="close-reveal-modal">&#215;</a>
+</div>
+
 <%= month_calendar table: {class: "columns large-12"},
-thead: true,
-tr: {class: "calendar-row"},
-day_names: "date.day_names",
-events: tasks do |date, tasks|  %>
+    thead: true,
+    tr: {class: "calendar-row"},
+    day_names: "date.day_names",
+    events: tasks do |date, tasks|  %>
 
 <span class="date"><%= date.day %></span>
 
@@ -10,12 +20,12 @@ events: tasks do |date, tasks|  %>
   <% tasks.each do |task| %>
   <div class="event">
     <li class="<%= 'accepted' if task.accepted? %>">
-      <span data-tooltip aria-haspopup="true" class="has-tip" 
-      title="<%= "Description: #{task.description} 
-      </br> Start Time: #{task.start_time.strftime('%F %H:%M')}
-    </br> End Time: #{task.start_time.strftime('%F %H:%M')}" %>"
+      <span data-tooltip aria-haspopup="true" class="has-tip"
+      title="<%= "Description: #{task.description}
+      </br> Start Time: #{task.start_time.strftime("%B %d, %I:%M%p")}
+    " %>"
     >
-    <%= link_to task.title, task %></span>
+    <%= link_to "#{task.title}, #{task.start_time.strftime("%I%p")}", task %></span>
   </li>
 </div>
 <% end %>
