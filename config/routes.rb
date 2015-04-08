@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+
+  root 'welcome#index'
+  get 'welcome/index'
+
   get 'users/show'
-
   devise_for :users
+  resources :users, only: [:show]
 
-  root 'boards#new'
   resource :signups
 
   get '/' => "boards#new"
@@ -17,5 +20,4 @@ Rails.application.routes.draw do
     post 'accept', on: :member
   end
 
-  resources :users, only: [:show]
 end
