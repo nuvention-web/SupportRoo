@@ -10,5 +10,8 @@
 #
 
 class Board < ActiveRecord::Base
+  has_many :supporters
+  has_many :users, through: :supporters
+  
   has_many :tasks
 end
