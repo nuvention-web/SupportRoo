@@ -1,6 +1,11 @@
 <h1>My Boards</h1>
 <h3>Boards you own</h3>
-<%= @own_boards.count%> 
+<% @own_boards.each do |b| %> 
+  <%= link_to b.name, b %>
+<% end %>
+
 
 <h3>Boards you support</h3>
-<%= @support_boards.count%> 
+<% @support_boards.each do |b| %> 
+  <%= link_to b.name, b %>
+<% end %>

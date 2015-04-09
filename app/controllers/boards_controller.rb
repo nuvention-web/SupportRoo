@@ -8,6 +8,7 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @board.save
+      Supporter.create({user_id: current_user.id, board_id: @board.id, owner: true})
       flash[:board_success]
       redirect_to board_path(@board)
     else 
