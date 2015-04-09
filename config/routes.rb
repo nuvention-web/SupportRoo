@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get '/' => "boards#new"
   get '/admin' => "signups#index"
 
-  resources :boards, only: [:new, :create, :show] do
+  resources :boards, only: [:new, :create, :show, :destroy] do
     get 'share', on: :member
   end
 
