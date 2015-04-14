@@ -8,14 +8,22 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @board.save
-      Supporter.create({user_id: current_user.id, board_id: @board.id, owner: true})
+      Supporter.create({ user_id: current_user.id,
+                         board_id: @board.id,
+                         owner: true })
       flash[:board_success]
       redirect_to board_path(@board)
-    else 
+    else
       flash[:board_failure]
-      redirect_to '/'
+      redirect_to root_path
     end
-    
+  end
+
+  def destroy
+    board = Board.find(params[:id])
+    board.destroy
+    flash[:notice] = "Board deleted"
+    redirect_to user_path(current_user)
   end
 
   def new
@@ -37,7 +45,7 @@ class BoardsController < ApplicationController
   private
 
   def board_params
-    params.require(:board).permit(:email, :name)
+    params.require(:board).permit(:email, :name, :description)
   end
 
 end
