@@ -29,10 +29,12 @@ class User < ActiveRecord::Base
   has_many :supporters
   has_many :boards, through: :supporters
 
+  before_save { |user| user.email.downcase! }
+  
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  validates :username,
+  validates :email,
     :presence => true,
     :uniqueness => {
       :case_sensitive => false
