@@ -25,7 +25,14 @@
 require 'test_helper'
 
 class UserTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "users with valid emails are valid" do
+    user = FactoryGirl.build(:user)
+    assert user.valid?
+  end
+
+  test "users without emails are not valid" do
+    user = FactoryGirl.build(:user)
+    user.email = "   "
+    assert_not user.valid?
+  end
 end
