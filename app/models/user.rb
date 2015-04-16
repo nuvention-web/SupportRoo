@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   has_many :boards, through: :supporters
 
   before_save { |user| user.email.downcase! }
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
@@ -38,4 +38,8 @@ class User < ActiveRecord::Base
     :uniqueness => {
       :case_sensitive => false
   }
+
+  def owned_boards
+    boards.includes(:supporters).where({ supporters: { owner: true } })
+  end
 end
