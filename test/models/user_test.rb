@@ -48,6 +48,17 @@ class UserTest < ActiveSupport::TestCase
     assert_not_empty user.boards
   end
 
+  test "users can support boards" do
+    user = create(:user)
+    board = create(:board)
+    owned_board = create(:board)
+    user.add_board(board)
+    user.add_board(owned_board, true)
+
+    assert_includes user.supporting_boards, board
+    assert_not_includes user.supporting_boards, owned_board
+  end
+
   test "users can own boards" do
     user = create(:user)
     board = create(:board)

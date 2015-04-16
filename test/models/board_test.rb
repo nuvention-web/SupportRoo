@@ -63,8 +63,8 @@ class BoardTest < ActiveSupport::TestCase
     user.add_board(board, false)
     owner.add_board(board, true)
 
-    assert_not board.owned_by(user)
-    assert board.owned_by(owner), 'Board should be owned by owner'
+    assert_not board.owned_by?(user)
+    assert board.owned_by?(owner), 'Board should be owned by owner'
   end
 
   # test "correct tasks accepted by a user" do

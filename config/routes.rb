@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :tasks, only: [:create, :destroy, :edit, :update, :show] do
     post 'accept', on: :member
+    post 'complete', on: :member
   end
 
 end

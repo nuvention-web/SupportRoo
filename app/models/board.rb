@@ -32,7 +32,7 @@ class Board < ActiveRecord::Base
     supporters.where( { owner: true } )
   end
 
-  def owned_by user
+  def owned_by?(user)
     supporters.any? { |s| s.user_id == user.id && s.owner }
   end
 

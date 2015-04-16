@@ -7,8 +7,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
 
-    boards = current_user.boards.includes(:supporters)
     @own_boards = current_user.owned_boards
-    @support_boards = boards.where(:supporters => { owner: false } )
+    @support_boards = current_user.supporting_boards
   end
 end
