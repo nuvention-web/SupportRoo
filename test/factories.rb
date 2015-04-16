@@ -1,19 +1,19 @@
 FactoryGirl.define do
   factory :user do
-    email "foo@bar.com"
+    sequence :email do |n|
+      "foo#{n}@example.com"
+    end
     password "foobar12"
     password_confirmation "foobar12"
+
     after(:build) do |user|
       user.supporters << FactoryGirl.build(:supporter, user: user)
     end
-  end
 
-  factory :user_owning_board, class: "User" do
-    email "owner@bar.com"
-    password "foobar12"
-    password_confirmation "foobar12"
-    after(:build) do |user|
-      user.supporters << FactoryGirl.build(:owner, user: user)
+    factory :user_owning_board, class: "User" do
+      after(:build) do |user|
+        user.supporters << FactoryGirl.build(:owner, user: user)
+      end
     end
   end
 

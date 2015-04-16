@@ -33,13 +33,13 @@ class UsersControllerTest < ActionController::TestCase
     sign_in @owner
     get :show, id: @owner.id
     assert_not_nil assigns(:own_boards)
-    assert_equal assigns(:own_boards).count, 1
+    assert_equal 1, assigns(:own_boards).count
   end
 
   test "should assign supporting board" do
     sign_in @user
     get :show, id: @user.id
     assert_not_nil assigns(:support_boards)
-    assert_equal assigns(:support_boards).count, 1
+    assert_equal 1, assigns(:support_boards).count
   end
 end

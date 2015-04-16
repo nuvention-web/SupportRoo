@@ -9,6 +9,6 @@ class UsersController < ApplicationController
 
     boards = current_user.boards.includes(:supporters)
     @own_boards = current_user.owned_boards
-    @support_boards = boards.where(:supporters => {owner: nil})
+    @support_boards = boards.where(:supporters => { owner: false } )
   end
 end

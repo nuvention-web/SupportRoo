@@ -1,7 +1,7 @@
 {
   "MiniTest": {
     "coverage": {
-      "/Users/avyfain/Documents/Projects/Half-n-Half/app/models/user.rb": [
+      "/Users/Alex/code/SupportRoo/app/models/user.rb": [
         null,
         null,
         null,
@@ -48,7 +48,7 @@
         null,
         null
       ],
-      "/Users/avyfain/Documents/Projects/Half-n-Half/app/models/supporter.rb": [
+      "/Users/Alex/code/SupportRoo/app/models/supporter.rb": [
         null,
         null,
         null,
@@ -66,14 +66,42 @@
         1,
         null
       ],
-      "/Users/avyfain/Documents/Projects/Half-n-Half/app/controllers/welcome_controller.rb": [
+      "/Users/Alex/code/SupportRoo/app/models/board.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        null
+      ],
+      "/Users/Alex/code/SupportRoo/app/controllers/welcome_controller.rb": [
         1,
         1,
         1,
         null,
         null
       ],
-      "/Users/avyfain/Documents/Projects/Half-n-Half/app/controllers/application_controller.rb": [
+      "/Users/Alex/code/SupportRoo/app/controllers/application_controller.rb": [
         1,
         null,
         null,
@@ -98,63 +126,35 @@
         null,
         null
       ],
-      "/Users/avyfain/Documents/Projects/Half-n-Half/app/helpers/application_helper.rb": [
+      "/Users/Alex/code/SupportRoo/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/Users/avyfain/Documents/Projects/Half-n-Half/app/helpers/boards_helper.rb": [
+      "/Users/Alex/code/SupportRoo/app/helpers/boards_helper.rb": [
         1,
         null
       ],
-      "/Users/avyfain/Documents/Projects/Half-n-Half/app/helpers/email_records_helper.rb": [
+      "/Users/Alex/code/SupportRoo/app/helpers/email_records_helper.rb": [
         1,
         null
       ],
-      "/Users/avyfain/Documents/Projects/Half-n-Half/app/helpers/signups_helper.rb": [
+      "/Users/Alex/code/SupportRoo/app/helpers/signups_helper.rb": [
         1,
         null
       ],
-      "/Users/avyfain/Documents/Projects/Half-n-Half/app/helpers/tasks_helper.rb": [
+      "/Users/Alex/code/SupportRoo/app/helpers/tasks_helper.rb": [
         1,
         null
       ],
-      "/Users/avyfain/Documents/Projects/Half-n-Half/app/helpers/users_helper.rb": [
+      "/Users/Alex/code/SupportRoo/app/helpers/users_helper.rb": [
         1,
         null
       ],
-      "/Users/avyfain/Documents/Projects/Half-n-Half/app/helpers/welcome_helper.rb": [
+      "/Users/Alex/code/SupportRoo/app/helpers/welcome_helper.rb": [
         1,
         null
       ],
-      "/Users/avyfain/Documents/Projects/Half-n-Half/app/models/board.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        1,
-        1,
-        1,
-        null,
-        1,
-        null,
-        1,
-        1,
-        null,
-        null,
-        1,
-        1,
-        null,
-        null
-      ],
-      "/Users/avyfain/Documents/Projects/Half-n-Half/app/controllers/users_controller.rb": [
+      "/Users/Alex/code/SupportRoo/app/controllers/users_controller.rb": [
         1,
         1,
         null,
@@ -171,6 +171,6 @@
         null
       ]
     },
-    "timestamp": 1429209677
+    "timestamp": 1429210591
   }
 }
