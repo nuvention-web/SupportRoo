@@ -39,6 +39,14 @@ class User < ActiveRecord::Base
       case_sensitive: false
   }
 
+  def add_board(board, owner)
+    owner ||= false
+    Supporter.create(user_id: id, board_id: board.id, owner: owner)
+  end
+
+  def owns_board?(board)
+  end
+
   def owned_boards
     boards.includes(:supporters).where({ supporters: { owner: true } })
   end

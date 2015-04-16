@@ -27,30 +27,30 @@ require 'test_helper'
 class UserTest < ActiveSupport::TestCase
 
   test "users with valid emails are valid" do
-    user = FactoryGirl.build(:user)
+    user = build(:user)
     assert user.valid?
   end
 
   test "users without emails are not valid" do
-    user = FactoryGirl.build(:user)
+    user = build(:user)
     user.email = "   "
     assert_not user.valid?
   end
 
   test "no two users can have same email" do
-    user = FactoryGirl.build(:user)
+    user = build(:user)
     user.save
-    user2 = FactoryGirl.build(:user, email: user.email.upcase)
+    user2 = build(:user, email: user.email.upcase)
     assert_not user2.valid?
   end
 
   test "users have boards" do
-    user = FactoryGirl.create(:user)
+    user = create(:user)
     assert_not_empty user.boards
   end
 
   test "users can own boards" do
-    user = FactoryGirl.create(:user_owning_board)
+    user = create(:user_owning_board)
     assert_not_empty user.owned_boards
   end
 end

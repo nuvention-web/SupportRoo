@@ -32,6 +32,12 @@ class BoardsController < ApplicationController
 
   def show
     @board = Board.find(params[:id])
+
+    if not @board.owned_by(current_user)
+      flash[:warning] = "You are not authorized to see that page"
+      redirect_to root_path
+    end
+
     @task_categories = TaskType.all.pluck(:category).uniq
     @task_types = TaskType.all
     @tasks = @board.tasks

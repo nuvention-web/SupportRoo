@@ -5,8 +5,8 @@ class UsersControllerTest < ActionController::TestCase
 
   def setup
     @request.env["devise.mapping"] = Devise.mappings[:user]
-    @user = FactoryGirl.create(:user)
-    @owner = FactoryGirl.create(:user_owning_board)
+    @user = create(:user)
+    @owner = create(:user_owning_board)
   end
 
   test "should show user when signed in" do

@@ -7,12 +7,12 @@ FactoryGirl.define do
     password_confirmation "foobar12"
 
     after(:build) do |user|
-      user.supporters << FactoryGirl.build(:supporter, user: user)
+      user.supporters << build(:supporter, user: user)
     end
 
     factory :user_owning_board, class: "User" do
       after(:build) do |user|
-        user.supporters << FactoryGirl.build(:owner, user: user)
+        user.supporters << build(:owner, user: user)
       end
     end
   end
@@ -38,7 +38,7 @@ FactoryGirl.define do
     name "A board with a supporter"
     description "foo"
     after(:build) do |board|
-      board.supporters << FactoryGirl.build(:owner, board: board)
+      board.supporters << build(:owner, board: board)
     end
   end
 
@@ -46,7 +46,7 @@ FactoryGirl.define do
     name "A board with a supporter"
     description "foo"
     after(:build) do |board|
-      board.supporters << FactoryGirl.build(:supporter, board: board)
+      board.supporters << build(:supporter, board: board)
     end
   end
 end
