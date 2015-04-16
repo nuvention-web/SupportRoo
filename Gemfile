@@ -18,6 +18,8 @@ gem 'devise'
 gem 'foundation-rails',     '5.4.5'
 gem 'font-awesome-rails',   '4.3.0'
 
+gem 'simplecov', :require => false, :group => :test
+
 group :development do
   gem 'letter_opener'
 end
