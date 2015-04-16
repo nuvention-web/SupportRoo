@@ -13,6 +13,14 @@
 class Board < ActiveRecord::Base
   has_many :supporters
   has_many :users, through: :supporters
-  
+
   has_many :tasks
+
+  validates :name, { presence: true }
+  validates :description, { presence: true }
+
+
+  def owners
+    supporters.where( { owner: true } )
+  end
 end
