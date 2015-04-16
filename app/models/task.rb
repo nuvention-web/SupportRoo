@@ -17,6 +17,7 @@
 #  supporter_name    :string
 #  title             :string
 #  user_id           :integer
+#  completed?        :boolean          default("false")
 #
 
 class Task < ActiveRecord::Base
@@ -32,6 +33,10 @@ class Task < ActiveRecord::Base
   scope :not_taken, -> { where("accepted is null").order('start_time ASC') }
 
   def accepted?
-    !self.supporter_email.nil?
+    !user_id.nil?
+  end
+
+  def complete!
+    update_attributes(completed?: true)
   end
 end

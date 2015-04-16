@@ -52,7 +52,13 @@ class User < ActiveRecord::Base
     boards.includes(:supporters).where({ supporters: { owner: true } })
   end
 
-  def accept_task(task)
-    task.update_attributes!(user_id: id)
+  def accept_task(task, message=nil)
+    task.update_attributes!({ user_id: id,
+                              supporter_message: message
+    })
+  end
+
+  def tasks_from_board(board)
+    tasks.where({ board_id: board.id })
   end
 end

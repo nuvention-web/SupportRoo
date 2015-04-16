@@ -49,14 +49,29 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "users can own boards" do
-    user = create(:user_owning_board)
-    assert_not_empty user.owned_boards
+    user = create(:user)
+    board = create(:board)
+    user.add_board(board, true)
+
+    assert_includes user.owned_boards, board
   end
 
   test "user can accept a task" do
     user = create(:user)
     t = create(:task)
-    user.accept_task(t)
+    user.accept_task(t, "message")
     assert_includes user.tasks, t
+    assert_not_nil t.supporter_message
+  end
+
+  test "user has tasks on a particular board" do
+    user = create(:user)
+    board = create(:board)
+    task = create(:task, board: board)
+    task2 = create(:task)
+
+    user.accept_task(task)
+    assert_includes user.tasks_from_board(board), task
+    assert_not_includes user.tasks_from_board(board), task2
   end
 end

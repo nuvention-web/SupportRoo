@@ -20,6 +20,14 @@ class Board < ActiveRecord::Base
   validates :description, { presence: true }
 
 
+  def add_supporter(user)
+    Supporter.create!( { user_id: user.id, board_id: id, owner: false } )
+  end
+
+  def add_owner(user)
+    Supporter.create!( { user_id: user.id, board_id: id, owner: true } )
+  end
+
   def owners
     supporters.where( { owner: true } )
   end

@@ -38,6 +38,23 @@ class BoardTest < ActiveSupport::TestCase
     assert board.owners.first.owner
   end
 
+  test "supporters can be added to a board" do
+    board = create(:board)
+    user = create(:user)
+    board.add_supporter(user)
+
+    assert_includes board.users, user
+  end
+
+  test "owners can be added to boards" do
+    board = create(:board)
+    user = create(:user)
+    board.add_owner(user)
+
+    assert_includes board.users, user
+    assert board.owners.any? { |s| s.user_id == user.id }
+  end
+
   test "correct board owner" do
     user = create(:user)
     owner = create(:user)
@@ -54,14 +71,14 @@ class BoardTest < ActiveSupport::TestCase
   #   user1 = create(:user) #doesn't have tasks on board
   #   user2 = create(:user) #has a task on board
   #   user3 = create(:user) #has a task on a different board
-    
+
   #   board1 = create(:board)
   #   board2 = create(:board)
 
   #   user1.add_board(board1)
   #   user2.add_board(board1)
   #   user3.add_board(board2)
-    
+
   #   assert
 
   # end
