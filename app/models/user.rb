@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :supporters
+  has_many :tasks
   has_many :boards, through: :supporters
 
   before_save { |user| user.email.downcase! }
@@ -51,7 +52,7 @@ class User < ActiveRecord::Base
     boards.includes(:supporters).where({ supporters: { owner: true } })
   end
 
-  def accept_task task
-    nil
+  def accept_task(task)
+    task.update_attributes!(user_id: id)
   end
 end

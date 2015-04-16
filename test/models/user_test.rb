@@ -53,12 +53,10 @@ class UserTest < ActiveSupport::TestCase
     assert_not_empty user.owned_boards
   end
 
-  test "user can accept a task" do 
-    user = build(:user)
-    t = build(:task)
-
+  test "user can accept a task" do
+    user = create(:user)
+    t = create(:task)
     user.accept_task(t)
     assert_includes user.tasks, t
-  
   end
 end

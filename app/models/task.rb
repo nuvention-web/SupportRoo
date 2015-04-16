@@ -16,11 +16,13 @@
 #  supporter_message :string
 #  supporter_name    :string
 #  title             :string
+#  user_id           :integer
 #
 
 class Task < ActiveRecord::Base
   belongs_to :task_type
   belongs_to :board
+  belongs_to :user
 
   extend SimpleCalendar
   has_calendar attribute: :start_time
