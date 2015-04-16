@@ -38,8 +38,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "no two users can have same email" do
-    user = build(:user)
-    user.save
+    user = create(:user)
     user2 = build(:user, email: user.email.upcase)
     assert_not user2.valid?
   end
@@ -52,5 +51,14 @@ class UserTest < ActiveSupport::TestCase
   test "users can own boards" do
     user = create(:user_owning_board)
     assert_not_empty user.owned_boards
+  end
+
+  test "user can accept a task" do 
+    user = build(:user)
+    t = build(:task)
+
+    user.accept_task(t)
+    assert_includes user.tasks, t
+  
   end
 end

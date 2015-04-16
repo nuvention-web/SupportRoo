@@ -12,7 +12,7 @@
 
 require 'test_helper'
 
-class SupporterTest < ActiveSupport::TestCase
+class BoardTest < ActiveSupport::TestCase
   test "valid board creation" do
     board = build(:board)
     assert board.valid?
@@ -48,6 +48,21 @@ class SupporterTest < ActiveSupport::TestCase
 
     assert_not board.owned_by(user)
     assert board.owned_by(owner), 'Board should be owned by owner'
-
   end
+
+  # test "correct tasks accepted by a user" do
+  #   user1 = create(:user) #doesn't have tasks on board
+  #   user2 = create(:user) #has a task on board
+  #   user3 = create(:user) #has a task on a different board
+    
+  #   board1 = create(:board)
+  #   board2 = create(:board)
+
+  #   user1.add_board(board1)
+  #   user2.add_board(board1)
+  #   user3.add_board(board2)
+    
+  #   assert
+
+  # end
 end

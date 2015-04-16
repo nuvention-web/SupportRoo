@@ -50,4 +50,8 @@ class User < ActiveRecord::Base
   def owned_boards
     boards.includes(:supporters).where({ supporters: { owner: true } })
   end
+
+  def accept_task task
+    nil
+  end
 end

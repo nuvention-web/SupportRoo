@@ -49,4 +49,12 @@ FactoryGirl.define do
       board.supporters << build(:supporter, board: board)
     end
   end
+
+  factory :task do
+    description "foobar"
+    board
+    accepted false
+    title "foobar"
+  end
+
 end
