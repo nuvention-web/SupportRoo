@@ -22,11 +22,13 @@ class TasksControllerTest < ActionController::TestCase
     }
     assert @task.reload.accepted?, "task should be accepted"
     assert_equal "message", @task.supporter_message
+    assert_not_empty flash[:notice]
   end
 
   test "supporters can complete tasks" do
     assert_not @task.completed?
     post :complete, { id: @task.id.to_s }
     assert @task.reload.completed?
+    assert_not_empty flash[:notice]
   end
 end

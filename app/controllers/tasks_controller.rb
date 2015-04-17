@@ -27,6 +27,8 @@ class TasksController < ApplicationController
     task = Task.find(params[:id])
     task.complete!
     redirect_to share_board_path(task.board_id)
+    flash[:notice] = "Task has been marked as complete!"
+    # TODO: Mail the user!
   end
 
   def show
