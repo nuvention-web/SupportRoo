@@ -40,6 +40,12 @@ FactoryGirl.define do
     after(:build) do |board|
       board.supporters << build(:owner, board: board)
     end
+
+    factory :board_with_tasks do
+      after(:build) do |board|
+        10.times { board.tasks << build(:task, board: board) }
+      end
+    end
   end
 
   factory :board_with_supporter, class: "Board" do

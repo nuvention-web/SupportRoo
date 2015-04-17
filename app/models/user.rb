@@ -53,6 +53,10 @@ class User < ActiveRecord::Base
     boards.includes(:supporters).where({ supporters: { owner: false } })
   end
 
+  def supporter_for(board)
+    supporting_boards.any? { |b| b.id == board.id }
+  end
+
   def accept_task(task, message=nil)
     task.update_attributes!({ user_id: id,
                               supporter_message: message

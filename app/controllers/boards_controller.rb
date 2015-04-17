@@ -8,13 +8,11 @@ class BoardsController < ApplicationController
   def create
     @board = Board.new(board_params)
     if @board.save
-      Supporter.create({ user_id: current_user.id,
-                         board_id: @board.id,
-                         owner: true })
-      flash[:board_success]
+      @board.add_owner(current_user)
+      flash[:notice] = "Board created successfully!"
       redirect_to board_path(@board)
     else
-      flash[:board_failure]
+      flash[:error] = "There were errors creating your board"
       redirect_to root_path
     end
   end
@@ -45,7 +43,16 @@ class BoardsController < ApplicationController
 
   def share
     @board = Board.find(params[:id])
-    @tasks = @board.tasks
+    if (@board.owned_by?(current_user))
+      redirect_to board_path(@board)
+
+    elsif !current_user.supporter_for(@board)
+      flash[:warning] = "You do not have access to that page"
+      redirect_to user_path(current_user)
+    end
+
+    @unaccepted_tasks = @board.unaccepted_tasks
+    @user_tasks = current_user.tasks
   end
 
   private
@@ -53,5 +60,4 @@ class BoardsController < ApplicationController
   def board_params
     params.require(:board).permit(:email, :name, :description)
   end
-
 end

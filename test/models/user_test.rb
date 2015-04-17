@@ -57,6 +57,8 @@ class UserTest < ActiveSupport::TestCase
 
     assert_includes user.supporting_boards, board
     assert_not_includes user.supporting_boards, owned_board
+
+    assert user.supporter_for(board)
   end
 
   test "users can own boards" do

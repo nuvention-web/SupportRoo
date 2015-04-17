@@ -67,6 +67,14 @@ class BoardTest < ActiveSupport::TestCase
     assert board.owned_by?(owner), 'Board should be owned by owner'
   end
 
+  test "board has has accepted and unaccepted tasks" do
+    board = create(:board_with_tasks)
+
+    assert_difference -> { board.unaccepted_tasks.count }, -1 do
+      board.tasks.first.update_attribute(:user_id, 1)
+    end
+  end
+
   # test "correct tasks accepted by a user" do
   #   user1 = create(:user) #doesn't have tasks on board
   #   user2 = create(:user) #has a task on board
