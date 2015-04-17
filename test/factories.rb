@@ -35,7 +35,7 @@ FactoryGirl.define do
   end
 
   factory :board_with_owner, class: "Board" do
-    name "A board with a supporter"
+    name "A board with an owner"
     description "foo"
     after(:build) do |board|
       board.supporters << build(:owner, board: board)
@@ -52,7 +52,8 @@ FactoryGirl.define do
 
   factory :task do
     description "foobar"
-    board
+    supporter_name "foo" #really gotta get rid of this
+    association :board, factory: :board_with_owner
     accepted false
     title "foobar"
   end

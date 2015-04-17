@@ -32,8 +32,9 @@ class Task < ActiveRecord::Base
   scope :upcoming, -> { where("start_time > ?", Time.now).order('start_time ASC') }
   scope :not_taken, -> { where("accepted is null").order('start_time ASC') }
 
+  # TODO remove supporter_email and supporter_name from tasks, gotta refactor
   def accepted?
-    !user_id.nil?
+    user_id.present?
   end
 
   def complete!

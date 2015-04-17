@@ -2,12 +2,14 @@ class UserMailer < ApplicationMailer
 
 	def notify_supporter(task)
 		@task = task
-		mail to: @task.supporter_email, subject: "Thanks for signing up for a task on SupportRoo"
+    supporter = User.find(@task.user_id)
+		mail to: supporter.email, subject: "Thanks for signing up for a task on SupportRoo"
 	end
 
-	def notify_caretaker(task)
+	def notify_board_owners(task)
 		@task = task
-		mail to: @task.board.email, subject: "#{@task.supporter_name} just signed up for a task on your board!"
+    owner_emails = @task.board.owners.map{ |o| User.find(o.user_id).email } 
+		mail to: owner_emails, subject: "#{@task.supporter_name} just signed up for a task on your board!"
 	end
 
   def notify_supporter_of_edit(task)
