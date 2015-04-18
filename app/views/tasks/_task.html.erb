@@ -25,7 +25,7 @@
 
     <span class="acceptance-info">
       <% if task.accepted? %>
-       <strong>Accepted by:</strong> <%= task.supporter_name %>
+       <strong>Accepted by:</strong> <%= task.user.email %>
       <% else %>
         <strong>Status: </strong><span>Unaccepted</span>
       <% end %>
