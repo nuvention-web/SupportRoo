@@ -21,3 +21,10 @@
   width: 90%;
   max-width: 90%; 
 }
+
+.top-bar, 
+.top-bar-section ul li > a,
+.top-bar-section li:not(.has-form) a:not(.button) {
+    background-color: #fff;
+    color: #000;
+}
