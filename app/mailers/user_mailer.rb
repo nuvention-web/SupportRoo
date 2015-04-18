@@ -14,7 +14,8 @@ class UserMailer < ApplicationMailer
 
   def notify_supporter_of_edit(task)
     @task = task
-    mail to: @task.supporter_email, subject: "A task you signed up for on #{@task.board.name}'s board was edited"
+    supporter = User.find(@task.user_id)
+    mail to: supporter.email, subject: "A task you signed up for on #{@task.board.name}'s board was edited"
   end
 
 end

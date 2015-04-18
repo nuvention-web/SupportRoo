@@ -1,9 +1,8 @@
 <nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <li class="name">
-      <h1><a href="#">SupportRoo</a></h1>
+      <h1><%= link_to 'SupportRoo', root_path %></h1>
     </li>
-
     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
   </ul>
 
@@ -19,7 +18,7 @@
     <ul class="right">
       <li>
         <% if user_signed_in? %>
-        <li><a><%= current_user.email %></a></li>
+        <li><a><%= link_to current_user.email, user_path(current_user) %></a></li>
         <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
         <% else %>
         <li><%= link_to "Sign up", new_user_registration_path %></li>

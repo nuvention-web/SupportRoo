@@ -52,7 +52,7 @@ class BoardsController < ApplicationController
     end
 
     @unaccepted_tasks = @board.unaccepted_tasks
-    @user_tasks = current_user.tasks
+    @user_tasks = current_user.tasks_from_board(@board)
   end
 
   private
