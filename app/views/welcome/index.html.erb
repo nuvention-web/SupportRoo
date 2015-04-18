@@ -3,22 +3,11 @@
     <h1> SupportRoo </h1>
     <p><i> Get the help you need, when you need it. </i></p>
   </div>
-  <div class="row intro-text small-8 small-centered columns">
-    <h6>SupportRoo is the easy way to get your daily tasks done with the help of your family and close friends, so that you can focus on what matters most.</h6> 
-    <div class="row">
-      <div class="small-4 columns">
-        <%= form_for @board do |f| %>
-          <%= f.text_field :name, :placeholder => "Name" %>
-          <%= f.text_field :email, :placeholder => "Email" %>
-          <%= f.submit 'Sign Up', class: "button" %>
-        <% end %>
+  <div class="row full-width small-12 small-centered columns transbox">
+      <h4 class="text-center">Support from loved ones, near and afar.</h4> 
+      <div class="text-center">
+        <%= link_to 'How it Works', '#how', class: 'button default'%>
       </div>
-      <div class="small-4 columns">
-        <% if flash[:signup_failure] %>
-        <div class="row panel">Try signing up again with valid information!</div>
-        <% end %>
-      </div>
-    </div>
   </div>
   <div id='infobox'>
   </div>
@@ -35,8 +24,7 @@
 <hr>
 <br>
 
-<div class="row small-10 small-centered columns">
-
+<div class="row small-10 small-centered columns" id="how">
   <h4><b>How It Works:</b></h4><br><br>
 
   <div class="row">
@@ -69,28 +57,19 @@
 <hr>
 <br>
 <div class="row about">
-  <h4><b>About Us:</b></h4><br><br>
+  <h4><b>The team:</b></h4><br><br>
 
   <div class="row">
-    <div class="medium-4 columns text-center"><%= image_tag "sami.jpg" %></br>
+    <div class="medium-3 columns text-center"><%= image_tag "sami.jpg" %></br>
       <p class="text-center"> Sami</p>
     </div>
-    <div class="medium-4 columns text-center"><%= image_tag "le.jpg" %></br>
-      <p class="text-center"> Le</p>
-    </div>
-    <div class="medium-4 columns text-center end"><%= image_tag "patrick.jpg" %></br>
-      <p class="text-center"> Patrick</p>
-    </div>
-  </div>
-</br>
-  <div class="row">
-    <div class="medium-4 columns text-center"><%= image_tag "alex.jpg" %></br>
+    <div class="medium-3 columns text-center"><%= image_tag "alex.jpg" %></br>
       <p class="text-center"> Alex</p>
     </div>
-    <div class="medium-4 columns text-center"><%= image_tag "avy.png" %></br>
+    <div class="medium-3 columns text-center"><%= image_tag "avy.png" %></br>
       <p class="text-center"> Avy</p>
     </div>
-    <div class="medium-4 columns text-center end"><%= image_tag "claire.jpg" %></br>
+    <div class="medium-3 columns text-center end"><%= image_tag "claire.jpg" %></br>
       <p class="text-center"> Claire</p>
     </div>
   </div>
