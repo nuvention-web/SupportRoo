@@ -12,6 +12,11 @@ $light-grey: #F7F3EB;
   box-shadow: -4px 4px 4px -2px rgba(219,219,219,1);
 }
 
+.row.almost-full-width {
+  width: 90%;
+  max-width: 90%; 
+}
+
 .top-bar {
   display: inline-block;
   width: 100%;
