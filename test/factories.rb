@@ -60,8 +60,16 @@ FactoryGirl.define do
     description "foobar"
     supporter_name "foo" #really gotta get rid of this
     association :board, factory: :board_with_owner
+    start_time Time.now
     accepted false
+    task_type
     title "foobar"
+  end
+
+  factory :task_type do
+    category "Food"
+    description "Food type"
+    name "Groceries"
   end
 
 end

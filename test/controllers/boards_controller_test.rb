@@ -32,11 +32,25 @@ class BoardsControllerTest < ActionController::TestCase
     end
   end
 
+  test "new page should render form" do
+    get :new
+    assert_response :success
+  end
+
   test "create should make a new board and add user as owner" do
     sign_in @user
     assert_difference -> { @user.owned_boards.count }, +1 do
       post :create, { board: { name: "A cool board", description: "bar" } }
     end
+  end
+
+  test "create should not make a new board with invalid information" do
+    sign_in @user
+    assert_no_difference -> { @user.owned_boards.count} do
+      post :create, { board: { name: "", description: "" } }
+    end
+    assert_redirected_to new_board_path
+    assert_not_nil flash[:error]
   end
 
   test "share view should only be visible to supporters" do
@@ -58,7 +72,9 @@ class BoardsControllerTest < ActionController::TestCase
     board = create(:board_with_tasks)
     board.add_supporter(@user)
     @user.accept_task(board.tasks.first)
+
     get :share, id: board.id.to_s
+    assert_response :success
 
     assert_not_empty assigns(:unaccepted_tasks)
     assert_not_empty assigns(:user_tasks)

@@ -10,30 +10,3 @@
     </ul>
   </div>
 </div>
-
-<div class="full-width text-center share-link-bar orange">
-  <span>Share your board!</span>
-  <input type="text"
-    value="<%= share_board_url(@board) %>">
-  </input>
-  <%= link_to fa_icon("envelope-o"), "mailto:?subject=Visit my board on SupportRoo!&body=#{share_board_url(@board)}" %>
-  <div class="fb-send" data-href="https://supportroo-staging.herokuapp.com/<%= share_board_path(@board) %>" data-colorscheme="light"></div>
-</div>
-  <!-- <ul class="title-area">
-    <li class="name">
-      <h1><a href="/">SupportRoo</a></h1>
-    </li>
-  </ul> -->
-<!-- 
-      <li class="name">
-        <h1><a href="/"><%= @board.name %>'s Support Board</a></h1>
-      </li> -->
-      <!-- <li class="has-dropdown">
-        <a href="#">Menu</a>
-        <ul class="dropdown">
-          <li><a href="#">First link in dropdown</a></li>
-          <li><a href="#">Active link in dropdown</a></li>
-          <li><a href="#">Foo link in dropdown</a></li>
-        </ul>
-      </li> -->
-    </ul>

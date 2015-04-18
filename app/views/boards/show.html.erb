@@ -1,4 +1,6 @@
 <%= render partial: "header" %>
+<%= render partial: "share_bar" %>
+
 <% if flash[:signup_success] %>
   <div class="row panel">Thanks for signing up, this is your board!</div>
 <% end %>
@@ -16,6 +18,11 @@
 
         <div class="columns small-8">
           <div class="calendar">
+            <h4 class="right">
+              <a class="label success radius" href="#" data-reveal-id="GenModal">
+                <i class="fa fa-plus fa-2x"> Add a new task</i>
+              </a>
+            </h4>
             <%= render partial: "shared/calendar", locals: { tasks: @tasks } %>
           </div>
           <h3>Your tasks</h3>

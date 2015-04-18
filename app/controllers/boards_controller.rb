@@ -13,7 +13,7 @@ class BoardsController < ApplicationController
       redirect_to board_path(@board)
     else
       flash[:error] = "There were errors creating your board"
-      redirect_to root_path
+      redirect_to new_board_path
     end
   end
 

@@ -1,0 +1,38 @@
+<div class="columns smasll-12 task-info unaccepted">
+  <span class="task-type-name">
+    <%= task.task_type.name %>
+  </span>
+  <a href="#" class="button default tiny right" data-reveal-id="sign-up-modal-<%= task.id %>">
+    More info
+  </a>
+
+  <div class="primary-info">
+    <span class="start-time">
+      <strong>Start time: </strong><%= task.start_time.strftime("%B %d, %I:%M %p") %>
+    </span>
+  </div>
+
+  <div id="sign-up-modal-<%= task.id %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+    <span class="task-type-name">
+      <%= task.task_type.name %>
+    </span>
+
+    <div class="primary-info">
+      <span class="start-time">
+        <strong>Start time: </strong><%= task.start_time.strftime("%B %d, %I:%M %p") %>
+      </span>
+    </div>
+
+    <div class="other-info">
+      <p><strong>Description:</strong> <%= task.description %></p>
+    </div>
+
+    <%= simple_form_for :task, { url: accept_task_path(task), method: :post } do |f| %>
+      <%= f.input :supporter_message, { label: "Your note",
+                                        placeholder: "Leave a note! Let the board owner you understand the task and show your support!",
+                                        as: :text } %>
+      <%= f.button :submit, "Sign up for this task!", { class: "small" } %>
+    <% end %>
+  </div>
+</div>
+
