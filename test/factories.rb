@@ -72,4 +72,9 @@ FactoryGirl.define do
     name "Groceries"
   end
 
+  factory :invite do
+    email 'foo@bar.com'
+    board
+  end
+
 end

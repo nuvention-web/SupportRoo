@@ -13,7 +13,7 @@
 class Board < ActiveRecord::Base
   has_many :supporters
   has_many :users, through: :supporters
-
+  has_many :invites
   has_many :tasks
 
   validates :name, { presence: true }
