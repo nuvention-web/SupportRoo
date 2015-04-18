@@ -51,7 +51,7 @@ class InvitesControllerTest < ActionController::TestCase
     end    
 
     assert_redirected_to new_board_invites_path(@board)
-    assert_includes flash[:error][:invalid_emails], 'invalid'
+    assert_includes flash[:error], 'invalid'
     assert_not_nil flash[:notice]
   end
 

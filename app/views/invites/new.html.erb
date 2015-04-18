@@ -1,11 +1,11 @@
 <div class="row">
 
-  <%= simple_form_for :invites do |f| %>
+  <%= simple_form_for :invites, { url: board_invites_path } do |f| %>
     <%= f.input_field :emails, multiple: true %>
     <%= f.input_field :emails, multiple: true %>
     <%= f.input_field :emails, multiple: true %>
     <%= f.input_field :emails, multiple: true %>
     <%= f.input_field :emails, multiple: true %>
-    <%= f.submit %>
+    <%= f.button :submit, class: 'button default' %>
   <% end %>
 </div>

@@ -15,15 +15,14 @@ class InvitesController < ApplicationController
 
     elsif !invites[:invalid].empty? and !invites[:valid].empty?
       flash[:notice] = "Invites sent to #{invites[:valid].join(", ")} successfully!"
-      flash[:error] = {}
-      flash[:error][:invalid_emails] = invites[:invalid]
+      flash[:error] = "Invites could not be sent to #{invites[:invalid].join(", ")}!"
       redirect_to new_board_invites_path(@board)
 
     elsif !invites[:valid].empty?
       flash[:notice] = "Invites sent to #{invites[:valid].join(", ")} successfully!"
       redirect_to board_path(@board)
     else
-      flash[:error][:invalid_emails] = invites[:invalid]
+      flash[:error] = "Invites could not be sent to #{invites[:invalid].join(", ")}!"
       redirect_to new_board_invites_path(@board)      
     end
   end
