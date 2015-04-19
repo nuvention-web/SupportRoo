@@ -1,11 +1,11 @@
-<div class="row">
-
+<div class="row small-6 small-offset-3 columns ">
+  <h3>Invite supporters to <%= @board.name %>'s board!</h3>
   <%= simple_form_for :invites, { url: board_invites_path } do |f| %>
-    <%= f.input_field :emails, multiple: true %>
-    <%= f.input_field :emails, multiple: true %>
-    <%= f.input_field :emails, multiple: true %>
-    <%= f.input_field :emails, multiple: true %>
-    <%= f.input_field :emails, multiple: true %>
-    <%= f.button :submit, class: 'button default' %>
+    <%= f.input_field :emails, multiple: true, placeholder: 'joe_friend@example.com' %>
+    <%= f.input_field :emails, multiple: true, placeholder: 'joe_friend@example.com' %>
+    <%= f.input_field :emails, multiple: true, placeholder: 'joe_friend@example.com' %>
+    <%= f.input_field :emails, multiple: true, placeholder: 'joe_friend@example.com' %>
+    <%= f.input_field :emails, multiple: true, placeholder: 'joe_friend@example.com' %>
+    <%= f.button :submit, class: 'button default', value: 'Send Invitations' %>
   <% end %>
 </div>
