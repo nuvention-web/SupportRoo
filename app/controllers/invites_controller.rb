@@ -28,11 +28,12 @@ class InvitesController < ApplicationController
       redirect_to board_path(@board)
     else
       flash[:error] = "Invites could not be sent to #{invites[:invalid].join(", ")}!"
-      redirect_to new_board_invites_path(@board)      
+      redirect_to new_board_invites_path(@board)
     end
   end
 
   def claim
+    redirect_to new_user_registration_path(code: params[:code])
   end
 
   private
