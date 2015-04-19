@@ -12,10 +12,20 @@ class InvitesControllerTest < ActionController::TestCase
     sign_in @user
   end
 
-  test "should get new" do
+  test "only board owner should be able to invite people" do
     get :new, board_id: @board.id
     assert_response :success
   end
+
+  test "unrelated user should not be able to invite people" do
+    sign_out @user
+    other = create(:user)
+    sign_in other
+    get :new, board_id: @board.id
+    assert_redirected_to root_path
+    assert_not_nil flash[:error]
+  end
+
 
   test "create with valid information should add invite" do
     assert_difference -> { @board.invites.count }, +2 do

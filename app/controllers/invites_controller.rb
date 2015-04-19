@@ -2,6 +2,11 @@ class InvitesController < ApplicationController
 
   def new
     @board = Board.find(params[:board_id])
+    unless @board.owned_by?(current_user)
+      redirect_to root_path
+      flash[:error] = "You do not have permission to see that page"
+    end
+
   end
 
   def create
@@ -25,6 +30,9 @@ class InvitesController < ApplicationController
       flash[:error] = "Invites could not be sent to #{invites[:invalid].join(", ")}!"
       redirect_to new_board_invites_path(@board)      
     end
+  end
+
+  def claim
   end
 
   private

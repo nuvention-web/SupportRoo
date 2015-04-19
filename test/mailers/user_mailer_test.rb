@@ -1,8 +1,10 @@
 require 'test_helper'
  
 class UserMailerTest < ActionMailer::TestCase
+
   def setup
     @user = create(:user)
+    @invite = create(:invite)
     @t = create(:task)
   end
 
@@ -29,4 +31,16 @@ class UserMailerTest < ActionMailer::TestCase
     assert_equal @t.board.owners.map{ |o| User.find(o.user_id).email } , email.to
     assert_equal "#{@t.supporter_name} just signed up for a task on your board!", email.subject
   end
+
+  test "send invites" do
+    email = UserMailer.invite_user(@invite).deliver_now
+    assert_not ActionMailer::Base.deliveries.empty?
+ 
+    # Test the attrs of the sent email contain what we expect them to
+    assert_equal ['suprooteam@gmail.com'], email.from
+    assert_equal [@invite.email], email.to
+    assert_equal "You have been invited to #{@invite.board.name}'s Support Board!", email.subject
+    
+  end
+
 end

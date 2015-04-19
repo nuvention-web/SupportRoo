@@ -3,6 +3,15 @@ FactoryGirl.define do
     sequence :email do |n|
       "foo#{n}@example.com"
     end
+    
+    sequence :first_name do |n|
+      "foo#{n}"
+    end
+
+    sequence :last_name do |n|
+      "bar#{n}"
+    end
+
     password "foobar12"
     password_confirmation "foobar12"
 

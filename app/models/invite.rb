@@ -29,10 +29,9 @@ class Invite < ActiveRecord::Base
     invites = { valid: [], invalid: [] }
     emails.each do |email|
       invite = Invite.new(email: email, board_id: board_id)
-      if invite.valid?
-        invite.save
+      if invite.save
         invites[:valid] << email
-        # MAIL THE USER
+        UserMailer.invite_user(invite).deliver_now!
       else
         invites[:invalid] << email
       end

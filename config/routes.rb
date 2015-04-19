@@ -11,7 +11,9 @@ Rails.application.routes.draw do
 
   resources :boards, only: [:new, :create, :show, :destroy] do
     get 'share', on: :member
-    resource :invites, only: [:new, :create]
+    resource :invites, only: [:new, :create] do
+      get 'claim'
+    end
   end
 
   resources :tasks, only: [:create, :destroy, :edit, :update, :show] do

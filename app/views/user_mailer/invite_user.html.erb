@@ -1,0 +1,7 @@
+<h1>Hi there!</h1>
+<h2>You have been invited to help on <%= @invite.board.name %>'s support board!</h2>
+<p>If you would like to sign up and help <%= @invite.board.name %> on their daily tasks, please <%= link_to 'click here', claim_board_invites_url(@invite, code: @invite.code) %>.</p>
+
+<p>Contact <%= @invite.board.name %> directly if you have any questions.</p>
+
+<p>Yeah!</p>

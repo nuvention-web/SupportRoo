@@ -18,4 +18,9 @@ class UserMailer < ApplicationMailer
     mail to: supporter.email, subject: "A task you signed up for on #{@task.board.name}'s board was edited"
   end
 
+  def invite_user(invite)
+    @invite = invite
+    mail to: @invite.email, subject: "You have been invited to #{@invite.board.name}'s Support Board!"
+  end
+
 end

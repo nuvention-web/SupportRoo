@@ -1,5 +1,5 @@
-<h1>Hi, <%= @task.supporter_name %></h1>
-<h2>A task you signed up for on <%= @task.board.name %>'s board was edited.</h2>
+<h1>Hi, <%= @task.user.first_name %></h1>
+<h2>A task you signed up for on <%= @task.board.name %>'s board was just edited.</h2>
 <p>This is what the task looks like now:</p> 
 <ul>
   <li>Task Title: <%= @task.title %> </li>
