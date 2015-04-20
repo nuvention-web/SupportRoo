@@ -67,6 +67,13 @@ class BoardsControllerTest < ActionController::TestCase
     assert_redirected_to board_path(board)
   end
 
+  test "share should redirect for users who are not signed in" do
+    sign_out @owner
+    get :share, id: @user.boards.first.id
+    assert_redirected_to root_path
+    assert_match "signed in", flash[:warning]
+  end
+
   test "supporters should be able to view available tasks and their own tasks" do
     sign_in @user
     board = create(:board_with_tasks)
