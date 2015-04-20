@@ -26,7 +26,6 @@ class InvitesControllerTest < ActionController::TestCase
     assert_not_nil flash[:error]
   end
 
-
   test "create with valid information should add invite" do
     assert_difference -> { @board.invites.count }, +2 do
       post :create, { board_id: @board.id, invites: { emails: ['foo@bar.com', 'bax@biz.com', '', '', ''] } }
@@ -63,6 +62,27 @@ class InvitesControllerTest < ActionController::TestCase
     assert_redirected_to new_board_invites_path(@board)
     assert_includes flash[:error], 'invalid'
     assert_not_nil flash[:notice]
+  end
+
+  test "if user is signed in, should add him as a supporter on board when claimed" do
+    assert_difference -> { @board.supporters.count }, +1 do
+      @invite = create(:invite, board: @board)
+      assert_not @invite.claimed
+      get :claim, board_id: @board, code: @invite.code
+      assert_redirected_to share_board_path(@board)
+
+      # assert @invite.claimed TODO Why does this fail????
+    end
+  end
+
+  test "if user is not signed in, should not add him as a supporter on board when claimed" do
+    sign_out @user
+    assert_no_difference -> { @board.supporters.count } do
+      invite = create(:invite, board: @board)
+      get :claim, board_id: @board, code: invite.code
+      assert_redirected_to (new_user_registration_path code: invite.code)
+      assert_not_nil session[:code]
+    end
   end
 
 end

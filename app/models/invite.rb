@@ -39,4 +39,10 @@ class Invite < ActiveRecord::Base
     invites
   end
 
+  def claim user
+    unless claimed
+      self.board.add_supporter(user)
+      update_attributes(claimed: true)
+    end
+  end
 end

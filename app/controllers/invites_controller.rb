@@ -33,7 +33,16 @@ class InvitesController < ApplicationController
   end
 
   def claim
-    redirect_to new_user_registration_path(code: params[:code])
+    invite = Invite.find_by code: params[:code]
+    
+    if user_signed_in?
+      invite.claim current_user
+      redirect_to share_board_path(invite.board)
+    else
+      session[:code] ||= [] 
+      session[:code] << invite.code
+      redirect_to new_user_registration_path(code: params[:code])
+    end
   end
 
   private

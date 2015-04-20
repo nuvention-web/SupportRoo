@@ -19,9 +19,17 @@
     <% end %>
   </ul>
 
-
   <h3>Boards you support</h3>
   <% @support_boards.each do |b| %>
     <%= link_to b.name, b %>
+  <% end %>
+
+  <% if session[:code].present? %>
+  <h3>Pending Board Invitations</h3>
+    <% session[:code].each do |c| %>
+      <% if inv = Invite.find_by(code: c) %>
+        <%= link_to inv.board.name, claim_board_invites_path(board_id: inv.board, code:c) %>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
