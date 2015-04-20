@@ -43,16 +43,18 @@ class BoardsController < ApplicationController
 
   def share
     @board = Board.find(params[:id])
-    if (@board.owned_by?(current_user))
+    if !user_signed_in?
+      flash[:warning] = "You must be signed in to view that page"
+      redirect_to root_path
+    elsif (@board.owned_by?(current_user))
       redirect_to board_path(@board)
-
     elsif !current_user.supporter_for(@board)
       flash[:warning] = "You do not have access to that page"
       redirect_to user_path(current_user)
+    else
+      @unaccepted_tasks = @board.unaccepted_tasks
+      @user_tasks = current_user.tasks_from_board(@board)
     end
-
-    @unaccepted_tasks = @board.unaccepted_tasks
-    @user_tasks = current_user.tasks_from_board(@board)
   end
 
   private
