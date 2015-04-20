@@ -23,4 +23,9 @@ class UserMailer < ApplicationMailer
     mail to: @invite.email, subject: "You have been invited to #{@invite.board.name}'s Support Board!"
   end
 
+  def notify_owners_of_completion(task)
+    @task = task
+    owner_emails = @task.board.owners.map{ |o| User.find(o.user_id).email } 
+    mail to: owner_emails, subject: "Your task on #{@task.board.name}'s board, #{@task.title}, has been completed!"
+  end
 end

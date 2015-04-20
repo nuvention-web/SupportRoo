@@ -43,4 +43,16 @@ class UserMailerTest < ActionMailer::TestCase
     
   end
 
+  test "notify owners when task is completed" do
+    email = UserMailer.notify_owners_of_completion(@t).deliver_now
+    assert_not ActionMailer::Base.deliveries.empty?
+ 
+    # Test the attrs of the sent email contain what we expect them to
+    assert_equal ['suprooteam@gmail.com'], email.from
+    assert_equal @t.board.owners.map{ |o| User.find(o.user_id).email } , email.to
+    assert_equal "Your task on #{@t.board.name}'s board, #{@t.title}, has been completed!", email.subject
+    
+  end
+
+
 end

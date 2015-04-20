@@ -15,9 +15,8 @@ class TasksController < ApplicationController
     task = Task.find(params[:id])
     current_user.accept_task(task, task_params[:supporter_message])
 
-    # TODO: REWRITE THESE MAILER METHODS
-    # UserMailer.notify_supporter(task).deliver!
-    # UserMailer.notify_caretaker(task).deliver!
+    UserMailer.notify_supporter(task).deliver_now
+    UserMailer.notify_board_owners(task).deliver_now
 
     flash[:notice] = "Thanks for signing up for the task!"
     redirect_to share_board_path(task.board_id)
@@ -28,7 +27,7 @@ class TasksController < ApplicationController
     task.complete!
     redirect_to share_board_path(task.board_id)
     flash[:notice] = "Task has been marked as complete!"
-    # TODO: Mail the user!
+    UserMailer.notify_owners_of_completion(task).deliver_now
   end
 
   def show
