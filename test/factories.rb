@@ -5,11 +5,11 @@ FactoryGirl.define do
     end
     
     sequence :first_name do |n|
-      "foo#{n}"
+      "fo#{n}o"
     end
 
     sequence :last_name do |n|
-      "bar#{n}"
+      "ba#{n}r"
     end
 
     password "foobar12"

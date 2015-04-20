@@ -1,5 +1,6 @@
+<!-- TODO fix the naming here -->
 <h1>Hi, <%= @task.board.name %></h1>
-<p><%= "#{@task.user.first_name} #{@task.user.last_name}" %> just signed up for a task on your board!</p>
+<p><%= @task.user.first_name %> <%= @task.user.last_name %> just signed up for a task on your board!</p>
 <p>Here is a summary of what they signed up for:</p> 
 <ul>
   <li>Task Title: <%= @task.title %> </li>

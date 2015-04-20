@@ -27,8 +27,10 @@ class TasksControllerTest < ActionController::TestCase
 
   test "supporters can complete tasks" do
     assert_not @task.completed?
-    post :complete, { id: @task.id.to_s }
-    assert @task.reload.completed?
-    assert_not_empty flash[:notice]
+    assert_difference -> { ActionMailer::Base.deliveries.count }, +1 do
+      post :complete, { id: @task.id.to_s }
+      assert @task.reload.completed?
+      assert_not_empty flash[:notice]
+    end
   end
 end
