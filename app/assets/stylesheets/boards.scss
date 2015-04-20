@@ -83,3 +83,32 @@ $light-grey: #F7F3EB;
     }
   }
 }
+
+.boards {
+  padding-top: 10px;
+  background-color: $light-grey;
+  .add-board {
+    font-size: 1.1rem;
+    > i { padding-right: 5%; }
+  }
+}
+.board-preview {
+  min-height: 150px;
+  background-color: white;
+  margin: 10px 10px 0 0;
+  i { color: red; }
+
+  @include box-shadow();
+
+  .description {
+    color: grey;
+    padding-top: 3%;
+  }
+  .board-name {
+    font-size: 1.1rem;
+    color: $orange-primary;
+  }
+  .board-list {
+    margin-left: 20px;
+  }
+}
