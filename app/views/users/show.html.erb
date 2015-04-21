@@ -21,7 +21,7 @@
 
   <h3>Boards you support</h3>
   <% @support_boards.each do |b| %>
-    <%= link_to b.name, b %>
+    <%= link_to b.name, share_board_path(b) %>
   <% end %>
 
   <% if session[:code].present? %>
