@@ -14,6 +14,7 @@ gem 'annotate',             '2.6.5'
 gem 'simple_calendar',      '1.1.1'
 gem 'simple_form'
 gem 'devise'
+gem 'capybara'
 
 gem 'foundation-rails',     '5.4.5'
 gem 'font-awesome-rails',   '4.3.0'
