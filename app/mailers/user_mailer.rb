@@ -2,9 +2,9 @@ class UserMailer < ApplicationMailer
 
 	def notify_supporter(task)
 		@task = task
-    supporter = User.find(@task.user_id)
+    @supporter = task.user
     @owner = task.board.owners.first
-		mail to: supporter.email, subject: "[SupportRoo] Thank you for your Support!"
+		mail to: @supporter.email, subject: "[SupportRoo] Thank you for your Support!"
 	end
 
 	def notify_board_owners(task)

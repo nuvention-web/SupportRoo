@@ -5,7 +5,8 @@ class UserMailerTest < ActionMailer::TestCase
   def setup
     @user = create(:user)
     @invite = create(:invite)
-    @t = create(:task)
+    @board = create(:board_with_owner)
+    @t = create(:task, board: @board)
   end
 
   test "notify supporter" do
