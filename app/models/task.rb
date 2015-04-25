@@ -40,4 +40,8 @@ class Task < ActiveRecord::Base
   def complete!
     update_attributes(completed?: true)
   end
+
+  def pretty_start_time
+    self.start_time.strftime("%B %d, %I:%M %p")
+  end
 end

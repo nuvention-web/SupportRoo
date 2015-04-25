@@ -29,7 +29,7 @@ class Board < ActiveRecord::Base
   end
 
   def owners
-    supporters.where( { owner: true } )
+    supporters.where( { owner: true } ).map(&:user)
   end
 
   def owned_by?(user)
@@ -38,5 +38,9 @@ class Board < ActiveRecord::Base
 
   def unaccepted_tasks
     tasks.select { |t| !t.accepted? }
+  end
+
+  def owner_emails
+    self.owners.map(&:email)
   end
 end

@@ -1,9 +1,20 @@
-<!-- TODO fix the naming here -->
-<h1>Hi, <%= @task.board.name %></h1>
-<p><%= @task.user.first_name %> <%= @task.user.last_name %> just signed up for a task on your board!</p>
-<p>Here is a summary of what they signed up for:</p> 
+<%= image_tag("logo.png", size: "280x100", alt: "SupportRoo logo") %>
+
+<p>Dear <%= @owner.first_name %>,</p>
+
+<p>
+<%= @volunteer.first_name %> has just signed up for one of your tasks on SupportRoo! You can see the task and board <%= link_to "here", board_url(@task.board) %>.
+Here's a summary of the task that's been signed up for:
+</p>
+
+<h3><%= @task.task_type.name %></h3>
+
 <ul>
-  <li>Task Title: <%= @task.title %> </li>
-  <li>Task Description: <%= @task.description %> </li>
-  <li>Supporter comment: <%= @task.supporter_message %> </li>
+  <li>Start time: <%= @task.pretty_start_time %></li>
+  <li>Task description: <%= @task.description %></li>
+  <li>From board: <%= @task.board.name %></li>
 </ul>
+
+<p>If you need to contact <%= @volunteer.first_name %>, you can reach them at <%= @volunteer.email %></p>
+
+<p>Sincerely, the SupportRoo team</p>

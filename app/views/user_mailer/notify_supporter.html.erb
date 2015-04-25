@@ -1,9 +1,33 @@
-<h1>Hi, <%= @task.user.first_name %></h1>
-<h2>Thanks for signing up for a task on SupportRoo!</h2>
-<p><%= @task.board.name %> will surely appreciate it.</p>
-<p>As a reminder, here is a summary of what you signed up for:</p> 
+<%= image_tag("logo.png", size: "280x100", alt: "SupportRoo logo") %>
+
+<p>Dear <%= @supporter.first_name %>,</p>
+
+<p>
+Thank you for signing up for a task on <%= @owner.first_name %>'s board on SupportRoo! Here is a summary of the task
+that you've signed up for.  You can check what tasks you're signed up for on <%= link_to "your account", user_url(@task.user) %>.
+</p>
+
+<h3><%= @task.task_type.name %></h3>
+
 <ul>
-  <li>Task Title: <%= @task.title %> </li>
-  <li>Task Description: <%= @task.description %> </li>
-  <li>Your comment: <%= @task.supporter_message %> </li>
+  <li>Start time: <%= @task.pretty_start_time %></li>
+  <li>Task description: <%= @task.description %></li>
+  <li>From board: <%= @task.board.name %></li>
 </ul>
+
+<h4>Tips on Being a Good Volunteer:</h4>
+
+<ul>
+  <li>
+  Leave a note: Let them know you care and are thinking of them and are committed to completing the
+  task.</li>
+
+  <li>Check-In: Update your task status to confirm that you are ready to take action on your selected task.</li>
+
+  <li>Confirm: Let them know when the task is complete by checking off the item on your board. This way they
+  can rest easy and know that everything is taken care of.</li>
+</ul>
+
+<p>Thanks again, let the board owner know if you have any questions!</p>
+
+<p>Sincerely, the SupportRoo team</p>

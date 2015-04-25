@@ -1,5 +1,5 @@
 require 'test_helper'
- 
+
 class UserMailerTest < ActionMailer::TestCase
 
   def setup
@@ -13,11 +13,11 @@ class UserMailerTest < ActionMailer::TestCase
     # Send the email, then test that it got queued
     email = UserMailer.notify_supporter(@t).deliver_now
     assert_not ActionMailer::Base.deliveries.empty?
- 
+
     # Test the attrs of the sent email contain what we expect them to
     assert_equal ['suprooteam@gmail.com'], email.from
     assert_equal [@user.email], email.to
-    assert_equal "Thanks for signing up for a task on SupportRoo", email.subject
+    assert_match /thank you/i, email.subject
   end
 
   test "notify owners" do
@@ -25,33 +25,32 @@ class UserMailerTest < ActionMailer::TestCase
     # Send the email, then test that it got queued
     email = UserMailer.notify_board_owners(@t).deliver_now
     assert_not ActionMailer::Base.deliveries.empty?
- 
+
     # Test the attrs of the sent email contain what we expect them to
     assert_equal ['suprooteam@gmail.com'], email.from
-    assert_equal @t.board.owners.map{ |o| User.find(o.user_id).email } , email.to
-    assert_equal "#{@t.supporter_name} just signed up for a task on your board!", email.subject
+    assert_includes email.to, @t.board.owners.first.email
+    assert_match /signed up/i, email.subject
   end
 
   test "send invites" do
     email = UserMailer.invite_user(@invite).deliver_now
     assert_not ActionMailer::Base.deliveries.empty?
- 
+
     # Test the attrs of the sent email contain what we expect them to
     assert_equal ['suprooteam@gmail.com'], email.from
     assert_equal [@invite.email], email.to
-    assert_equal "You have been invited to #{@invite.board.name}'s Support Board!", email.subject
-    
+    assert_match /invited/i, email.subject
   end
 
   test "notify owners when task is completed" do
+    @user.accept_task(@t, "message")
     email = UserMailer.notify_owners_of_completion(@t).deliver_now
     assert_not ActionMailer::Base.deliveries.empty?
- 
+
     # Test the attrs of the sent email contain what we expect them to
     assert_equal ['suprooteam@gmail.com'], email.from
-    assert_equal @t.board.owners.map{ |o| User.find(o.user_id).email } , email.to
-    assert_equal "Your task on #{@t.board.name}'s board, #{@t.title}, has been completed!", email.subject
-     
+    assert_includes email.to, @t.board.owners.first.email
+    assert_match /completed/i, email.subject
   end
 
 
