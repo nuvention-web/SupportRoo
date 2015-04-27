@@ -1,0 +1,20 @@
+<%= image_tag("logo.png", size: "280x100", alt: "SupportRoo logo") %>
+
+<p>Dear <%= @owner.first_name %>,</p>
+
+<p>
+<%= @volunteer.first_name %> has just marked one of your tasks as complete on '<%= @task.board.name %>'! You can see the task and board <%= link_to "here", board_url(@task.board) %>.
+Here's a summary of the task that was completed:
+</p>
+
+<h3><%= @task.task_type.name %></h3>
+
+<ul>
+  <li>Start time: <%= @task.pretty_start_time %></li>
+  <li>Task description: <%= @task.description %></li>
+  <li>From board: <%= @task.board.name %></li>
+</ul>
+
+<p>If you need to contact <%= @volunteer.first_name %>, you can reach them at <%= @volunteer.email %></p>
+
+<p>Sincerely, the SupportRoo team</p>

@@ -1,49 +1,35 @@
-<%= render 'layouts/header' , locals: { board: @board } %>
-
-<div class="row">
-  <h3 class="text-center">
-    <%= @board.name %>'s Support Board
-  </h3>
-  <hr>
-  <h3>Tasks:</h3>
-
-  <% if @tasks.empty? %>
+<div class="board share-board">
+  <div class="row almost-full-width">
     <div class="row">
-      There don't seem to be any tasks here!
-    </div>
-  <% else %>
-
-    <% @tasks.each do |t| %>
-      <div class="columns twelve panel">
-      <% unless t.accepted? %>
-        <span class="label success right">This task is available!</span>
-      <% else %>
-        <span class="label success right">Someone has signed up for this task</span>
-      <% end %>
-
-      <h4><%= t.title %></h4>
-      <p><%= t.description %></p>
-      <% unless t.accepted? %>
-        <%= form_for(t, { url: accept_task_path(t.id), method: :post }) do |f| %>
-          <div class="row">
-            <div class="columns small-6">
-              <%= f.label :name %>
-              <%= f.text_field :supporter_name %>
-            </div>
-            <div class="columns small-6">
-              <%= f.label :email %>
-              <%= f.email_field :supporter_email %>
-            </div>
-          </div>
-          <%= f.label :your_message %>
-          <%= f.text_area :supporter_message %>
-          <%= f.submit "Sign up for this task!", class: "button radius center" %>
-        <% end %>
-      <% end %>
-
+      <div class="columns large-12 text-center">
       </div>
-    <% end %>
 
-  <% end %>
+      <div class="row">
+        <div class="columns small-4">
+          <h3>Available Tasks</h3>
+          <div class="row">
+            <% @unaccepted_tasks.each do |task| %>
+              <%= render partial: "tasks/available_task", locals: { task: task } %>
+            <% end %>
+          </div>
+        </div>
 
+        <div class="columns small-8">
+          <div class="calendar">
+            <%= render partial: "shared/calendar", locals: { tasks: @unaccepted_tasks } %>
+          </div>
+          <h3>Tasks you've signed up for:</h3>
+          <% if @user_tasks.empty? %>
+            <div>You don't currently have any tasks, you must be new. Check out the list on left to sign up!</div>
+          <% else %>
+            <div class="row">
+              <% @user_tasks.each do |task| %>
+                <%= render partial: "tasks/user_task", locals: { task: task } %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

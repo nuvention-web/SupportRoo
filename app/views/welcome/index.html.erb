@@ -1,0 +1,69 @@
+<div class="hero">
+  <div class="row full-width small-12 small-centered columns transbox">
+      <h4 class="text-center">Support from loved ones, near and afar.</h4>
+      <div class="text-center">
+        <%= link_to 'How it Works', '#how', class: 'button default'%>
+      </div>
+  </div>
+  <div id='infobox'>
+  </div>
+</div>
+
+<br>
+
+<div class="row small-10 small-centered columns">
+  <p>
+    When caring for yourself or a loved one, it’s easy to feel like your life is on pause. With SupportRoo, you can easily organize your daily needs and engage your inner circle near and afar to ensure you can always keep your life in play. SupportRoo helps you get control back over your life, and get the help you need.
+  </p>
+</div>
+
+<hr>
+<br>
+
+<div class="row small-10 small-centered columns" id="how">
+  <h4><b>How It Works:</b></h4><br><br>
+
+  <div class="row">
+    <div class="small-4 columns">
+      <%= image_tag "identify.png", size: '150', class: 'center' %>
+      <h5>Identify:</h5>
+      <p>Choose from common needs or customize your own.</p>
+    </div>
+    <div class="small-4 columns">
+      <%= image_tag "organize.png", size: '150', class: 'center' %>
+      <h5>Organize:</h5>
+      <p>Create a calendar to organize and visualize your tasks.</p>
+    </div>
+    <div class="small-4 columns">
+      <%= image_tag "engage.png", size: '150', class: 'center' %>
+      <h5>Engage:</h5>
+      <p>Connect with your network to distribute the load.</p>
+    </div>
+    <div class="row">
+      <div class="text-center columns small-6 small-offset-3">
+        <%= link_to "Get Started", new_user_registration_path, class: "button default expand", id: "get-started" %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr>
+<br>
+<div class="row small-10 small-centered columns about">
+  <h4><b>The team:</b></h4><br><br>
+
+  <div class="row">
+    <div class="medium-3 columns text-center"><%= image_tag "sami.jpg" %></br>
+      <p class="text-center"> Sami</p>
+    </div>
+    <div class="medium-3 columns text-center"><%= image_tag "alex.jpg" %></br>
+      <p class="text-center"> Alex</p>
+    </div>
+    <div class="medium-3 columns text-center"><%= image_tag "avy.png" %></br>
+      <p class="text-center"> Avy</p>
+    </div>
+    <div class="medium-3 columns text-center end"><%= image_tag "claire.jpg" %></br>
+      <p class="text-center"> Claire</p>
+    </div>
+  </div>
+</div>

@@ -18,6 +18,43 @@
  */
 
 .row.full-width {
-  width: 90%;
-  max-width: 90%; 
+  width: 100%;
+  max-width: 100%;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.top-bar-section li a:not(.button) {
+    background: white !important;
+}
+
+.top-bar-section li a:not(.button):hover {
+    background: white  !important;
+}
+
+.top-bar-section ul li.active > a {
+    background: white !important;
+}
+
+.top-bar-section ul li.active > a:hover {
+    background: gray !important;
+}
+
+.top-bar,
+.top-bar-section ul li > a,
+.top-bar-section li:not(.has-form) a:not(.button) {
+    background-color: #fff;
+    color: #000;
+}
+
+.top-bar-section ul li:hover:not(.has-form) > a {
+	color: gray
+}
+
+#drop li {
+	width: 200px
 }

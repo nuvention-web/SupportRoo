@@ -42,4 +42,7 @@ Rails.application.configure do
   # Preview emails on browser instead of sending
   config.action_mailer.delivery_method = :letter_opener
 
+  # Devise stuff
+   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
 end
