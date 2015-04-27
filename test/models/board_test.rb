@@ -33,11 +33,6 @@ class BoardTest < ActiveSupport::TestCase
     assert_not_empty board.supporters
   end
 
-  test "boards have owners" do
-    board = create(:board_with_owner)
-    assert board.owners.first.owner
-  end
-
   test "supporters can be added to a board" do
     board = create(:board)
     user = create(:user)
@@ -52,7 +47,7 @@ class BoardTest < ActiveSupport::TestCase
     board.add_owner(user)
 
     assert_includes board.users, user
-    assert board.owners.any? { |s| s.user_id == user.id }
+    assert board.owners.any? { |s| s.id == user.id }
   end
 
   test "correct board owner" do
@@ -75,19 +70,18 @@ class BoardTest < ActiveSupport::TestCase
     end
   end
 
-  # test "correct tasks accepted by a user" do
-  #   user1 = create(:user) #doesn't have tasks on board
-  #   user2 = create(:user) #has a task on board
-  #   user3 = create(:user) #has a task on a different board
+  test "owner emails do" do
+    board = create(:board)
+    n = (0..10).to_a.sample
+    n.times do |n|
+      board.add_owner(create(:user, email: "foo#{n}@bar.com"))
+    end
 
-  #   board1 = create(:board)
-  #   board2 = create(:board)
+    assert_equal n, board.owner_emails.length
+    board.owner_emails.each do |e|
+      assert_match "foo", e
+    end
+  end
 
-  #   user1.add_board(board1)
-  #   user2.add_board(board1)
-  #   user3.add_board(board2)
 
-  #   assert
-
-  # end
 end

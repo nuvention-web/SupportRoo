@@ -68,4 +68,10 @@ class User < ActiveRecord::Base
   def tasks_from_board(board)
     tasks.where({ board_id: board.id })
   end
+
+  def friendly_name
+    if self.first_name && self.last_name
+      "#{self.first_name} #{self.last_name[0]}."
+    end
+  end
 end
