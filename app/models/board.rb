@@ -36,6 +36,10 @@ class Board < ActiveRecord::Base
     supporters.any? { |s| s.user_id == user.id && s.owner }
   end
 
+  def creator
+    owners.first
+  end
+
   def unaccepted_tasks
     tasks.select { |t| !t.accepted? }
   end
