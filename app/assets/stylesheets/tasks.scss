@@ -9,17 +9,9 @@
   background-color: $white;
   padding: 2%;
 
-
   .top-row {
     display: inline-block;
     width: 100%;
-
-    .task-type-name {
-      color: $orange-primary;
-      text-transform: uppercase;
-      font-size: 1.7rem;
-      float: left;
-    }
 
     .edit-buttons {
       float: right;
@@ -27,17 +19,24 @@
     }
   }
 
-  .primary-info {
-    width: 100%;
-    display: inline-block;
-
-    .start-time {
-      float: left;
-    }
-
-    .acceptance-info {
-      float: right;
-    }
-  }
 }
 
+.task-type-name {
+  color: $orange-primary;
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  float: left;
+}
+
+.primary-info {
+  width: 100%;
+  display: inline-block;
+
+  .start-time {
+    float: left;
+  }
+
+  .acceptance-info {
+    float: right;
+  }
+}

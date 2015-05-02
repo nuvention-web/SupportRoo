@@ -79,4 +79,7 @@ Rails.application.configure do
   
   # Send emails via smtp
   config.action_mailer.delivery_method = :smtp
+
+  # Devise stuff
+  config.action_mailer.default_url_options = { host: 'supportroo.com'}
 end

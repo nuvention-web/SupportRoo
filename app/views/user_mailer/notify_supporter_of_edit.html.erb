@@ -1,10 +1,19 @@
-<h1>Hi, <%= @task.supporter_name %></h1>
-<h2>A task you signed up for on <%= @task.board.name %>'s board was edited.</h2>
-<p>This is what the task looks like now:</p> 
+<%= image_tag("logo.png", size: "280x100", alt: "SupportRoo logo") %>
+
+<p>Dear <%= @task.user.first_name %>,</p>
+
+<p>We wanted to let you know that a task that you signed up for on
+<%= @owner.first_name %>'s support board has been editted.  The updated details of
+the task are below:</p>
+
+<h3><%= @task.task_type.name %></h3>
+
 <ul>
-  <li>Task Title: <%= @task.title %> </li>
-  <li>Task Description: <%= @task.description %> </li>
-  <li>Your comment: <%= @task.supporter_message %> </li>
+  <li>Start time: <%= @task.pretty_start_time %></li>
+  <li>Task description: <%= @task.description %></li>
+  <li>From board: <%= @task.board.name %></li>
 </ul>
 
-<p>Please contact <%= @task.board.name %> directly if you can no longer help them with the task.</p>
+<p>Please the let board owner know if you can no longer complete this task!</p>
+
+<p>Sincerely, the SupportRoo team</p>
