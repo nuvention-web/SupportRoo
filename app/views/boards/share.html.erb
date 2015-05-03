@@ -7,6 +7,9 @@
       <div class="row">
         <div class="columns small-4">
           <h3>Available Tasks</h3>
+          <% if @unaccepted_tasks.empty? %>
+            <em>All tasks on this board have been signed up for!</em>
+          <% end %>
           <div class="row">
             <% @unaccepted_tasks.each do |task| %>
               <%= render partial: "tasks/available_task", locals: { task: task } %>
