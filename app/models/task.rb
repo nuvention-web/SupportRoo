@@ -28,7 +28,7 @@ class Task < ActiveRecord::Base
   extend SimpleCalendar
   has_calendar attribute: :start_time
 
-  default_scope { order('start_time ASC') }
+  default_scope { order('"pinned?" ASC, start_time ASC') }
   scope :upcoming, -> { where("start_time > ?", Time.now).order('start_time ASC') }
   scope :not_taken, -> { where("accepted is null").order('start_time ASC') }
 
@@ -39,5 +39,13 @@ class Task < ActiveRecord::Base
 
   def complete!
     update_attributes(completed?: true)
+  end
+
+  def pin!
+    update_attributes(pinned?: true)
+  end
+
+  def unpin!
+    update_attributes(pinned?: false)
   end
 end
