@@ -5,6 +5,9 @@
   <a href="#" class="button default tiny right" data-reveal-id="sign-up-modal-<%= task.id %>">
     More info
   </a>
+  <% if task.pinned? %>
+    <div class="label right success">Pinned!</div>
+  <% end %>
 
   <div class="primary-info">
     <span class="start-time">

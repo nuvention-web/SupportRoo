@@ -53,11 +53,10 @@ class TaskTest < ActiveSupport::TestCase
   end
 
   test "pinned tasks show up first" do
-    user = create(:user)
-    5.times { user.tasks << create(:task) }
+    board = create(:board)
+    3.times { board.tasks << create(:task, pinned?: false) }
+    board.tasks.last.pin!
 
-    user.tasks.last.pin!
-
-    assert user.tasks.first.pinned?, "Pinned Task should show up first"
+    assert board.tasks.first.pinned?, "Pinned Task should show up first"
   end
 end
