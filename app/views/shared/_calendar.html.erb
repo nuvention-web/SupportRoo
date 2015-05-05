@@ -3,26 +3,64 @@
   <a class="close-reveal-modal">&#215;</a>
 </div>
 
-<%= month_calendar table: {class: "columns large-12"},
-    thead: true,
-    tr: {class: "calendar-row"},
-    day_names: "date.day_names",
-    events: tasks do |date, tasks|  %>
-
-<span class="date"><%= date.day %></span>
-
-<ul>
-  <% tasks.each do |task| %>
-  <div class="event">
-    <li class="<%= 'accepted' if task.accepted? %>">
-      <span data-tooltip aria-haspopup="true" class="has-tip"
-      title="<%= "Description: #{task.description}
-      </br> Start Time: #{task.start_time.strftime("%B %d, %I:%M%p")}
-    " %>"
-    >
-    <%= link_to "#{task.title}, #{task.start_time.strftime("%I%p")}", '#' %></span>
-  </li>
-</div>
-<% end %>
+<% weekly = params[:active_div]=='week-cal' %>
+<ul class="tabs right" data-tab>
+  <li class="tab-title <%= "#{'active' unless weekly}"%>"><a href="#month-cal">Monthly</a></li>
+  <li class="tab-title <%= "#{'active' if weekly}"%>"><a href="#week-cal">Weekly</a></li>
 </ul>
-<% end %>
+</br>
+<div class="tabs-content">
+  <div class= "content <%= "#{'active' unless weekly}"%>" id='month-cal'>
+    <%= month_calendar table: {class: "columns large-12"},
+        thead: true,
+        tr: {class: "calendar-row"},
+        day_names: "date.day_names",
+        events: tasks do |date, tasks|  %>
+
+      <span class="date"><%= date.day %></span>
+
+      <ul>
+        <% tasks.each do |task| %>
+        <div class="event">
+          <li class="<%= 'accepted' if task.accepted? %>">
+            <span data-tooltip aria-haspopup="true" class="has-tip"
+            title="<%= "Description: #{task.description}
+                        </br> Start Time: #{task.start_time.strftime("%B %d, %I:%M%p")}
+                  " %>">
+            <%= link_to "#{task.title}, #{task.start_time.strftime("%I%p")}", '#' %></span>
+          </li>
+        </div>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+  <div class= "content <%= "#{'active' if weekly}"%>" id="week-cal">
+      <%= week_calendar number_of_weeks: 1, 
+      table: {class: "columns large-12"},
+      tr: {class: "calendar-row"},
+      td: {class: "long day"},
+      day_names: "date.day_names",
+      events: tasks,
+      previous_link: ->(param, date_range) { link_to raw("&laquo;"), {start_date: date_range.first - 1.week, active_div:'week-cal'} },
+      next_link: ->(param, date_range) { link_to raw("&raquo;"), {start_date: date_range.last + 1.week, active_div:'week-cal'} },
+      header: ->(start_date) { content_tag :span, "#{start_date.strftime('%B %Y')}", 
+                              class: "calendar-header" } do |date, tasks|  %>
+
+    <span class="date"><%= date.day %></span>
+
+      <ul>
+        <% tasks.each do |task| %>
+        <div class="event">
+          <li class="<%= 'accepted' if task.accepted? %>">
+            <span data-tooltip aria-haspopup="true" class="has-tip"
+            title="<%= "Description: #{task.description}
+                        </br> Start Time: #{task.start_time.strftime("%B %d, %I:%M%p")}
+                  " %>">
+            <%= link_to "#{task.title}, #{task.start_time.strftime("%I%p")}", '#' %></span>
+          </li>
+        </div>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>
