@@ -23,10 +23,6 @@
 require 'test_helper'
 
 class TaskTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
-  #
   test "tasks are accepted if they have a user" do
     accepted_task = create(:task)
     unaccepted_task = create(:task)
@@ -44,5 +40,23 @@ class TaskTest < ActiveSupport::TestCase
 
     t.complete!
     assert t.completed?
+  end
+
+  test "tasks can be pinned and unpinned" do
+    t = create(:task)
+    assert_not t.pinned?
+
+    t.pin!
+    assert t.pinned?
+    t.unpin!
+    assert_not t.pinned?
+  end
+
+  test "pinned tasks show up first" do
+    board = create(:board)
+    3.times { board.tasks << create(:task) }
+    board.tasks.last.pin!
+
+    assert board.tasks.first.pinned?, "Pinned Task should show up first"
   end
 end
