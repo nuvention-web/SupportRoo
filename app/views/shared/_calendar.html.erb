@@ -3,18 +3,14 @@
   <a class="close-reveal-modal">&#215;</a>
 </div>
 
-<!-- <ul class="stack-for-small button-group right">
-  <li><a href="#" class="button tiny">Weekly</a></li>
-  <li><a href="#" class="button tiny">Monthly</a></li>
-</ul> -->
-
+<% weekly = params[:active_div]=='week-cal' %>
 <ul class="tabs right" data-tab>
-  <li class="tab-title active"><a href="#month-cal">Monthly</a></li>
-  <li class="tab-title"><a href="#week-cal">Weekly</a></li>
+  <li class="tab-title <%= "#{'active' unless weekly}"%>"><a href="#month-cal">Monthly</a></li>
+  <li class="tab-title <%= "#{'active' if weekly}"%>"><a href="#week-cal">Weekly</a></li>
 </ul>
 </br>
 <div class="tabs-content">
-  <div class= "content <%= "#{'active' unless params[:active_div]=='week-cal'}"%>" id='month-cal'>
+  <div class= "content <%= "#{'active' unless weekly}"%>" id='month-cal'>
     <%= month_calendar table: {class: "columns large-12"},
         thead: true,
         tr: {class: "calendar-row"},
@@ -38,7 +34,7 @@
       </ul>
     <% end %>
   </div>
-  <div class= "content <%= "#{'active' if params[:active_div]=='week-cal'}"%>" id="week-cal">
+  <div class= "content <%= "#{'active' if weekly}"%>" id="week-cal">
       <%= week_calendar number_of_weeks: 1, 
       table: {class: "columns large-12"},
       tr: {class: "calendar-row"},
