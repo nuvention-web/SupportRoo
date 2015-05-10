@@ -17,6 +17,7 @@
 #  updated_at             :datetime
 #  first_name             :string
 #  last_name              :string
+#  phone_number           :string
 #
 # Indexes
 #
@@ -30,6 +31,8 @@ class User < ActiveRecord::Base
   has_many :supporters
   has_many :tasks
   has_many :boards, through: :supporters
+  before_validation { self.phone_number = sanitize_number(self.phone_number) }
+  validates_format_of :phone_number, with: /\+1\d{10}/, if: -> { self.phone_number }
 
   before_save { |user| user.email.downcase! }
 
@@ -73,5 +76,12 @@ class User < ActiveRecord::Base
     if self.first_name && self.last_name
       "#{self.first_name} #{self.last_name[0]}."
     end
+  end
+
+  def sanitize_number(number)
+    return unless number
+    number.gsub!(/[^\d\+]/,'')
+    number = "+1" + number if number[0..1] != "+1"
+    number
   end
 end

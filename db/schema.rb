@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503215337) do
+ActiveRecord::Schema.define(version: 20150510193647) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,15 +67,17 @@ ActiveRecord::Schema.define(version: 20150503215337) do
     t.integer  "board_id"
     t.boolean  "shared"
     t.boolean  "accepted"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "supporter_email"
     t.string   "supporter_message"
     t.string   "supporter_name"
     t.string   "title"
     t.integer  "user_id"
-    t.boolean  "completed?",        default: false
-    t.boolean  "pinned?",           default: false
+    t.boolean  "completed?",            default: false
+    t.boolean  "pinned?",               default: false
+    t.boolean  "completion_check",      default: false
+    t.datetime "completion_check_time"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,6 +95,7 @@ ActiveRecord::Schema.define(version: 20150503215337) do
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "phone_number"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

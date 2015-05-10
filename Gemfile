@@ -17,6 +17,10 @@ gem 'devise'
 
 gem 'foundation-rails',     '5.4.5'
 gem 'font-awesome-rails',   '4.3.0'
+gem 'jquery-ui-rails'
+
+gem 'twilio-ruby'
+
 
 gem 'simplecov', :require => false, :group => :test
 
@@ -41,3 +45,4 @@ end
 group :production do
   gem 'rails_12factor', '0.0.2'
 end
+

@@ -22,4 +22,6 @@ Rails.application.routes.draw do
     post 'pin', on: :member
   end
 
+  get 'twilio' => "welcome#twilio"
+
 end

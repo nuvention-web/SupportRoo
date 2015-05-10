@@ -7,11 +7,20 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
+<<<<<<< HEAD
       <%= f.input :first_name, required: true, placeholder: 'John', autofocus: true %>
       <%= f.input :last_name, required: true, placeholder: 'Appleseed', autofocus: true %>
       <%= f.input :email, required: true, input_html: { value: session[:email] }, placeholder: 'joe@example.com', autofocus: true %>
       <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable), placeholder: '*******' %>
       <%= f.input :password_confirmation, required: true, placeholder: '*******' %>
+=======
+      <%= f.input :first_name, required: true, autofocus: true %>
+      <%= f.input :last_name, required: true, autofocus: true %>
+      <%= f.input :email, required: true, autofocus: true %>
+      <%= f.input :phone_number, label: "Phone number (enables text message updates and confirmations)", required: false, autofocus: true %>
+      <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
+      <%= f.input :password_confirmation, required: true %>
+>>>>>>> initial completion check stuff
     </div>
 
     <div class="form-actions">

@@ -34,6 +34,19 @@
       </div>
     </div>
 
+    <div class="row">
+      <%= f.input(:completion_check, as: :boolean, label: "Check that this task was completed via SMS?") %>
+      <div class="select-date-wrapper">
+        <%= f.label("Choose time for completion check") %>
+        <%= f.datetime_select :completion_check_time, options = {
+          order: [:month, :day, :year],
+          discard_year: true,
+          ampm: true,
+          minute_step:15
+        } %>
+      </div>
+    </div>
+
     <!-- END TIME? -->
     <%= f.hidden_field :board_id, { value: b.id } %>
     <%= f.submit("Add task", class: "button center radius add-task") %>
