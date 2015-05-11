@@ -12,8 +12,8 @@
 #
 
 class Message < ActiveRecord::Base
-  has_one :user
-  has_one :task
+  belongs_to :user
+  belongs_to :task
 
   def sent?
     sent_by_us

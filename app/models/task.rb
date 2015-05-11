@@ -58,7 +58,7 @@ class Task < ActiveRecord::Base
   end
 
   def self.with_outstanding_completion_checks
-    where(completion_check: true).
+    where(completion_check: true, completed?: false).
     where("completion_check_time < ?", DateTime.now)
   end
 end
