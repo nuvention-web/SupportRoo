@@ -46,7 +46,18 @@ class TasksController < ApplicationController
     if @task.accepted?
       UserMailer.notify_supporter_of_edit(@task).deliver!
     end
+  end
 
+  def pin
+    task = Task.find(params[:id])
+
+    if task.pinned?
+      task.unpin!
+    else
+      task.pin!
+    end
+
+    redirect_to task.board
   end
 
   private
@@ -61,7 +72,8 @@ class TasksController < ApplicationController
       :supporter_message,
       :supporter_name,
       :start_time,
-      :end_time
+      :end_time,
+      :pinned?
     )
   end
 end

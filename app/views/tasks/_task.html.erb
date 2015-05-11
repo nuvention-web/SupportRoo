@@ -15,6 +15,15 @@
       <li>
         <%= link_to fa_icon("times"), task_path(task.id), method: "delete", class: "button tiny right alert radius small" %>
       </li>
+      <% if task.pinned? %>
+        <li>
+          <%= link_to fa_icon("minus"), pin_task_path(task.id), method: "post", class: "button tiny right default radius small" %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to fa_icon("thumb-tack"), pin_task_path(task.id), method: "post", class: "button tiny right default radius small" %>
+        </li>
+      <% end %>
     </ul>
   </div>
 

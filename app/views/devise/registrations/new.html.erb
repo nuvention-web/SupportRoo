@@ -7,11 +7,11 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :first_name, required: true, autofocus: true %>
-      <%= f.input :last_name, required: true, autofocus: true %>
-      <%= f.input :email, required: true, autofocus: true %>
-      <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable) %>
-      <%= f.input :password_confirmation, required: true %>
+      <%= f.input :first_name, required: true, placeholder: 'John', autofocus: true %>
+      <%= f.input :last_name, required: true, placeholder: 'Appleseed', autofocus: true %>
+      <%= f.input :email, required: true, input_html: { value: session[:email] }, placeholder: 'joe@example.com', autofocus: true %>
+      <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable), placeholder: '*******' %>
+      <%= f.input :password_confirmation, required: true, placeholder: '*******' %>
     </div>
 
     <div class="form-actions">
@@ -19,8 +19,7 @@
     </div>
     <% end %>
 
-    <p>Already have an account? Log in <%= link_to 'here', new_user_session_path %></p>
+    <p>Already have an account? <%= link_to 'Log in here', new_user_session_path %></p>
 
-    <%= render "devise/shared/links" %>
   </div>
 </div>

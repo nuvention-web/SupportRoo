@@ -34,4 +34,18 @@ class TasksControllerTest < ActionController::TestCase
       assert_not_empty flash[:notice]
     end
   end
+
+  test "board owners can pin tasks to the top of their boards" do
+    assert_not @task.pinned?
+    post :pin, { id: @task.id.to_s }
+    assert @task.reload.pinned?, "task should be pinned"
+    assert_redirected_to board_path(@task.board), "redirected"
+  end
+
+  test "clicking pin on a pinned task will unpin it" do
+    @task.pin!
+    post :pin, { id: @task.id.to_s }
+    assert_not @task.reload.pinned?, "Task should have been unpinned"
+    assert_redirected_to board_path(@task.board), "redirected"
+  end
 end
