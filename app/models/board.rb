@@ -33,7 +33,7 @@ class Board < ActiveRecord::Base
   end
 
   def non_owners
-    supporters.where( { owner: false }).map(&:user)
+    supporters.where( { owner: false } ).map(&:user)
   end
 
   def owned_by?(user)

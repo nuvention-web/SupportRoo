@@ -95,7 +95,7 @@ class BoardsControllerTest < ActionController::TestCase
     end
 
     get :supporters, id: board.id.to_s
-    assert_select "li.supporter", count: 3
+    assert_select "li.supporter", count: board.non_owners.count
   end
 
 end
