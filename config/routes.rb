@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :boards, only: [:new, :create, :show, :destroy] do
     get 'share', on: :member
+    get 'supporters', on: :member
     resource :invites, only: [:new, :create] do
       get 'claim'
     end
