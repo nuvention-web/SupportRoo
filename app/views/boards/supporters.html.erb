@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="columns small-10 small-centered">
+  <h2>Supporters of <%= @board.name %></h2>
+  <ul>
+    <% @board.non_owners.each do |user| %>
+      <li class="supporter">
+      <%= user.first_name %> (<%= link_to "#{user.email})", "mailto:#{user.email}" %>
+      </li>
+    <% end %>
+  </ul>
+  </div>
+</div>

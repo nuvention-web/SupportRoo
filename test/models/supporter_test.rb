@@ -7,7 +7,7 @@
 #  updated_at :datetime         not null
 #  board_id   :integer
 #  user_id    :integer
-#  owner      :boolean
+#  owner      :boolean          default("false")
 #
 
 require 'test_helper'
