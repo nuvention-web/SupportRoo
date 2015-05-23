@@ -5,6 +5,10 @@ class BoardsController < ApplicationController
     end
   end
 
+  def supporters
+    @board = Board.find(params[:id])
+  end
+
   def create
     @board = Board.new(board_params)
     if @board.save

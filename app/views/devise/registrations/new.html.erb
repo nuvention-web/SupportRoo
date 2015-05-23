@@ -10,6 +10,8 @@
       <%= f.input :first_name, required: true, placeholder: 'John', autofocus: true %>
       <%= f.input :last_name, required: true, placeholder: 'Appleseed', autofocus: true %>
       <%= f.input :email, required: true, input_html: { value: session[:email] }, placeholder: 'joe@example.com', autofocus: true %>
+      <%= f.input :phone_number, label: "Phone number (enables text message updates and confirmations)", required: false, autofocus: true, placeholder: '(847) 123-4567' %>
+
       <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @validatable), placeholder: '*******' %>
       <%= f.input :password_confirmation, required: true, placeholder: '*******' %>
     </div>

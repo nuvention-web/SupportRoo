@@ -26,3 +26,9 @@ $(".calendar table").prepend(
   </thead>
   """
 )
+
+$(->
+  $('.datepicker-field').each(->
+    $(this).datepicker()
+  )
+)

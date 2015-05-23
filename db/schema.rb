@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150503215337) do
+ActiveRecord::Schema.define(version: 20150517201338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -35,6 +35,15 @@ ActiveRecord::Schema.define(version: 20150503215337) do
 
   add_index "invites", ["code"], name: "index_invites_on_code", using: :btree
 
+  create_table "messages", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "task_id"
+    t.boolean  "sent_by_us"
+    t.text     "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "signups", force: :cascade do |t|
     t.string   "email"
     t.datetime "created_at", null: false
@@ -44,11 +53,11 @@ ActiveRecord::Schema.define(version: 20150503215337) do
   end
 
   create_table "supporters", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
     t.integer  "board_id"
     t.integer  "user_id"
-    t.boolean  "owner"
+    t.boolean  "owner",      default: false
   end
 
   create_table "task_types", force: :cascade do |t|
@@ -67,15 +76,17 @@ ActiveRecord::Schema.define(version: 20150503215337) do
     t.integer  "board_id"
     t.boolean  "shared"
     t.boolean  "accepted"
-    t.datetime "created_at",                        null: false
-    t.datetime "updated_at",                        null: false
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.string   "supporter_email"
     t.string   "supporter_message"
     t.string   "supporter_name"
     t.string   "title"
     t.integer  "user_id"
-    t.boolean  "completed?",        default: false
-    t.boolean  "pinned?",           default: false
+    t.boolean  "completed?",            default: false
+    t.boolean  "pinned?",               default: false
+    t.boolean  "completion_check",      default: false
+    t.datetime "completion_check_time"
   end
 
   create_table "users", force: :cascade do |t|
@@ -93,6 +104,7 @@ ActiveRecord::Schema.define(version: 20150503215337) do
     t.datetime "updated_at"
     t.string   "first_name"
     t.string   "last_name"
+    t.string   "phone_number"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

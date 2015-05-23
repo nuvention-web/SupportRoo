@@ -33,20 +33,9 @@ $light-grey: #F7F3EB;
 }
 
 .share-link-bar {
-  height: 50px;
-  display: inline-block;
   width: 100%;
-  a > i {
-    color: black;
-    font-size: 1.8rem;
-    vertical-align: middle;
-  }
-
-  input {
-    margin-top: 6px;
-    width: 20% !important;
-    display: inline !important;
-    border-radius: 4px;
+  .button {
+    margin: 0.5%;
   }
 }
 
@@ -81,5 +70,34 @@ $light-grey: #F7F3EB;
     select:last-of-type{
       width: 15%;
     }
+  }
+}
+
+.boards {
+  padding-top: 10px;
+  background-color: $light-grey;
+  .add-board {
+    font-size: 1.1rem;
+    > i { padding-right: 5%; }
+  }
+}
+.board-preview {
+  min-height: 150px;
+  background-color: white;
+  margin: 10px 10px 0 0;
+  i { color: red; }
+
+  @include box-shadow();
+
+  .description {
+    color: grey;
+    padding-top: 3%;
+  }
+  .board-name {
+    font-size: 1.1rem;
+    color: $orange-primary;
+  }
+  .board-list {
+    margin-left: 20px;
   }
 }
