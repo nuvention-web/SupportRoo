@@ -15,13 +15,13 @@ $(".calendar table").prepend(
   """
   <thead>
     <tr>
-      <td>Sunday</td>
       <td>Monday</td>
       <td>Tuesday</td>
       <td>Wednesday</td>
       <td>Thursday</td>
       <td>Friday</td>
       <td>Saturday</td>
+      <td>Sunday</td>
     </tr>
   </thead>
   """

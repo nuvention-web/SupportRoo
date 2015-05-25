@@ -17,8 +17,8 @@
 #  supporter_name        :string
 #  title                 :string
 #  user_id               :integer
-#  completed?            :boolean          default("false")
-#  pinned?               :boolean          default("false")
+#  completed             :boolean          default("false")
+#  pinned                :boolean          default("false")
 #  completion_check      :boolean          default("false")
 #  completion_check_time :datetime
 #

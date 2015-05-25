@@ -73,7 +73,8 @@ class TasksController < ApplicationController
       :supporter_name,
       :start_time,
       :end_time,
-      :pinned?,
+      :pinned,
+      :completed,
       :completion_check,
       :completion_check_time
     )

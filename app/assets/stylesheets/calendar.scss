@@ -27,7 +27,7 @@
     }
   }
   .day.today {
-    background: rgba(139,237,146,0.25);
+    background: $orange-secondary;
   }
 
   .day.prev-month {
@@ -39,6 +39,7 @@
 
 
   .calendar-row {
+    background: $white;
   }
 
   .event {
