@@ -1,3 +1,4 @@
+desc "This task is called by the Heroku scheduler add-on"
 task :text_completion_checks => :environment do
   tasks_to_check = Task.with_outstanding_completion_checks
   tasks_to_check.each do |task|
