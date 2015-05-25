@@ -32,8 +32,8 @@ class User < ActiveRecord::Base
   has_many :tasks
   has_many :messages
   has_many :boards, through: :supporters
-  before_validation { self.phone_number = sanitize_number(self.phone_number) }
-  validates_format_of :phone_number, with: /\+1\d{10}/, if: -> { self.phone_number }
+  before_validation { self.phone_number = sanitize_number(self.phone_number) if !self.phone_number.blank? }
+  validates_format_of :phone_number, with: /\+1\d{10}/, if: -> { !self.phone_number.blank? }
 
   before_save { |user| user.email.downcase! }
 
