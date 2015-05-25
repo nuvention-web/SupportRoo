@@ -1,12 +1,12 @@
 <div class="boards">
   <div class="row small-12 small-centered columns">
-    <% unless @own_boards.empty? %>
+    <%= link_to new_board_path do %>
+      <span class="label round success right add-board"><%= fa_icon("plus") %>Create a new board!</span>
+    <% end %>
 
-      <%= link_to new_board_path do %>
-        <span class="label round success right add-board"><%= fa_icon("plus") %>Create a new board!</span>
-      <% end %>
+    <h3>Boards you own</h3>
+    <% if !@own_boards.empty? %>
 
-      <h3>Boards you own</h3>
         <ul class="small-block-grid-4 board-list">
           <% @own_boards.each do |b| %>
             <li class="board-preview">
@@ -25,6 +25,8 @@
             </li>
           <% end %>
         </ul>
+    <% else %>
+      <p>You are not currently the owner of any boards, create a board to get started!</p>
 
     <% end %>
 
