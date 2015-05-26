@@ -14,6 +14,7 @@ class MessagesController < ApplicationController
         task.complete!
       elsif @body.include? "no"
         text = "We're sorry to hear that. We'll let #{task.board.creator.friendly_name} know!"
+        task.update_attributes(completion_check: false)
       else
         text = "We didn't quite catch that. Please respond with just 'Yes' or 'No'."
       end
