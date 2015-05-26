@@ -28,7 +28,12 @@ $(".calendar table").prepend(
 )
 
 $(->
-  $('.datepicker-field').each(->
+  $('.date-picker').each(->
     $(this).datepicker()
+  )
+)
+$(->
+  $('.time-picker').each(->
+    $(this).timepicker()
   )
 )

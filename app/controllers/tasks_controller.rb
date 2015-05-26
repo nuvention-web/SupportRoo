@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
   def create
+    byebug
     Task.create(task_params)
     redirect_to board_path(params[:task][:board_id])
   end
@@ -72,11 +73,15 @@ class TasksController < ApplicationController
       :supporter_message,
       :supporter_name,
       :start_time,
+      :start_date,
       :end_time,
       :pinned,
       :completed,
       :completion_check,
       :completion_check_time
     )
+  end
+
+  def parse_time(date, time)
   end
 end

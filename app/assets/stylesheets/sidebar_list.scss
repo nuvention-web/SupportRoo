@@ -9,3 +9,24 @@
     border-bottom: 3px solid $dark-grey;
   }
 }
+
+.new-task-form {
+  form {
+    .input {
+      select, input, textarea {
+        margin-bottom: 1px;
+        border: none;
+      }
+    }
+    .input.task_start_time {
+      margin: 0;
+      display: inline-block;
+      width: 49%;
+    }
+    .input.task_completion_check_time {
+      margin: 0;
+      display: inline-block;
+      width: 49%;
+    }
+  }
+}
