@@ -1,7 +1,6 @@
 class TasksController < ApplicationController
   def create
-    byebug
-    Task.create(task_params)
+    task = Task.create(params_with_datetimes(task_params))
     redirect_to board_path(params[:task][:board_id])
   end
 
@@ -82,6 +81,17 @@ class TasksController < ApplicationController
     )
   end
 
-  def parse_time(date, time)
+  def create_date_time(date, time)
+    DateTime.strptime("#{date} #{time}", "%m/%d/%Y %l:%M%p")
+  end
+
+  def params_with_datetimes(prms)
+    prms[:start_time] = create_date_time(prms[:start_date], prms[:start_time])
+    prms.delete(:start_date)
+    if params[:completion_check]
+      prms[:completion_check_time] = create_date_time(prms[:completion_check_date], prms[:completion_check_time])
+      prms.delete(:completion_check_date)
+    end
+    prms
   end
 end
