@@ -1,10 +1,10 @@
-<h4>Add a new task:</h4>
+<h4>Add a task:</h4>
 <dl class="task-type-buttons accordion" id="task-add-sidebar" data-accordion>
   <% categories.each do |cat| %>
     <div>
       <a href="#" data-reveal-id="<%= "#{cat}-modal" %>">
         <div class="task-categories">
-          <%= cat.titleize %>
+          <i class='<%=t cat%>'><%= ' ' + cat.titleize %></i>
         </div>
       </a>
 
