@@ -1,5 +1,5 @@
 <div id="GenModal" class="reveal-modal" data-reveal>
-  <%= render "tasks/form", b: @board, t: nil %>
+  <%= render "tasks/form", category: nil, types: TaskType.all %>
   <a class="close-reveal-modal">&#215;</a>
 </div>
 
