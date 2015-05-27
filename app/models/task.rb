@@ -28,6 +28,8 @@ class Task < ActiveRecord::Base
   belongs_to :board
   belongs_to :user
   validates_presence_of :completion_check_time, if: -> { self.completion_check }
+  validates_presence_of :start_time
+  validates_presence_of :task_type_id
 
   extend SimpleCalendar
   has_calendar attribute: :start_time

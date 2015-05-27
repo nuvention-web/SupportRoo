@@ -62,7 +62,7 @@ class BoardTest < ActiveSupport::TestCase
     assert board.owned_by?(owner), 'Board should be owned by owner'
   end
 
-  test "board has has accepted and unaccepted tasks" do
+  test "board has accepted and unaccepted tasks" do
     board = create(:board_with_tasks)
 
     assert_difference -> { board.unaccepted_tasks.count }, -1 do
@@ -82,6 +82,4 @@ class BoardTest < ActiveSupport::TestCase
       assert_match "foo", e
     end
   end
-
-
 end

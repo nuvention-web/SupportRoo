@@ -1,7 +1,13 @@
 class TasksController < ApplicationController
   def create
-    task = Task.create(params_with_datetimes(task_params))
-    redirect_to board_path(params[:task][:board_id])
+    task = Task.new(params_with_datetimes(task_params))
+    if task.valid?
+      task.save
+      flash[:notice] = "Task created successfully"
+    else
+      flash[:error] = "There was an error creating your task"
+    end
+    redirect_to board_path(task_params[:board_id])
   end
 
   def destroy
@@ -77,7 +83,8 @@ class TasksController < ApplicationController
       :pinned,
       :completed,
       :completion_check,
-      :completion_check_time
+      :completion_check_time,
+      :completion_check_date
     )
   end
 
@@ -86,10 +93,15 @@ class TasksController < ApplicationController
   end
 
   def params_with_datetimes(prms)
-    prms[:start_time] = create_date_time(prms[:start_date], prms[:start_time])
+    unless prms[:start_date].blank? || prms[:start_time].blank?
+      prms[:start_time] = create_date_time(prms[:start_date], prms[:start_time])
+    end
     prms.delete(:start_date)
-    if params[:completion_check]
-      prms[:completion_check_time] = create_date_time(prms[:completion_check_date], prms[:completion_check_time])
+
+    if prms[:completion_check]
+      unless prms[:completion_check_time].blank? || prms[:completion_check_date].blank?
+        prms[:completion_check_time] = create_date_time(prms[:completion_check_date], prms[:completion_check_time])
+      end
       prms.delete(:completion_check_date)
     end
     prms
