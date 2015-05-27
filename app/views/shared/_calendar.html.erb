@@ -1,28 +1,21 @@
-<div id="GenModal" class="reveal-modal" data-reveal>
-  <%= render "tasks/form", category: nil, types: TaskType.all %>
-  <a class="close-reveal-modal">&#215;</a>
-</div>
-
-<%= month_calendar table: {class: "columns large-12"},
+<%= month_calendar table: {class: "columns large-12", id: "calendar-body"},
     thead: true,
     tr: {class: "calendar-row"},
     day_names: "date.day_names",
     events: tasks do |date, tasks|  %>
 
-<span class="date"><%= date.day %></span>
+<span class="date center"><%= date.day %></span>
 
 <ul>
   <% tasks.each do |task| %>
-  <div class="event">
-    <li class="<%= 'accepted' if task.accepted? %>">
+    <div class="event <%= 'accepted' if task.accepted? %>">
       <span data-tooltip aria-haspopup="true" class="has-tip"
       title="<%= "Description: #{task.description}
       </br> Start Time: #{task.start_time.strftime("%B %d, %I:%M%p")}
-    " %>"
-    >
-    <%= link_to "#{task.title}, #{task.start_time.strftime("%I%p")}", '#' %></span>
-  </li>
-</div>
-<% end %>
+      " %>"
+      >
+      <%= link_to "#{task.title}, #{task.start_time.strftime("%I%p")}", '#' %></span>
+  </div>
+  <% end %>
 </ul>
 <% end %>
