@@ -34,6 +34,16 @@ $(->
 )
 $(->
   $('.time-picker').each(->
-    $(this).timepicker()
+    $(this).timepicker({ 'scrollDefault': 'now', 'step': 15 })
+  )
+)
+
+$(->
+  $(".task_completion_check").change(->
+    fields = $(this).parent().find(".completion-check-fields-wrapper")
+    if (fields.is(':visible'))
+      fields.slideUp(200)
+    else
+      fields.slideDown(200)
   )
 )

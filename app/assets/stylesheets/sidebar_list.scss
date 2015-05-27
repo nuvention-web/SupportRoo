@@ -18,10 +18,32 @@
         border: none;
       }
     }
-    .input.task-start-date {
+    .input.task_start_date {
       margin: 0;
       display: inline-block;
-      width: 48%;
+      width: 49%;
+    }
+    .input.task_start_time {
+      margin: 0;
+      display: inline-block;
+      width: 49%;
+    }
+    .input.task_completion_check_date {
+      margin: 0;
+      display: inline-block;
+      width: 49%;
+    }
+    .input.task_completion_check_time {
+      margin: 0;
+      display: inline-block;
+      width: 49%;
+    }
+    .completion-check-fields-wrapper {
+      display: none;
+      margin-bottom: 30px
+    }
+    .task_completion_check {
+      margin: 10px 0 20px 0;
     }
   }
 }

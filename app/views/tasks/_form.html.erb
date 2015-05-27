@@ -5,7 +5,8 @@
     <%= f.input :task_type_id,
       collection: types,
       prompt: "Choose #{category} task",
-      label: false %>
+      label: false,
+      required: true %>
 
     <%= f.input :title, placeholder: "Title", label: false %>
     <%= f.input :description, as: :text, placeholder: "Description", label: false %>
@@ -25,7 +26,7 @@
     </div>
 
     <%= f.input(:completion_check, as: :boolean, label: "Check that this task was completed via SMS?") %>
-      <div class="select-date-wrapper">
+      <div class="select-date-wrapper completion-check-fields-wrapper">
         <%= f.input :completion_check_date, as: :string, input_html: { class: "date-picker", id: "#{category}-completion-time" },
             label: false,
             placeholder: "Date of check" %>
