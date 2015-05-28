@@ -15,6 +15,30 @@ class TasksControllerTest < ActionController::TestCase
     sign_in @supporter
   end
 
+  test "can create task with date and time" do
+    assert_difference -> { Task.all.count } do
+      post :create, { task: {
+        task_type_id: 1,
+        title: "title",
+        description: "description",
+        start_date: "09/06/2015",
+        start_time: "7:12pm",
+        completion_check: "1",
+        completion_check_time: "12:40am",
+        completion_check_date: "1/2/2016",
+        board_id: @board.id }
+      }
+      @task = Task.last
+      assert_equal 9, @task.start_time.month
+      assert_equal 6, @task.start_time.day
+      assert_equal 2015, @task.start_time.year
+      assert_equal 19, @task.start_time.hour
+
+      assert_equal 1, @task.completion_check_time.month
+      assert @task.completion_check
+    end
+  end
+
   test "supporters can accept tasks" do
     assert_not @task.accepted?
     post :accept, { id: @task.id.to_s,

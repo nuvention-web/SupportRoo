@@ -1,13 +1,13 @@
-categories = {food: %w(Groceries Delivery Prepared\ Food),
-              transportation: %w(Pickup Drop-off Carpool),
-              household: %w(Cleaning Laundry Supplies Yardwork Handyman Carwash),
-              petcare: %w(Dogwalking Grooming Clean\ Up),
-              childcare: %w(Care Babysit Pick-up/Drop-Off Homework\ Help),
-              medical: %w(Care Nursing Physio Appointment),
-              personal: %w(Grooming Hair/Nails Massage),
-              love: %w(Spend\ Time Cheer\ Up Call),
+categories = {food: %w(Groceries Take\ Out Meal\ Delivery),
+              household: %w(Cleaning Laundry Supplies Yardwork Handyman Carwash Snow\ Shoveling Other),
+              transportation: %w(Pick-Up/Drop-Off Errands Other),
+              petcare: %w(Dogwalking Grooming Clean\ Up Other),
+              childcare: %w(Babysit Homework\ Help Other),
+              errands: %w(Pick-Up/Drop-Off Carpool Other),
+              medical: %w(Care Nursing Physio Other),
+              personal: %w(Grooming Massage Spend\ Time Other),
               custom: %w(Custom)
-}
+             }
 
 
 categories.each do | cat, typeList |

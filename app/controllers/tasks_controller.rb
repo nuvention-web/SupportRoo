@@ -1,7 +1,13 @@
 class TasksController < ApplicationController
   def create
-    Task.create(task_params)
-    redirect_to board_path(params[:task][:board_id])
+    task = Task.new(params_with_datetimes(task_params))
+    if task.valid?
+      task.save
+      flash[:notice] = "Task created successfully"
+    else
+      flash[:error] = "There was an error creating your task"
+    end
+    redirect_to board_path(task_params[:board_id])
   end
 
   def destroy
@@ -72,11 +78,32 @@ class TasksController < ApplicationController
       :supporter_message,
       :supporter_name,
       :start_time,
+      :start_date,
       :end_time,
       :pinned,
       :completed,
       :completion_check,
-      :completion_check_time
+      :completion_check_time,
+      :completion_check_date
     )
+  end
+
+  def create_date_time(date, time)
+    DateTime.strptime("#{date} #{time}", "%m/%d/%Y %l:%M%p")
+  end
+
+  def params_with_datetimes(prms)
+    unless prms[:start_date].blank? || prms[:start_time].blank?
+      prms[:start_time] = create_date_time(prms[:start_date], prms[:start_time])
+    end
+    prms.delete(:start_date)
+
+    if prms[:completion_check]
+      unless prms[:completion_check_time].blank? || prms[:completion_check_date].blank?
+        prms[:completion_check_time] = create_date_time(prms[:completion_check_date], prms[:completion_check_time])
+      end
+      prms.delete(:completion_check_date)
+    end
+    prms
   end
 end

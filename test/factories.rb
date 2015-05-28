@@ -3,7 +3,7 @@ FactoryGirl.define do
     sequence :email do |n|
       "foo#{n}@example.com"
     end
-    
+
     sequence :first_name do |n|
       "fo#{n}o"
     end
@@ -67,7 +67,6 @@ FactoryGirl.define do
 
   factory :task do
     description "foobar"
-    supporter_name "foo" #really gotta get rid of this
     association :board, factory: :board_with_owner
     start_time Time.now
     accepted false

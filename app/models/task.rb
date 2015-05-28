@@ -28,6 +28,8 @@ class Task < ActiveRecord::Base
   belongs_to :board
   belongs_to :user
   validates_presence_of :completion_check_time, if: -> { self.completion_check }
+  validates_presence_of :start_time
+  validates_presence_of :task_type_id
 
   extend SimpleCalendar
   has_calendar attribute: :start_time
@@ -36,7 +38,12 @@ class Task < ActiveRecord::Base
   scope :upcoming, -> { where("start_time > ?", Time.now).order('start_time ASC') }
   scope :not_taken, -> { where("accepted is null").order('start_time ASC') }
 
-  # TODO remove supporter_email and supporter_name from tasks, gotta refactor
+  def self.in_category(category)
+    joins(:task_type).select do |t|
+      t.task_type.category == category
+    end
+  end
+
   def accepted?
     user_id.present?
   end

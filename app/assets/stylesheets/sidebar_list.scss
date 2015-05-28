@@ -1,58 +1,67 @@
 @import "boards.scss";
 
-
-.task-type-buttons {
-  .add-task {
-    margin-bottom: 0;
+.task-categories {
+  border-bottom: 1px solid $dark-grey;
+  padding: 10px 0 10px 0;
+  color: $dark-grey;
+  &:hover {
+    font-weight: bold;
+    border-bottom: 3px solid $dark-grey;
   }
 
-  .label {
-    font-size: 1.2em;
-    margin: 0 0 4% 0;
+  .hover-only {
+    display: none;
   }
 
-  dd.category-names {
-
-    > a {
-      margin-top: 3%;
-      border-radius: 3px;
-      background-color: $white;
-      @include box-shadow;
-    }
-
-    h4 {
-      color: #6c6c6c;
-      font-size: 1.2rem;
-    }
-
-    i { padding-right: 10px; }
-
-    .category-content {
-      background-color: $light-grey !important;
-      margin-top: 1%;
-      ul.category-items {
-        list-style: none;
-        li {
-          @include box-shadow;
-          a { color: #FFFFFF; }
-          div {
-            background-color: $blue-dark;
-            padding: 2%;
-            margin: 2% 0 2% 0;
-          }
-        }
-      }
-    }
-
-  }
-
-  dd.category-names.active {
-    @extend dd.category-names;
-    h4 { color: $orange-primary; }
-  }
-
-  dd.category-names:hover {
-    @extend dd.category-names.active;
+  &:hover .hover-only {
+    display: inline;
   }
 }
 
+dd.accordion-navigation {
+  .fa-plus  { display: inline;}
+  .fa-minus { display: none; }
+}
+
+dd.accordion-navigation.active {
+  .fa-plus  { display: none; }
+  .fa-minus { display: inline; }
+}
+
+.new-task-form {
+  form {
+    .input {
+      select, input, textarea {
+        margin-bottom: 1px;
+        border: none;
+      }
+    }
+    .input.task_start_date {
+      margin: 0;
+      display: inline-block;
+      width: 49%;
+    }
+    .input.task_start_time {
+      margin: 0;
+      display: inline-block;
+      width: 49%;
+    }
+    .input.task_completion_check_date {
+      margin: 0;
+      display: inline-block;
+      width: 49%;
+    }
+    .input.task_completion_check_time {
+      margin: 0;
+      display: inline-block;
+      width: 49%;
+    }
+    .completion-check-fields-wrapper {
+      display: none;
+      margin-bottom: 30px
+    }
+    .task_completion_check {
+      margin: 10px 0 20px 0;
+    }
+  }
+}
