@@ -8,25 +8,24 @@ $("#task-add-sidebar").on("toggled", (event, accordion) ->
       $(this).find(".content").hasClass("active"))
 )
 
-$(".share-link-bar input:text").focus(-> $(this).select() )
-
 # HACK TO MAKE THE CALENDAR HEADER APPEAR
 $(".calendar table").prepend(
   """
   <thead>
     <tr>
-      <td>Monday</td>
-      <td>Tuesday</td>
-      <td>Wednesday</td>
-      <td>Thursday</td>
-      <td>Friday</td>
-      <td>Saturday</td>
-      <td>Sunday</td>
+      <td class="text-center">Monday</td>
+      <td class="text-center">Tuesday</td>
+      <td class="text-center">Wednesday</td>
+      <td class="text-center">Thursday</td>
+      <td class="text-center">Friday</td>
+      <td class="text-center">Saturday</td>
+      <td class="text-center">Sunday</td>
     </tr>
   </thead>
   """
 )
 
+# date and time pickers
 $(->
   $('.date-picker').each(->
     $(this).datepicker()
@@ -38,6 +37,7 @@ $(->
   )
 )
 
+# toggle competion check fields with checkbox
 $(->
   $(".task_completion_check").change(->
     fields = $(this).parent().find(".completion-check-fields-wrapper")

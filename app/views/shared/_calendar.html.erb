@@ -8,7 +8,7 @@
 
 <ul>
   <% tasks.each do |task| %>
-    <div class="event <%= 'accepted' if task.accepted? %>">
+    <div class="event <%= 'accepted' if task.accepted? %> type-<%=task.task_type.category %>">
       <span data-tooltip aria-haspopup="true" class="has-tip"
       title="<%= "Description: #{task.description}
       </br> Start Time: #{task.start_time.strftime("%B %d, %I:%M%p")}

@@ -7,6 +7,7 @@ class BoardsControllerTest < ActionController::TestCase
     @request.env["devise.mapping"] = Devise.mappings[:user]
     @user = create(:user)
     @owner = create(:user_owning_board)
+    @board = @owner.owned_boards.first
     sign_in @owner
   end
 

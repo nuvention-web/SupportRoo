@@ -8,6 +8,24 @@
     font-weight: bold;
     border-bottom: 3px solid $dark-grey;
   }
+
+  .hover-only {
+    display: none;
+  }
+
+  &:hover .hover-only {
+    display: inline;
+  }
+}
+
+dd.accordion-navigation {
+  .fa-plus  { display: inline;}
+  .fa-minus { display: none; }
+}
+
+dd.accordion-navigation.active {
+  .fa-plus  { display: none; }
+  .fa-minus { display: inline; }
 }
 
 .new-task-form {
