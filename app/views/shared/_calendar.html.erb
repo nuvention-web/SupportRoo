@@ -6,7 +6,6 @@
 
 <span class="date center"><%= date.day %></span>
 
-<ul>
   <% tasks.each do |task| %>
     <div class="event <%= 'accepted' if task.accepted? %> type-<%=task.task_type.category %>">
       <span data-tooltip aria-haspopup="true" class="has-tip"
@@ -14,8 +13,7 @@
       </br> Start Time: #{task.start_time.strftime("%B %d, %I:%M%p")}
       " %>"
       >
-      <%= link_to "#{task.title}, #{task.start_time.strftime("%I%p")}", '#' %></span>
+      <%= link_to "#{task.start_time.strftime("%I%p")} #{task.title}", '#' %></span>
   </div>
   <% end %>
-</ul>
 <% end %>
