@@ -1,4 +1,4 @@
-<div class="columns large-12 task-info" id='<%= "task-#{task.id}"%>'>
+<div class='<%= "columns large-12 task-info #{task.accepted? ? 'accepted' : 'available'}" %>' id='<%= "task-#{task.id}"%>' >
   <div class="top-row">
     <span class="task-type-name">
       <%= fa_icon("check-square-o") if task.accepted? %>
@@ -34,25 +34,24 @@
   </div>
 
   <div class="primary-info">
-    <span class="start-time">
+    <div class="start-time">
       <strong>Start time: </strong><%= task.start_time.strftime("%B %d, %I:%M%p") %>
-    </span>
+    </div>
 
-    <span class="acceptance-info">
+    <div class="acceptance-info">
       <% if task.accepted? %>
        <strong>Accepted by:</strong> <%= task.user.email %>
       <% else %>
         <strong>Status: </strong><span>Available</span>
       <% end %>
-    </span>
-  </div>
-
-  <div class="other-info">
-    <p><strong>Description:</strong> <%= task.description %></p>
-    <% if task.accepted? %>
-      <div class="supporter-note">
-        <strong>Note: </strong> <em>"<%= task.supporter_message %>"</em>
-      </div>
-    <% end %>
+    </div>
+    <div class="other-info">
+      <strong>Description:</strong> <%= task.description %>
+        <% if task.accepted? %>
+          <div class="supporter-note">
+            <strong>Note: </strong> <em>"<%= task.supporter_message %>"</em>
+          </div>
+        <% end %>
+    </div>
   </div>
 </div>

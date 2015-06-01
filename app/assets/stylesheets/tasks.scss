@@ -7,7 +7,9 @@
   margin-bottom: 10px;
   @include box-shadow();
   background-color: $white;
-  padding: 2%;
+  padding: 4%;
+  border-radius: 10px;
+  font-size: 0.75rem;
 
   .top-row {
     display: inline-block;
@@ -22,7 +24,14 @@
       }
     }
   }
+}
 
+.accepted {
+  border-bottom: 4px solid #43AC6A;
+}
+
+.available {
+  border-bottom: 4px solid #aaa;
 }
 
 #edit-icon {
@@ -33,21 +42,5 @@
 }
 
 .task-type-name {
-  color: $orange-primary;
-  text-transform: uppercase;
-  font-size: 1.25rem;
-  float: left;
-}
-
-.primary-info {
-  width: 100%;
-  display: inline-block;
-
-  .start-time {
-    float: left;
-  }
-
-  .acceptance-info {
-    float: left;
-  }
+  font-size: 1rem;
 }
