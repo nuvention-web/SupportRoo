@@ -50,6 +50,10 @@ $dark-grey: #858585;
   color: $white;
 }
 
+.tasks {
+  height: 630px;
+  overflow: scroll;
+}
 
 .board {
   background-color: $light-grey;
@@ -59,23 +63,22 @@ $dark-grey: #858585;
 .new-task-form {
   .new-task-title { color: $orange-primary; }
   select.select-date {
-    width: 30%;
     margin-right: 10px;
     float: left;
   }
-  .select-date-wrapper{
-    select:first-of-type{
-      width: 30%;
-    }
-    select:nth-of-type(2){
-      width: 15%;
-    }
-    select:nth-of-type(3){
-      width: 25%;
-    }
-    select:last-of-type{
-      width: 15%;
-    }
+}
+.select-date-wrapper{
+  select:first-of-type{
+    width: 25%;
+  }
+  select:nth-of-type(2){
+    width: 15%;
+  }
+  select:nth-of-type(3){
+    width: 25%;
+  }
+  select:last-of-type{
+    width: 15%;
   }
 }
 

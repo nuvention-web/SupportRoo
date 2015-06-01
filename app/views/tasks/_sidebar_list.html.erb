@@ -25,29 +25,4 @@
       <% end %>
     </div>
   </dd>
-
-  <dd class="accordion-navigation">
-    <a href="#task-filter-sidebar">
-      <h4>Filter tasks
-        <span class="right">
-          <%= fa_icon('plus') %> <%= fa_icon('minus') %>
-        </span>
-      </h4>
-    </a>
-    <div class="task-type-buttons content" id="task-filter-sidebar">
-      <% categories.each do |cat| %>
-        <%= link_to(board_path(@board, filter: cat)) do %>
-          <div class="task-categories">
-            <i class='<%=t cat%>'><%= ' ' + cat.titleize %></i>
-            <span class="right">
-              <%= fa_icon('circle') if params[:filter] == cat %>
-            </span>
-            <span class="right hover-only">
-              <%= fa_icon('circle-thin') unless params[:filter] == cat %>
-            </span>
-          </div>
-        <% end %>
-      <% end %>
-    </div>
-  </dd>
 </dl>

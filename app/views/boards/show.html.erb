@@ -1,22 +1,21 @@
 <%= render partial: "share_bar" %>
 
 <div class="board">
-  <div class="row">
-    <div class="row">
-      <div class="columns small-2">
-        <%= render "tasks/sidebar_list", categories: @task_categories, types: @task_types %>
-      </div>
+  <div class="row almost-full-width">
+    <div class="columns large-2">
+      <%= render "tasks/sidebar_list", categories: @task_categories, types: @task_types %>
+    </div>
 
-      <div class="columns small-10">
-        <div class="calendar text-center" id="calendar-wrapper">
-          <%= render partial: "shared/calendar", locals: { tasks: @tasks } %>
-        </div>
-        <h3>Your tasks</h3>
+    <div class="columns large-7">
+      <div class="calendar text-center" id="calendar-wrapper">
+        <%= render partial: "shared/calendar", locals: { tasks: @tasks } %>
+      </div>
+    </div>
+    <div class="columns large-3 tasks">
         <% if @tasks.empty? %>
         <div>You don't seem to have any support tasks yet! Your tasks will appear here after you add them</div>
         <% end  %>
         <%= render @tasks %>
-      </div>
     </div>
   </div>
 </div>

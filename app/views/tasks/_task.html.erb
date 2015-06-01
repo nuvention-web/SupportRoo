@@ -9,19 +9,25 @@
       <li>
         <%= link_to fa_icon("pencil"), edit_task_path(task.id),
           method: "get",
-          class: "button tiny success radius small",
-          remote: true %>
+          remote: true,
+          id: "edit-icon" %>
       </li>
       <li>
-        <%= link_to fa_icon("times"), task_path(task.id), method: "delete", class: "button tiny right alert radius small" %>
+        <%= link_to fa_icon("times"), task_path(task.id), 
+          method: "delete",
+          id: 'delete-icon' %>
       </li>
       <% if task.pinned? %>
         <li>
-          <%= link_to fa_icon("minus"), pin_task_path(task.id), method: "post", class: "button tiny right default radius small" %>
+          <%= link_to fa_icon("minus"), pin_task_path(task.id), 
+            method: "post",
+            id: 'unpin-icon' %>
         </li>
       <% else %>
         <li>
-          <%= link_to fa_icon("thumb-tack"), pin_task_path(task.id), method: "post", class: "button tiny right default radius small" %>
+          <%= link_to fa_icon("thumb-tack"), pin_task_path(task.id), 
+            method: "post",
+            id: 'pin-icon' %>
         </li>
       <% end %>
     </ul>
@@ -36,7 +42,7 @@
       <% if task.accepted? %>
        <strong>Accepted by:</strong> <%= task.user.email %>
       <% else %>
-        <strong>Status: </strong><span>Unaccepted</span>
+        <strong>Status: </strong><span>Available</span>
       <% end %>
     </span>
   </div>

@@ -16,15 +16,26 @@
     .edit-buttons {
       float: right;
       margin-bottom: 0;
+
+      li {
+        padding-left: 15px;
+      }
     }
   }
 
 }
 
+#edit-icon {
+  color: #43AC6A;
+}
+#delete-icon {
+  color: #f04124;
+}
+
 .task-type-name {
   color: $orange-primary;
   text-transform: uppercase;
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   float: left;
 }
 
@@ -37,6 +48,6 @@
   }
 
   .acceptance-info {
-    float: right;
+    float: left;
   }
 }
