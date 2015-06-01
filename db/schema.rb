@@ -83,8 +83,8 @@ ActiveRecord::Schema.define(version: 20150517201338) do
     t.string   "supporter_name"
     t.string   "title"
     t.integer  "user_id"
-    t.boolean  "completed?",            default: false
-    t.boolean  "pinned?",               default: false
+    t.boolean  "completed",             default: false
+    t.boolean  "pinned",                default: false
     t.boolean  "completion_check",      default: false
     t.datetime "completion_check_time"
   end

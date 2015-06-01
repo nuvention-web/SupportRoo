@@ -1,5 +1,17 @@
 @import "boards.scss";
 
+// this is a, no one selector gets the whole calendar + header
+#calendar-wrapper {
+  background-color: white;
+  padding: 10px 0 10px 0;
+  @include box-shadow();
+}
+#calendar-body {
+  background-color: white;
+  padding: 0 30px 30px 30px;
+  @include box-shadow();
+}
+
 .calendar {
   table {
     padding: 0;
@@ -7,7 +19,6 @@
   }
   thead tr td {
     background-color: $white;
-    border: 1px solid #c7c7c7;
     border-bottom: 0px;
   }
   .calendar-header {
@@ -21,13 +32,11 @@
     height: 100px;
     padding: 1% 0 0 1%;
     vertical-align: top;
-    border: 1px solid #c7c7c7;
-    .date {
-
-    }
+    border: 1px solid $light-grey;
+    background: $orange-secondary;
   }
   .day.today {
-    background: rgba(139,237,146,0.25);
+    background: $orange-primary;
   }
 
   .day.prev-month {
@@ -39,14 +48,14 @@
 
 
   .calendar-row {
+    background: $white;
   }
 
   .event {
     font-size: 0.8rem;
+    list-style-type: none;
     .accepted {
       text-decoration: line-through;
-
     }
-
   }
 }

@@ -17,8 +17,8 @@
 #  supporter_name        :string
 #  title                 :string
 #  user_id               :integer
-#  completed?            :boolean          default("false")
-#  pinned?               :boolean          default("false")
+#  completed             :boolean          default("false")
+#  pinned                :boolean          default("false")
 #  completion_check      :boolean          default("false")
 #  completion_check_time :datetime
 #
@@ -28,21 +28,28 @@ class Task < ActiveRecord::Base
   belongs_to :board
   belongs_to :user
   validates_presence_of :completion_check_time, if: -> { self.completion_check }
+  validates_presence_of :start_time
+  validates_presence_of :task_type_id
 
   extend SimpleCalendar
   has_calendar attribute: :start_time
 
-  default_scope -> { order('"pinned?" DESC, start_time ASC') }
+  default_scope -> { order('"pinned" DESC, start_time ASC') }
   scope :upcoming, -> { where("start_time > ?", Time.now).order('start_time ASC') }
   scope :not_taken, -> { where("accepted is null").order('start_time ASC') }
 
-  # TODO remove supporter_email and supporter_name from tasks, gotta refactor
+  def self.in_category(category)
+    joins(:task_type).select do |t|
+      t.task_type.category == category
+    end
+  end
+
   def accepted?
     user_id.present?
   end
 
   def complete!
-    update_attributes(completed?: true)
+    update_attributes(completed: true)
   end
 
   def pretty_start_time
@@ -50,15 +57,15 @@ class Task < ActiveRecord::Base
   end
 
   def pin!
-    update_attributes(pinned?: true)
+    update_attributes(pinned: true)
   end
 
   def unpin!
-    update_attributes(pinned?: false)
+    update_attributes(pinned: false)
   end
 
   def self.with_outstanding_completion_checks
-    where(completion_check: true, completed?: false).
+    where(completion_check: true, completed: false).
     where("completion_check_time < ?", DateTime.now)
   end
 end

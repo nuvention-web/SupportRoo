@@ -1,55 +1,40 @@
 <div class="new-task-form">
 
-  <%= simple_form_for Task.new do |f| %>
+  <%= simple_form_for :task, url: tasks_path, method: :post do |f| %>
+    <h4> Add new task </h4>
+    <%= f.input :task_type_id,
+      collection: types,
+      prompt: "Choose #{category} task",
+      label: false,
+      required: true %>
 
-  <fieldset>
-    <% if t %>
-      <legend><h4 class="new-task-title"><%= t.name %></h4></legend>
-    <% end %>
-
-    <%= f.input :title %>
-
-    <% if t %>
-      <%= f.hidden_field :task_type_id, { value: t.id } %>
-    <% else %>
-      <%= f.association :task_type, as: :select %>
-    <% end %>
-
-    <%= f.input :description, as: :text %>
+    <%= f.input :title, placeholder: "Title", label: false %>
+    <%= f.input :description, as: :text, placeholder: "Description", label: false %>
 
     <!-- THIS IS TOO UGLY, FIX IT, something like below? -->
     <!-- f.input :start_time, as: :datetime -->
     <!-- f.input :end_time, as: :datetime -->
 
     <!-- START TIME? -->
-    <div class="row">
-      <div class="select-date-wrapper">
-        <%= f.label(:start_time) %>
-        <%= f.datetime_select :start_time, options = {
-          order: [:month, :day, :year],
-          discard_year: true,
-          ampm: true,
-          minute_step:15
-        } %>
-      </div>
+    <div class="select-date-wrapper">
+      <%= f.input :start_date, as: :string, input_html: { class: "date-picker", id: "#{category}-start-time" },
+          label: false,
+          placeholder: "Start Date" %>
+      <%= f.input :start_time, as: :string, input_html: { class: "time-picker", id: "#{category}-start-time" },
+          label: false,
+          placeholder: "Start Time" %>
     </div>
 
-    <div class="row">
-      <%= f.input(:completion_check, as: :boolean, label: "Check that this task was completed via SMS?") %>
-      <div class="select-date-wrapper">
-        <%= f.label("Choose time for completion check") %>
-        <%= f.datetime_select :completion_check_time, options = {
-          order: [:month, :day, :year],
-          discard_year: true,
-          ampm: true,
-          minute_step:15
-        } %>
+    <%= f.input(:completion_check, as: :boolean, label: "Check that this task was completed via SMS?") %>
+      <div class="select-date-wrapper completion-check-fields-wrapper">
+        <%= f.input :completion_check_date, as: :string, input_html: { class: "date-picker", id: "#{category}-completion-time" },
+            label: false,
+            placeholder: "Date of check" %>
+        <%= f.input :completion_check_time, as: :string, input_html: { class: "time-picker", id: "#{category}-completion-time" },
+            label: false,
+            placeholder: "Time of check" %>
       </div>
-    </div>
-
-    <!-- END TIME? -->
-    <%= f.hidden_field :board_id, { value: b.id } %>
+    <%= f.hidden_field :board_id, { value: @board.id } %>
     <%= f.submit("Add task", class: "button center radius add-task") %>
-  </fieldset>
   <% end %>
 </div>

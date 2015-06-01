@@ -1,15 +1,21 @@
 // Place all the styles related to the boards controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-$orange-primary: #F17429;
+$orange-primary: #63A8A8;
+$orange-secondary: #DEEEEE;
 $blue-dark: #296C7A;
 $white: #FFFFFF;
-$light-grey: #F7F3EB;
+$light-grey: #F0F0F0;
+$dark-grey: #858585;
 
 @mixin box-shadow() {
   -webkit-box-shadow: -4px 4px 4px -2px rgba(219,219,219,1);
   -moz-box-shadow: -4px 4px 4px -2px rgba(219,219,219,1);
   box-shadow: -4px 4px 4px -2px rgba(219,219,219,1);
+}
+
+.accordion h4 {
+  font-size: 1.1rem;
 }
 
 .row.almost-full-width {
@@ -44,6 +50,10 @@ $light-grey: #F7F3EB;
   color: $white;
 }
 
+.tasks {
+  height: 630px;
+  overflow: scroll;
+}
 
 .board {
   background-color: $light-grey;
@@ -53,23 +63,22 @@ $light-grey: #F7F3EB;
 .new-task-form {
   .new-task-title { color: $orange-primary; }
   select.select-date {
-    width: 30%;
     margin-right: 10px;
     float: left;
   }
-  .select-date-wrapper{
-    select:first-of-type{
-      width: 30%;
-    }
-    select:nth-of-type(2){
-      width: 15%;
-    }
-    select:nth-of-type(3){
-      width: 25%;
-    }
-    select:last-of-type{
-      width: 15%;
-    }
+}
+.select-date-wrapper{
+  select:first-of-type{
+    width: 25%;
+  }
+  select:nth-of-type(2){
+    width: 15%;
+  }
+  select:nth-of-type(3){
+    width: 25%;
+  }
+  select:last-of-type{
+    width: 15%;
   }
 }
 

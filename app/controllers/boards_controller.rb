@@ -42,7 +42,7 @@ class BoardsController < ApplicationController
 
     @task_categories = TaskType.all.pluck(:category).uniq
     @task_types = TaskType.all
-    @tasks = @board.tasks
+    @tasks = params[:filter] ? @board.tasks.in_category(params[:filter]) : @board.tasks
   end
 
   def share
