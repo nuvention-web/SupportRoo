@@ -1,5 +1,4 @@
-<div class="full-width text-center share-link-bar orange">
-  <p>Share your board!
-  <%= link_to fa_icon("envelope-o"), new_board_invites_path(@board) %></p>
-  <!-- <div class="fb-send" data-href="https://supportroo-staging.herokuapp.com/<%= share_board_path(@board) %>" data-colorscheme="light"></div> -->
+<div class="share-link-bar orange">
+  <%= link_to "Invite Supporters!", new_board_invites_path(@board), class: "button tiny round success" %>
+  <%= link_to "View Supporters (#{@board.non_owners.count})", supporters_board_path(@board), class: "button tiny round success" %>
 </div>

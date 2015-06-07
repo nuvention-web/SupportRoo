@@ -41,6 +41,7 @@ class InvitesController < ApplicationController
     else
       session[:code] ||= [] 
       session[:code] << invite.code
+      session[:email] = invite.email
       redirect_to new_user_registration_path(code: params[:code])
     end
   end

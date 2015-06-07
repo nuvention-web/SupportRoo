@@ -7,6 +7,7 @@ class BoardsControllerTest < ActionController::TestCase
     @request.env["devise.mapping"] = Devise.mappings[:user]
     @user = create(:user)
     @owner = create(:user_owning_board)
+    @board = @owner.owned_boards.first
     sign_in @owner
   end
 
@@ -86,4 +87,16 @@ class BoardsControllerTest < ActionController::TestCase
     assert_not_empty assigns(:unaccepted_tasks)
     assert_not_empty assigns(:user_tasks)
   end
+
+  test "board#supporters shows board supporters" do
+    board = @user.boards.first
+    3.times do
+      user = create(:user)
+      board.supporters.create(user: user)
+    end
+
+    get :supporters, id: board.id.to_s
+    assert_select "li.supporter", count: board.non_owners.count
+  end
+
 end

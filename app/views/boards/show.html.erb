@@ -1,37 +1,21 @@
 <%= render partial: "share_bar" %>
 
-<!-- #TODO get this flash right -->
-<% if flash[:signup_success] %>
-  <div class="row panel">Thanks for signing up, this is your board!</div>
-<% end %>
-
 <div class="board">
-  <div class="row almost-full-width">
-    <div class="row">
-      <div class="columns large-12 text-center">
-      </div>
+  <div class="row full-width">
+    <div class="columns large-2">
+      <%= render "tasks/sidebar_list", categories: @task_categories, types: @task_types %>
+    </div>
 
-      <div class="row">
-        <div class="columns small-4">
-          <%= render "tasks/sidebar_list", categories: @task_categories, types: @task_types %>
-        </div>
-
-        <div class="columns small-8">
-          <div class="calendar">
-            <!-- <h4 class="right">
-              <a class="label success radius" href="#" data-reveal-id="GenModal">
-                <i class="fa fa-plus fa-2x"> Add a new task</i>
-              </a>
-            </h4> -->
-            <%= render partial: "shared/calendar", locals: { tasks: @tasks } %>
-          </div>
-          <h3>Your tasks</h3>
-          <% if @tasks.empty? %>
-            <div>You don't seem to have any support tasks yet! Your tasks will appear here after you add them</div>
-          <% end  %>
-          <%= render @tasks %>
-        </div>
+    <div class="columns large-7">
+      <div class="calendar text-center" id="calendar-wrapper">
+        <%= render partial: "shared/calendar", locals: { tasks: @tasks } %>
       </div>
+    </div>
+    <div class="columns large-3 tasks">
+        <% if @tasks.empty? %>
+        <div>You don't seem to have any support tasks yet! Your tasks will appear here after you add them</div>
+        <% end  %>
+        <%= render @tasks %>
     </div>
   </div>
 </div>

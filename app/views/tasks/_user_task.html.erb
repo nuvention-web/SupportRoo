@@ -18,7 +18,9 @@
   </div>
 
   <div class="other-info">
+    <p><strong>Name:</strong> <%= task.title %></p>
     <p><strong>Description:</strong> <%= task.description %></p>
+    <p><strong>Your note: </strong> <%= task.supporter_message %></p>
   </div>
 
   <% if !task.completed? %>

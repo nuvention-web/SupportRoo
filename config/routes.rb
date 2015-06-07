@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :boards, only: [:new, :create, :show, :destroy] do
     get 'share', on: :member
+    get 'supporters', on: :member
     resource :invites, only: [:new, :create] do
       get 'claim'
     end
@@ -19,6 +20,9 @@ Rails.application.routes.draw do
   resources :tasks, only: [:create, :destroy, :edit, :update, :show] do
     post 'accept', on: :member
     post 'complete', on: :member
+    post 'pin', on: :member
   end
+
+  get 'twilio' => "messages#twilio_receive"
 
 end

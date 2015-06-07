@@ -9,7 +9,7 @@
   <% if user_signed_in? %>
   <section class="top-bar-section">
     <ul class="left">
-      <li><a href="#" data-dropdown="drop" data-options="is_hover:true">My Boards</a></li>
+      <li><a href=<%= user_path(current_user) %> data-dropdown="drop" data-options="is_hover:true">My Boards</a></li>
       <ul id="drop" class="f-dropdown" data-dropdown-content>
         <% if user_signed_in? %>
           <% current_user.owned_boards.each do |b| %>
