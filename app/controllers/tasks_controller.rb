@@ -89,7 +89,11 @@ class TasksController < ApplicationController
   end
 
   def create_date_time(date, time)
-    DateTime.strptime("#{date} #{time}", "%m/%d/%Y %l:%M%p")
+    begin
+      DateTime.strptime("#{date} #{time}", "%m/%d/%Y %l:%M%p")
+    rescue ArgumentError
+      DateTime.now
+    end
   end
 
   def params_with_datetimes(prms)
