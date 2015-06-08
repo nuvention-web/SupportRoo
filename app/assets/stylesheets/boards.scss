@@ -14,6 +14,12 @@ $dark-grey: #858585;
   box-shadow: -4px 4px 4px -2px rgba(219,219,219,1);
 }
 
+.name {
+  padding-top: 10px;
+  padding-bottom: 5px;
+  padding-left: 8px;
+}
+
 .accordion h4 {
   font-size: 1.1rem;
 }
@@ -26,6 +32,7 @@ $dark-grey: #858585;
 .top-bar {
   display: inline-block;
   width: 100%;
+  // margin-bottom: 50px;
   #top-stuff {
     background-color: $white;
 

@@ -1,5 +1,6 @@
-<h4>Add a task</h4>
+
 <div class="task-type-buttons content active" id="task-add-sidebar">
+  <h5>Add a task:</h5>
   <% categories.each do |cat| %>
   <div>
     <a href="#" data-reveal-id="<%= "#{cat}-modal" %>">
@@ -15,4 +16,13 @@
     </div>
   </div>
   <% end %>
+
+  </br>
+  <h5>Other Actions:</h5>
+  <div class="task-categories">
+    <%= link_to "Invite Supporters", new_board_invites_path(@board) %>
+  </div>
+  <div class="task-categories">
+    <%= link_to "View Supporters (#{@board.non_owners.count})", supporters_board_path(@board) %>
+  </div>
 </div>

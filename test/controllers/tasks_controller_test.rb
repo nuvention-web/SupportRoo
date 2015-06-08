@@ -39,6 +39,25 @@ class TasksControllerTest < ActionController::TestCase
     end
   end
 
+  test "catches invalid date errors" do
+    assert_difference -> { Task.all.count } do
+      post :create, { task: {
+        task_type_id: 1,
+        title: "title",
+        description: "description",
+        start_date: "alkdsjga",
+        start_time: "akdsg",
+        completion_check: "1",
+        completion_check_time: "aldgalkdjgk",
+        completion_check_date: "afglk",
+        board_id: @board.id }
+      }
+      @task = Task.last
+
+      assert @task.completion_check
+    end
+  end
+
   test "supporters can accept tasks" do
     assert_not @task.accepted?
     post :accept, { id: @task.id.to_s,
