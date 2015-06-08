@@ -1,34 +1,27 @@
 <nav class="top-bar" data-topbar role="navigation">
   <ul class="title-area">
     <li class="name">
-      <%=link_to (image_tag 'logo.png', size: '160'), root_path %>
+      <%=link_to (image_tag 'banner.png', size: '320'), root_path %>
     </li>
     <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
   </ul>
-
-  <% if user_signed_in? %>
-  <section class="top-bar-section">
-    <ul class="left">
-      <li><a href=<%= user_path(current_user) %> data-dropdown="drop" data-options="is_hover:true">My Boards</a></li>
-      <ul id="drop" class="f-dropdown" data-dropdown-content>
-        <% if user_signed_in? %>
-          <% current_user.owned_boards.each do |b| %>
-            <li><%= link_to b.name, board_path(b) %></li>
-          <% end %>
-          <% current_user.supporting_boards.each do |b| %>
-            <li><%= link_to b.name, share_board_path(b) %></li>
-          <% end %>
-        <% end %>
-      </ul>
-    </ul>
-  </section>
-  <% end %>
 
   <section class="top-bar-section">
     <ul class="right">
       <li>
         <% if user_signed_in? %>
         <li><%= link_to current_user.email, user_path(current_user) %></li>
+        <li><a href=<%= user_path(current_user) %> data-dropdown="drop" data-options="is_hover:true">My Boards</a></li>
+        <ul id="drop" class="f-dropdown" data-dropdown-content>
+          <% if user_signed_in? %>
+          <% current_user.owned_boards.each do |b| %>
+          <li><%= link_to b.name, board_path(b) %></li>
+          <% end %>
+          <% current_user.supporting_boards.each do |b| %>
+          <li><%= link_to b.name, share_board_path(b) %></li>
+          <% end %>
+          <% end %>
+        </ul>
         <li><%= link_to 'Create a Board', new_board_path %></li>
         <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
         <% else %>
