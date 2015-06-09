@@ -8,12 +8,6 @@
 
     <ul class="button-group edit-buttons">
       <li>
-        <%= link_to fa_icon("pencil"), edit_task_path(task.id),
-          method: "get",
-          remote: true,
-          id: "edit-icon" %>
-      </li>
-      <li>
         <%= link_to fa_icon("times"), task_path(task.id),
           method: "delete",
           id: 'delete-icon' %>
@@ -44,7 +38,7 @@
 
     <div class="acceptance-info">
       <% if task.accepted? %>
-       <strong>Accepted by:</strong> <%= task.user.email %>
+       <strong>Accepted by:</strong> <%= task.user.friendly_name %>
       <% else %>
         <strong>Status: </strong><span>Available</span>
       <% end %>
