@@ -2,6 +2,8 @@
 
 ![SupportRoo Logo](https://github.com/nuvention-web/SupportRoo/blob/master/app/assets/images/logo.png?raw=true)
 
+We believe that everyone should have the help they need when they need it most. SupportRoo allows you to organize help for yourself or friends in times of stress, and allows you to be sure everything you need gets done.
+
 SupportRoo helps anyone who has too many things to keep track of to identify what they need to get done, organize those needs, and share them with their network so people who want to help can.  This could include anyone ranging from a serious long term illness, to a less serious injury or a new mother wanting to keep track of things at home.
 
 ## Team Members
