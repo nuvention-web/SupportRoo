@@ -37,6 +37,9 @@
   }
   .day.today {
     background: $orange-primary;
+    a {
+        color: white;
+      }
   }
 
   .day.prev-month {

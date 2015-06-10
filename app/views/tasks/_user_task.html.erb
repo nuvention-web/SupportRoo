@@ -5,9 +5,9 @@
   </span>
 
   <% if task.completed? %>
-    <span class="right label success">Completed!</span>
+    <span class="right button small success">Completed!</span>
   <% else %>
-    <%= link_to "Mark as completed!", complete_task_path(task),
+    <%= link_to "Mark as completed", complete_task_path(task),
     class: "button right small", method: :post %>
   <% end %>
 
@@ -18,13 +18,10 @@
   </div>
 
   <div class="other-info">
-    <p><strong>Name:</strong> <%= task.title %></p>
-    <p><strong>Description:</strong> <%= task.description %></p>
-    <p><strong>Your note: </strong> <%= task.supporter_message %></p>
+    <span><strong>Name:</strong> <%= task.title %></span></br>
+    <span><strong>Description:</strong> <%= task.description %></span></br>
+    <% if task.supporter_message.present? %>
+      <span><strong>Your note: </strong> <%= task.supporter_message %></span></br>
+    <% end %>
   </div>
-
-  <% if !task.completed? %>
-    <p><em>Marking this task as complete will notify the board owner via email</em></p>
-  <% end %>
 </div>
-

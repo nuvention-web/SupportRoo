@@ -2,11 +2,8 @@
   <span class="task-type-name">
     <%= task.task_type.name %>
   </span>
-  <a href="#" class="button default tiny right" data-reveal-id="sign-up-modal-<%= task.id %>">
-    More info
-  </a>
   <% if task.pinned? %>
-    <div class="label right success">Pinned!</div>
+    <div class="label right success">Pinned</div>
   <% end %>
 
   <div class="primary-info">
@@ -14,6 +11,9 @@
       <p><strong>Description: </strong><%= task.description %></p>
       <strong>Start time: </strong><%= task.start_time.strftime("%B %d, %I:%M %p") %>
     </span>
+    <a href="#" class="button default tiny right round" data-reveal-id="sign-up-modal-<%= task.id %>">
+    More info
+  </a>
   </div>
 
   <div id="sign-up-modal-<%= task.id %>" class="reveal-modal" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
@@ -36,7 +36,7 @@
       <%= f.input :supporter_message, { label: "Your note",
                                         placeholder: "Leave a note! Let the board owner you understand the task and show your support!",
                                         as: :text } %>
-      <%= f.button :submit, "Sign up for this task!", { class: "small" } %>
+      <%= f.button :submit, "Sign up for this task", { class: "small" } %>
     <% end %>
   </div>
 </div>

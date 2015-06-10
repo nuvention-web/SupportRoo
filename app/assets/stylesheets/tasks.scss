@@ -7,7 +7,7 @@
   margin-bottom: 10px;
   @include box-shadow();
   background-color: $white;
-  padding: 4%;
+  padding: 2%;
   border-radius: 10px;
   font-size: 0.75rem;
 
@@ -28,6 +28,9 @@
 
 .accepted {
   border-bottom: 4px solid #43AC6A;
+  &.completed {
+    border-bottom: 4px solid $orange-primary;
+  }
 }
 
 .available {
@@ -43,4 +46,8 @@
 
 .task-type-name {
   font-size: 1rem;
+  color: $orange-primary;
+}
+.title {
+  font-size: 0.85rem;
 }
